@@ -1,5 +1,5 @@
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { join, relative, resolve } from "node:path";
+import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -33,47 +33,58 @@ const analyzeDependencies = (content: string): {
   dependencies: string[];
   registryDependencies: string[];
 } => {
-  const dependencies = new Set<string>();
-  const registryDependencies = new Set<string>();
-
   // import文を解析
   const importRegex = /import\s+.*?\s+from\s+["']([^"']+)["']/g;
-  let match: RegExpExecArray | null;
+  const importPaths = Array.from(content.matchAll(importRegex), (match) =>
+    match[1]
+  );
 
-  while ((match = importRegex.exec(content)) !== null) {
-    const importPath = match[1];
-
-    // 外部パッケージの依存関係
-    if (!importPath.startsWith(".") && !importPath.startsWith("@/")) {
-      // ReactやReact DOMは除外（peerDependenciesとして扱う）
-      if (
-        !importPath.startsWith("react") &&
-        !importPath.startsWith("@types/")
-      ) {
-        const packageName = importPath.split("/")[0];
-        if (packageName.startsWith("@")) {
-          dependencies.add(`${packageName}/${importPath.split("/")[1]}`);
-        } else {
-          dependencies.add(packageName);
+  const { dependencies, registryDependencies } = importPaths.reduce(
+    (acc, importPath) => {
+      // 外部パッケージの依存関係
+      if (!importPath.startsWith(".") && !importPath.startsWith("@/")) {
+        // ReactやReact DOMは除外（peerDependenciesとして扱う）
+        if (
+          !importPath.startsWith("react") &&
+          !importPath.startsWith("@types/")
+        ) {
+          const packageName = importPath.split("/")[0];
+          const dependency = packageName.startsWith("@")
+            ? `${packageName}/${importPath.split("/")[1]}`
+            : packageName;
+          return {
+            dependencies: [...acc.dependencies, dependency],
+            registryDependencies: acc.registryDependencies,
+          };
         }
       }
-    }
 
-    // 内部のRegistryコンポーネントへの依存
-    if (importPath.startsWith("@/components/ui/")) {
-      const componentName = importPath
-        .replace("@/components/ui/", "")
-        .split("/")[0]
-        .replace(/\.tsx?$/, "");
-      if (componentName && componentName !== "button") {
-        registryDependencies.add(componentName);
+      // 内部のRegistryコンポーネントへの依存
+      if (importPath.startsWith("@/components/ui/")) {
+        const componentName = importPath
+          .replace("@/components/ui/", "")
+          .split("/")[0]
+          .replace(/\.tsx?$/, "");
+        if (componentName && componentName !== "button") {
+          return {
+            dependencies: acc.dependencies,
+            registryDependencies: [
+              ...acc.registryDependencies,
+              componentName,
+            ],
+          };
+        }
       }
-    }
-  }
 
+      return acc;
+    },
+    { dependencies: [] as string[], registryDependencies: [] as string[] }
+  );
+
+  // 重複を削除
   return {
-    dependencies: Array.from(dependencies),
-    registryDependencies: Array.from(registryDependencies),
+    dependencies: Array.from(new Set(dependencies)),
+    registryDependencies: Array.from(new Set(registryDependencies)),
   };
 };
 
@@ -117,7 +128,7 @@ const createRegistryEntry = (
     // utilsへの依存を確認
     const needsUtils = content.includes("@/lib/utils");
 
-    const files: RegistryEntry["files"] = [
+    const baseFiles: RegistryEntry["files"] = [
       {
         path: `components/ui/${componentPath}`,
         content,
@@ -126,15 +137,23 @@ const createRegistryEntry = (
     ];
 
     // utilsが必要な場合は追加
-    if (needsUtils) {
-      const utilsPath = join(rootDir, "lib", "utils.ts");
-      const utilsContent = readFileSync(utilsPath, "utf-8");
-      files.push({
-        path: "lib/utils.ts",
-        content: utilsContent,
-        type: "lib",
-      });
-    }
+    const files: RegistryEntry["files"] = needsUtils
+      ? (() => {
+          const utilsPath = join(rootDir, "lib", "utils.ts");
+          const utilsContent = readFileSync(utilsPath, "utf-8");
+          return [
+            ...baseFiles,
+            {
+              path: "lib/utils.ts",
+              content: utilsContent,
+              type: "lib" as const,
+            },
+          ];
+        })()
+      : baseFiles;
+
+    // Storybook URLを生成
+    const storybookUrl = getStorybookUrl(componentName, storybookBaseUrl);
 
     const entry: RegistryEntry = {
       name: componentName,
@@ -144,16 +163,15 @@ const createRegistryEntry = (
       registryDependencies:
         registryDependencies.length > 0 ? registryDependencies : undefined,
       peerDependencies: ["react", "react-dom"],
+      ...(storybookUrl
+        ? {
+            storybook: {
+              url: storybookUrl,
+              title: componentName,
+            },
+          }
+        : {}),
     };
-
-    // Storybook URLを追加
-    const storybookUrl = getStorybookUrl(componentName, storybookBaseUrl);
-    if (storybookUrl) {
-      entry.storybook = {
-        url: storybookUrl,
-        title: componentName,
-      };
-    }
 
     return entry;
   } catch (error) {
@@ -174,59 +192,74 @@ const buildRegistry = (): void => {
   const storybookBaseUrl =
     process.env.STORYBOOK_URL || process.env.NEXT_PUBLIC_STORYBOOK_URL;
 
-  const registry: RegistryEntry[] = [];
-
-  for (const file of componentFiles) {
-    const componentName = file.replace(/\.tsx$/, "");
-    const entry = createRegistryEntry(file, componentName, storybookBaseUrl);
-
-    if (entry) {
-      registry.push(entry);
-    }
-  }
+  // コンポーネントエントリを生成
+  const registry = componentFiles
+    .map((file) => {
+      const componentName = file.replace(/\.tsx$/, "");
+      return createRegistryEntry(file, componentName, storybookBaseUrl);
+    })
+    .filter((entry): entry is RegistryEntry => entry !== null);
 
   // utilsファイルの重複を削除（各コンポーネントに含まれているutilsを統合）
-  const utilsFiles = new Map<string, string>();
-  for (const entry of registry) {
-    const utilsFile = entry.files.find((f) => f.path === "lib/utils.ts");
-    if (utilsFile) {
-      utilsFiles.set(utilsFile.path, utilsFile.content);
-      // コンポーネントエントリからutilsファイルを削除
-      entry.files = entry.files.filter((f) => f.path !== "lib/utils.ts");
-      // registryDependenciesにutilsを追加
-      if (!entry.registryDependencies) {
-        entry.registryDependencies = [];
-      }
-      if (!entry.registryDependencies.includes("utils")) {
-        entry.registryDependencies.push("utils");
-      }
+  const hasUtils = registry.some((entry) =>
+    entry.files.some((f) => f.path === "lib/utils.ts")
+  );
+
+  const registryWithUtilsRemoved = registry.map((entry) => {
+    const hasUtilsFile = entry.files.some((f) => f.path === "lib/utils.ts");
+    if (!hasUtilsFile) {
+      return entry;
     }
-  }
+
+    const filesWithoutUtils = entry.files.filter(
+      (f) => f.path !== "lib/utils.ts"
+    );
+    const registryDependencies = entry.registryDependencies
+      ? entry.registryDependencies.includes("utils")
+        ? entry.registryDependencies
+        : [...entry.registryDependencies, "utils"]
+      : ["utils"];
+
+    return {
+      ...entry,
+      files: filesWithoutUtils,
+      registryDependencies,
+    };
+  });
 
   // utilsエントリを追加（必要な場合）
-  if (utilsFiles.size > 0) {
-    const utilsPath = join(rootDir, "lib", "utils.ts");
-    const utilsContent = readFileSync(utilsPath, "utf-8");
-    registry.unshift({
-      name: "utils",
-      type: "utils",
-      files: [
-        {
-          path: "lib/utils.ts",
-          content: utilsContent,
-          type: "lib",
-        },
-      ],
-      dependencies: ["clsx", "tailwind-merge"],
-    });
-  }
+  const finalRegistry = hasUtils
+    ? (() => {
+        const utilsPath = join(rootDir, "lib", "utils.ts");
+        const utilsContent = readFileSync(utilsPath, "utf-8");
+        return [
+          {
+            name: "utils",
+            type: "utils" as const,
+            files: [
+              {
+                path: "lib/utils.ts",
+                content: utilsContent,
+                type: "lib" as const,
+              },
+            ],
+            dependencies: ["clsx", "tailwind-merge"],
+          },
+          ...registryWithUtilsRemoved,
+        ];
+      })()
+    : registryWithUtilsRemoved;
 
   // registry.jsonを出力
   const outputPath = join(rootDir, "registry.json");
-  writeFileSync(outputPath, JSON.stringify(registry, null, 2), "utf-8");
+  writeFileSync(
+    outputPath,
+    JSON.stringify(finalRegistry, null, 2),
+    "utf-8"
+  );
 
   console.log(`✅ Registry generated: ${outputPath}`);
-  console.log(`📦 Components registered: ${registry.length}`);
+  console.log(`📦 Components registered: ${finalRegistry.length}`);
 };
 
 // スクリプト実行

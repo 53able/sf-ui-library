@@ -18,7 +18,7 @@
     "hooks": "@/hooks"
   },
   "registry": {
-    "url": "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json",
+    "url": "https://raw.githubusercontent.com/53able/sf-ui-library/main/registry.json",
     "local": "./registry.json"
   },
   "storybook": {

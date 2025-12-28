@@ -1,0 +1,12 @@
+{
+  "buildCommand": "pnpm build-storybook",
+  "outputDirectory": "storybook-static",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+

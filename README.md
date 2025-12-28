@@ -140,6 +140,74 @@ pnpm build-storybook
 
 ビルドされたStorybookは`storybook-static`ディレクトリに出力されます。
 
+### Vercelでの公開
+
+StorybookをVercelで公開するには、以下の手順を実行します：
+
+#### 方法1: Vercel CLIを使用（推奨）
+
+1. **Vercel CLIでログイン**
+
+   ```bash
+   vercel login
+   ```
+
+   GitHubアカウントでログインすると、自動的にGitHub連携が設定されます。
+
+2. **プロジェクトのリンク**
+
+   ```bash
+   vercel link
+   ```
+
+   対話的に以下を設定します：
+   - 既存のプロジェクトとリンクするか、新規作成するか
+   - プロジェクト名（デフォルト: `sf-ui-library`）
+   - Gitリポジトリの設定
+
+3. **初回デプロイ**
+
+   ```bash
+   vercel --prod
+   ```
+
+   これで本番環境にデプロイされます。
+
+4. **GitHub連携の完了（自動デプロイ設定）**
+
+   CLIでリンクした後、完全な自動デプロイ連携を有効にするには：
+   - Vercelダッシュボード → プロジェクト → Settings → Git
+   - GitHubリポジトリを接続（まだ接続されていない場合）
+   - これにより、GitHubへのプッシュ時に自動的にデプロイされます
+
+#### 方法2: Vercelダッシュボードからインポート
+
+1. **Vercelにプロジェクトをインポート**
+
+   VercelのダッシュボードからGitHubリポジトリをインポートします。
+
+2. **ビルド設定の確認**
+
+   `vercel.json`が既に設定されているため、Vercelは自動的に以下を認識します：
+   - ビルドコマンド: `pnpm build-storybook`
+   - 出力ディレクトリ: `storybook-static`
+
+3. **デプロイ**
+
+   Vercelは自動的にデプロイを実行します。デプロイ後、Vercelから提供されるURLでStorybookにアクセスできます。
+
+#### 環境変数の設定（オプション）
+
+Registryのビルド時にStorybook URLを含める場合は、Vercelの環境変数に`STORYBOOK_URL`を設定します：
+- Vercelダッシュボード → Settings → Environment Variables
+- `STORYBOOK_URL`にVercelのデプロイURLを設定
+
+または、CLIから設定：
+
+```bash
+vercel env add STORYBOOK_URL production
+```
+
 ### StorybookとRegistryの連携
 
 Registryに登録された各コンポーネントには、StorybookのURLが自動的に付与されます。
