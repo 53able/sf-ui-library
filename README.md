@@ -2,6 +2,8 @@
 
 shadcn/uiをベースにしたカスタムUIコンポーネントライブラリです。
 
+**ライブラリURL**: https://sf-ui-library.vercel.app/
+
 ## 技術スタック
 
 - **パッケージマネージャー**: pnpm
@@ -109,8 +111,8 @@ npx shadcn@latest add http://localhost:3000/r/button.json
 Registryをデプロイした後、デプロイされたURLからコンポーネントをインストールできます：
 
 ```bash
-npx shadcn@latest add https://your-registry-url.com/r/sf-ui-theme.json
-npx shadcn@latest add https://your-registry-url.com/r/button.json
+npx shadcn@latest add https://sf-ui-library.vercel.app/r/sf-ui-theme.json
+npx shadcn@latest add https://sf-ui-library.vercel.app/r/button.json
 ```
 
 #### 3. Registryのビルドとデプロイ
@@ -191,6 +193,32 @@ export default function RootLayout({ children }) {
 <div className="font-sf">SF風のテキスト</div>
 ```
 
+### 依存関係のインストール順序
+
+一部のコンポーネントは他のコンポーネントに依存しています。以下の順序でインストールしてください：
+
+1. **必須の依存関係（最初にインストール）**
+   ```bash
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/utils.json
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/sf-ui-theme.json
+   ```
+
+2. **lcars-panelに依存するコンポーネント（lcars-panelを先にインストール）**
+   ```bash
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-panel.json
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/connected-panels.json
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/display-panel.json
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-diagram.json
+   ```
+
+3. **その他のコンポーネント**
+   ```bash
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/button.json
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/warning-screen.json
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/spatial-file-manager.json
+   # ... その他のコンポーネント
+   ```
+
 ### トラブルシューティング
 
 #### コンポーネントのインストールが失敗する場合
@@ -210,6 +238,31 @@ export default function RootLayout({ children }) {
 4. **Registryのビルドを実行**
    - `pnpm registry:build`を実行してRegistryファイルを生成
    - `public/r/`ディレクトリにJSONファイルが生成されているか確認
+
+5. **依存関係のエラーが発生する場合**
+   - エラーメッセージ: `The item at https://ui.shadcn.com/r/styles/new-york-v4/lcars-panel.json was not found.`
+   - **原因**: `connected-panels`、`display-panel`、`lcars-diagram`は`lcars-panel`に依存しています
+   - **解決策**: 先に`lcars-panel`をインストールしてください
+   ```bash
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-panel.json
+   ```
+
+#### よくあるエラーと解決方法
+
+**エラー: 型定義が見つからない**
+
+- **原因**: TypeScriptの型定義が正しくインポートされていない可能性があります
+- **解決策**: 型を明示的にインポートしてください
+  ```tsx
+  import { ComponentName, type ComponentType } from "@/components/ui/component-name";
+  ```
+
+**エラー: プロパティが認識されない**
+
+- **原因**: プロパティ名が間違っている、またはコンポーネントのAPIが変更された可能性があります
+- **解決策**: [Storybook](#storybook)でコンポーネントの正しいプロパティと使用方法を確認してください
+
+コンポーネント固有のエラーや詳細な解決方法については、[Storybook](#storybook)で各コンポーネントのドキュメントを確認してください。
 
 ### 利用可能なコンポーネント
 
@@ -233,9 +286,13 @@ export default function RootLayout({ children }) {
 - `transparent-layer` - 透明レイヤー
 - `warning-screen` - 警告画面
 
+各コンポーネントの詳細な使用方法、プロパティ、使用例については、[Storybook](#storybook)で確認してください。
+
 ## Storybook
 
 コンポーネントのプレビューとドキュメント化にはStorybookを使用します。
+
+**重要**: 各コンポーネントの詳細な使用方法、プロパティ一覧、使用例、インタラクティブなプレビューは、Storybookで確認できます。README.mdには基本的なセットアップ情報のみを記載しています。
 
 ### Storybookの起動
 
@@ -244,6 +301,20 @@ pnpm storybook
 ```
 
 ブラウザで `http://localhost:6006` を開いてコンポーネントを確認できます。
+
+**本番環境のStorybook**: https://sf-ui-library.vercel.app/storybook
+
+### コンポーネントの詳細確認
+
+Storybookでは以下の情報を確認できます：
+
+- **インタラクティブなプレビュー**: 各コンポーネントを実際に操作して動作を確認
+- **プロパティ一覧**: 利用可能なすべてのプロパティとその型、デフォルト値
+- **使用例**: 様々なバリエーションとユースケース
+- **コード例**: コピー&ペースト可能な実装コード
+- **アクセシビリティ情報**: アクセシビリティのベストプラクティス
+
+各コンポーネントのStorybookページでは、サイドバーからコンポーネントを選択して詳細を確認できます。
 
 ### Storybookのビルド
 
@@ -314,8 +385,9 @@ pnpm build-storybook
 3. **デプロイ**
 
    Vercelは自動的にデプロイを実行します。デプロイ後、以下のURLでアクセスできます：
-   - メインページ: `https://your-project.vercel.app`
-   - Registryファイル: `https://your-project.vercel.app/r/button.json`
+   - メインページ: https://sf-ui-library.vercel.app/
+   - Registryファイル: https://sf-ui-library.vercel.app/r/button.json
+   - Storybook: https://sf-ui-library.vercel.app/storybook
 
 #### 環境変数の設定（オプション）
 
@@ -335,15 +407,15 @@ vercel env add NEXT_PUBLIC_STORYBOOK_URL production
 
 ```bash
 # Registryファイルの確認
-curl https://your-project.vercel.app/r/button.json
-curl https://your-project.vercel.app/r/sf-ui-theme.json
+curl https://sf-ui-library.vercel.app/r/button.json
+curl https://sf-ui-library.vercel.app/r/sf-ui-theme.json
 ```
 
 他のプロジェクトからコンポーネントをインストールする際は、デプロイされたURLを使用します：
 
 ```bash
-npx shadcn@latest add https://your-project.vercel.app/r/button.json
-npx shadcn@latest add https://your-project.vercel.app/r/sf-ui-theme.json
+npx shadcn@latest add https://sf-ui-library.vercel.app/r/button.json
+npx shadcn@latest add https://sf-ui-library.vercel.app/r/sf-ui-theme.json
 ```
 
 ### StorybookとRegistryの連携
