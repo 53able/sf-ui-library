@@ -1,1 +1,1 @@
-export * from './clock-display';
+export * from "./clock-display";

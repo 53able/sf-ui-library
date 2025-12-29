@@ -1,1 +1,1 @@
-export * from './glow-text';
+export * from "./glow-text";

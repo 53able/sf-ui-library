@@ -3,12 +3,8 @@
   "name": "cli-interface",
   "title": "CLI Interface",
   "description": "CLI-style interface component inspired by SF movies",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/cli-interface/cli-interface.tsx",

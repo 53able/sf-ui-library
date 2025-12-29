@@ -1,1 +1,1 @@
-export * from './lcars-diagram';
+export * from "./lcars-diagram";

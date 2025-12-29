@@ -3,12 +3,8 @@
   "name": "warning-screen",
   "title": "Warning Screen",
   "description": "LCARS-style warning and status screen component",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/warning-screen/warning-screen.tsx",

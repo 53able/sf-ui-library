@@ -3,13 +3,8 @@
   "name": "connected-panels",
   "title": "Connected Panels",
   "description": "Connected panel component with flowing visual effects",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils",
-    "lcars-panel"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils", "lcars-panel"],
   "files": [
     {
       "path": "registry/sf-ui/connected-panels/connected-panels.tsx",

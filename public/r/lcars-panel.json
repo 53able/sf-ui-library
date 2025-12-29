@@ -3,12 +3,8 @@
   "name": "lcars-panel",
   "title": "LCARS Panel",
   "description": "LCARS-style panel component inspired by Star Trek",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/lcars-panel/lcars-panel.tsx",

@@ -1,2 +1,1 @@
-export * from './fonts-next';
-
+export * from "./fonts-next";

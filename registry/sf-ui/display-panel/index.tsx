@@ -1,1 +1,1 @@
-export * from './display-panel';
+export * from "./display-panel";

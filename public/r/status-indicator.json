@@ -3,12 +3,8 @@
   "name": "status-indicator",
   "title": "Status Indicator",
   "description": "Glowing status indicator component",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/status-indicator/status-indicator.tsx",

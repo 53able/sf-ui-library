@@ -1,1 +1,1 @@
-export * from './lcars-panel';
+export * from "./lcars-panel";

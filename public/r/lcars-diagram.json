@@ -3,13 +3,8 @@
   "name": "lcars-diagram",
   "title": "LCARS Diagram",
   "description": "LCARS-style chart and graph display component",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils",
-    "lcars-panel"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils", "lcars-panel"],
   "files": [
     {
       "path": "registry/sf-ui/lcars-diagram/lcars-diagram.tsx",

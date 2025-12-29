@@ -1,1 +1,1 @@
-export * from './connected-panels';
+export * from "./connected-panels";

@@ -3,12 +3,8 @@
   "name": "glow-text",
   "title": "Glow Text",
   "description": "Text component with customizable glow effects",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/glow-text/glow-text.tsx",

@@ -3,12 +3,8 @@
   "name": "clock-display",
   "title": "Clock Display",
   "description": "LCARS-style digital clock display component",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/clock-display/clock-display.tsx",

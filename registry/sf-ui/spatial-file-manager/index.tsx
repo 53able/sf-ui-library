@@ -1,1 +1,1 @@
-export * from './spatial-file-manager';
+export * from "./spatial-file-manager";

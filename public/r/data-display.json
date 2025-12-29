@@ -3,12 +3,8 @@
   "name": "data-display",
   "title": "Data Display",
   "description": "LCARS-style numeric display component",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/data-display/data-display.tsx",

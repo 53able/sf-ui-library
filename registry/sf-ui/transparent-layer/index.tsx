@@ -1,1 +1,1 @@
-export * from './transparent-layer';
+export * from "./transparent-layer";

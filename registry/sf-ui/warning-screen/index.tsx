@@ -1,1 +1,1 @@
-export * from './warning-screen';
+export * from "./warning-screen";

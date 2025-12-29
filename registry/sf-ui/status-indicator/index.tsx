@@ -1,1 +1,1 @@
-export * from './status-indicator';
+export * from "./status-indicator";

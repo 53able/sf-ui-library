@@ -3,12 +3,8 @@
   "name": "spatial-file-manager",
   "title": "Spatial File Manager",
   "description": "3D spatial file management component",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/spatial-file-manager/spatial-file-manager.tsx",

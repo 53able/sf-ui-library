@@ -3,12 +3,8 @@
   "name": "feedback-control",
   "title": "Feedback Control",
   "description": "Feedback loop component with input and output",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/feedback-control/feedback-control.tsx",

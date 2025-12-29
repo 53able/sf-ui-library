@@ -3,12 +3,8 @@
   "name": "transparent-layer",
   "title": "Transparent Layer",
   "description": "Transparent layer component for hierarchical information display",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "registry/sf-ui/transparent-layer/transparent-layer.tsx",

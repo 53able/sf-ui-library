@@ -3,13 +3,8 @@
   "name": "display-panel",
   "title": "Display Panel",
   "description": "Transparent display panel with LCARS design",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils",
-    "lcars-panel"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils", "lcars-panel"],
   "files": [
     {
       "path": "registry/sf-ui/display-panel/display-panel.tsx",
