@@ -14,8 +14,8 @@
     "typecheck": "tsgo --noEmit",
     "typecheck:legacy": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build && node scripts/fix-storybook-paths.js",
-    "registry:build": "shadcn build",
+    "build-storybook": "storybook build && tsx scripts/fix-storybook-paths.ts",
+    "registry:build": "shadcn build && tsx scripts/transform-registry-imports.ts",
     "build:registry": "pnpm registry:build",
     "publish:registry": "pnpm registry:build && echo 'Registry built. Deploy public/r/*.json to your hosting service.'"
   },
