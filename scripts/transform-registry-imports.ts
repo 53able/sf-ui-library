@@ -5,6 +5,8 @@
  *
  * 変換対象:
  * - `from "../lcars-panel/lcars-panel"` → `from "@/components/lcars-panel"`
+ * - `from "@/components/ui/lcars-panel"` → `from "@/components/lcars-panel"`
+ * - `"use client"`ディレクティブの削除（Viteプロジェクト対応）
  * - その他の相対パスも同様に変換
  */
 
@@ -34,10 +36,21 @@ interface RegistryFile {
 const transformImports = (content: string): string => {
   let transformed = content;
 
+  // `"use client";` ディレクティブを削除（Viteプロジェクト対応）
+  // ファイル先頭のもののみを対象とする
+  transformed = transformed.replace(/^"use client";\s*\n?/gm, "");
+
   // `from "../lcars-panel/lcars-panel"` → `from "@/components/lcars-panel"`
   transformed = transformed.replace(
     /from\s+["']\.\.\/lcars-panel\/lcars-panel["']/g,
     'from "@/components/lcars-panel"'
+  );
+
+  // `@/components/ui/` → `@/components/` に変換
+  // shadcn/ui CLIでインストールすると`@/components/`に配置されるため
+  transformed = transformed.replace(
+    /from\s+["']@\/components\/ui\/([^"']+)["']/g,
+    'from "@/components/$1"'
   );
 
   // その他の相対パスパターンも変換（将来の拡張用）

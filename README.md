@@ -18,6 +18,26 @@ shadcn/uiをベースにしたカスタムUIコンポーネントライブラリ
 pnpm install
 ```
 
+### Tailwind CSS 4.xを使用する場合
+
+Tailwind CSS 4.xを使用する場合は、`@tailwindcss/postcss`パッケージをインストールし、`postcss.config.js`を設定してください：
+
+```bash
+npm install -D @tailwindcss/postcss
+```
+
+```js
+// postcss.config.js
+export default {
+  plugins: {
+    '@tailwindcss/postcss': {},
+    autoprefixer: {},
+  },
+}
+```
+
+**注意**: `sf-ui-theme.css`で`@import "tailwindcss"`を使用しているため、PostCSS設定が必要です。Tailwind CSS 4.xでは`@tailwindcss/postcss`パッケージが必須です。
+
 ## 開発
 
 ```bash
@@ -203,29 +223,63 @@ export default function RootLayout({ children }) {
 
 ### 依存関係のインストール順序
 
-一部のコンポーネントは他のコンポーネントに依存しています。以下の順序でインストールしてください：
+一部のコンポーネントは他のコンポーネントに依存しています。**必ず以下の順序でインストールしてください**。順序を間違えるとビルドエラーが発生します。
+
+#### 依存関係のマップ
+
+```
+utils, sf-ui-theme (必須の基盤)
+  └─ lcars-panel
+      ├─ connected-panels
+      ├─ display-panel
+      └─ lcars-diagram
+```
+
+#### インストール手順
 
 1. **必須の依存関係（最初にインストール）**
+   
+   すべてのコンポーネントが依存する基盤コンポーネントです。必ず最初にインストールしてください。
+   
    ```bash
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/utils.json
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/sf-ui-theme.json
    ```
 
 2. **lcars-panelに依存するコンポーネント（lcars-panelを先にインストール）**
+   
+   `connected-panels`、`display-panel`、`lcars-diagram`は`lcars-panel`に依存しています。
+   **必ず`lcars-panel`を先にインストールしてから、依存コンポーネントをインストールしてください。**
+   
    ```bash
+   # まず lcars-panel をインストール
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-panel.json
+   
+   # その後、依存コンポーネントをインストール
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/connected-panels.json
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/display-panel.json
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-diagram.json
    ```
 
-3. **その他のコンポーネント**
+3. **その他のコンポーネント（依存関係なし）**
+   
+   以下のコンポーネントは他のコンポーネントに依存していないため、任意の順序でインストールできます。
+   
    ```bash
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/button.json
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/warning-screen.json
    npx shadcn@latest add https://sf-ui-library.vercel.app/r/spatial-file-manager.json
    # ... その他のコンポーネント
    ```
+
+#### インポートパスの自動変換について
+
+Registry JSONファイル内のインポートパスは、自動的に`@/components/`に変換されます。
+- 元のパス: `@/components/ui/lcars-panel`
+- 変換後: `@/components/lcars-panel`
+
+これは、shadcn/ui CLIでインストールすると`@/components/`に配置されるためです。
+変換処理は`scripts/transform-registry-imports.ts`で自動的に行われます。
 
 ### トラブルシューティング
 
@@ -249,7 +303,7 @@ export default function RootLayout({ children }) {
 
 5. **依存関係のエラーが発生する場合**
    
-   **エラーメッセージ例**:
+   **エラーメッセージ例1（依存関係が見つからない）**:
    ```
    The item at https://ui.shadcn.com/r/styles/default/lcars-panel.json was not found. 
    It may not exist at the registry.
@@ -262,16 +316,21 @@ export default function RootLayout({ children }) {
    
    **解決策**: 
    - **重要**: 依存関係を持つコンポーネントをインストールする前に、必ず依存元のコンポーネントを先にインストールしてください
-   - 以下の順序でインストールしてください：
-   ```bash
-   # 1. 依存元コンポーネントを先にインストール
-   npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-panel.json
+   - 上記の「依存関係のインストール順序」セクションを参照してください
    
-   # 2. 依存先コンポーネントをインストール
-   npx shadcn@latest add https://sf-ui-library.vercel.app/r/connected-panels.json
-   npx shadcn@latest add https://sf-ui-library.vercel.app/r/display-panel.json
-   npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-diagram.json
+   **エラーメッセージ例2（インポートパスエラー）**:
    ```
+   Cannot find module '@/components/ui/lcars-panel' or its corresponding type declarations.
+   ```
+   
+   **原因**: 
+   - Registry JSONファイル内のインポートパスが`@/components/ui/`になっている
+   - shadcn/ui CLIでインストールすると`@/components/`に配置されるため、パスが一致しない
+   
+   **解決策**: 
+   - この問題は`scripts/transform-registry-imports.ts`で自動的に修正されます
+   - Registryを再ビルドする場合は、`pnpm registry:build`を実行してください
+   - 最新のRegistry JSONファイルを使用していることを確認してください
    
    **注意**: 
    - shadcn CLIは現在、カスタムregistryからの依存関係の自動解決を完全にはサポートしていません
@@ -309,26 +368,24 @@ export default function RootLayout({ children }) {
 
 ### 利用可能なコンポーネント
 
-以下のコンポーネントがRegistryに登録されています：
+以下のコンポーネントがRegistryに登録されています。各コンポーネントの詳細な使用方法、プロパティ、使用例については、[Storybook](https://sf-ui-library.vercel.app/storybook)で確認してください：
 
-- `button` - 基本的なボタンコンポーネント
-- `cli-interface` - CLI風インターフェース
-- `clock-display` - LCARS風デジタル時計
-- `connected-panels` - 接続されたパネル
-- `data-display` - 数値表示コンポーネント
-- `display-panel` - 表示パネル
-- `feedback-control` - フィードバックコントロール
-- `glow-button` - 発光ボタン
-- `glow-text` - 発光テキスト
-- `lcars-diagram` - LCARS風ダイアグラム
-- `lcars-grid` - LCARS風グリッド
-- `lcars-panel` - LCARS風パネル
-- `spatial-file-manager` - 空間ファイルマネージャー
-- `status-indicator` - ステータスインジケーター
-- `transparent-layer` - 透明レイヤー
-- `warning-screen` - 警告画面
-
-各コンポーネントの詳細な使用方法、プロパティ、使用例については、[Storybook](#storybook)で確認してください。
+- `button` - 基本的なボタンコンポーネント（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `cli-interface` - CLI風インターフェース（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `clock-display` - LCARS風デジタル時計（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `connected-panels` - 接続されたパネル（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `data-display` - 数値表示コンポーネント（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `display-panel` - 表示パネル（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `feedback-control` - フィードバックコントロール（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `glow-button` - 発光ボタン（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `glow-text` - 発光テキスト（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `lcars-diagram` - LCARS風ダイアグラム（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `lcars-grid` - LCARS風グリッド（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `lcars-panel` - LCARS風パネル（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `spatial-file-manager` - 空間ファイルマネージャー（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `status-indicator` - ステータスインジケーター（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `transparent-layer` - 透明レイヤー（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
+- `warning-screen` - 警告画面（[Storybookで確認](https://sf-ui-library.vercel.app/storybook)）
 
 ## Storybook
 
