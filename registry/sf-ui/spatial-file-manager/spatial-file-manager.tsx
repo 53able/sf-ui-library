@@ -210,5 +210,5 @@ const SpatialFileManager = React.forwardRef<HTMLDivElement, SpatialFileManagerPr
 );
 SpatialFileManager.displayName = "SpatialFileManager";
 
-export { SpatialFileManager, spatialFileManagerVariants, type SpatialFileItem };
+export { SpatialFileManager, spatialFileManagerVariants };
 

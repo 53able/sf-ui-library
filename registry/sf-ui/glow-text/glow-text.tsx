@@ -68,7 +68,7 @@ const glowTextVariants = cva(
  * Glow TextコンポーネントのProps
  */
 export interface GlowTextProps
-  extends React.HTMLAttributes<HTMLElement>,
+  extends Omit<React.HTMLAttributes<HTMLElement>, 'color'>,
     VariantProps<typeof glowTextVariants> {
   /**
    * レンダリングするHTML要素
@@ -105,7 +105,7 @@ const GlowText = React.forwardRef<HTMLElement, GlowTextProps>(
   ) => {
     return (
       <Component
-        ref={ref as React.Ref<HTMLElement>}
+        ref={ref as any}
         className={cn(glowTextVariants({ color, intensity, size, weight, animate, className }))}
         {...props}
       />
