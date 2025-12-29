@@ -21,6 +21,8 @@ const config: StorybookConfig = {
   async viteFinal(config) {
     const rootDir = path.resolve(__dirname, '../');
     return mergeConfig(config, {
+      // Vercel環境で/storybookパスでホストするためのベースパス設定
+      base: '/storybook/',
       resolve: {
         alias: {
           '@': rootDir,

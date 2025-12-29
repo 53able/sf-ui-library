@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   // Storybookのstoriesファイルをビルドから除外
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
-  webpack: (config, { isServer }) => {
+  webpack: (config) => {
     // storiesファイルをビルドから除外
     config.module.rules.push({
       test: /\.stories\.(tsx?|jsx?)$/,
