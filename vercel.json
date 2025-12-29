@@ -1,13 +1,13 @@
 {
-  "buildCommand": "pnpm build-storybook",
-  "outputDirectory": "storybook-static",
-  "framework": null,
+  "buildCommand": "pnpm registry:build && pnpm build",
+  "framework": "nextjs",
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/r/:path*",
+      "destination": "/r/:path*"
     }
   ]
 }
+
 
 

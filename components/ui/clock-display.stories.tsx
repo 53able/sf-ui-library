@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ClockDisplay } from './clock-display';
+import { ClockDisplay } from '@/registry/sf-ui/clock-display/clock-display';
 
 /**
  * ClockDisplayコンポーネントのStory定義

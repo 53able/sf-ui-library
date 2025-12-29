@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TransparentLayer } from './transparent-layer';
+import { TransparentLayer } from '@/registry/sf-ui/transparent-layer/transparent-layer';
 
 /**
  * TransparentLayerコンポーネントのStory定義

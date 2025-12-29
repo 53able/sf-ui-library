@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ConnectedPanels } from './connected-panels';
+import { ConnectedPanels } from '@/registry/sf-ui/connected-panels/connected-panels';
 
 /**
  * ConnectedPanelsコンポーネントのStory定義

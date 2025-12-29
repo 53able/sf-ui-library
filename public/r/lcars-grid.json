@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lcars-grid",
+  "title": "LCARS Grid",
+  "description": "Modular grid layout component with LCARS design",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sf-ui/lcars-grid/lcars-grid.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\n/**\n * LCARS Gridのバリアント定義\n * モジュール式グリッドレイアウトコンポーネント\n */\nconst lcarsGridVariants = cva(\"font-lcars\", {\n  variants: {\n    columns: {\n      1: \"grid-cols-1\",\n      2: \"grid-cols-1 md:grid-cols-2\",\n      3: \"grid-cols-1 md:grid-cols-2 lg:grid-cols-3\",\n      4: \"grid-cols-1 md:grid-cols-2 lg:grid-cols-4\",\n      5: \"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5\",\n      6: \"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6\",\n    },\n    gap: {\n      none: \"gap-0\",\n      sm: \"gap-2\",\n      default: \"gap-4\",\n      lg: \"gap-6\",\n      xl: \"gap-8\",\n    },\n    layout: {\n      default: \"\",\n      lcars: \"rounded-lcars\",\n      pill: \"rounded-pill\",\n    },\n  },\n  defaultVariants: {\n    columns: 3,\n    gap: \"default\",\n    layout: \"default\",\n  },\n});\n\n/**\n * LCARS GridコンポーネントのProps\n */\nexport interface LCARSGridProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof lcarsGridVariants> {\n  /**\n   * グリッド内の子要素\n   */\n  children: React.ReactNode;\n}\n\n/**\n * SF映画のLCARSインタフェースをインスパイアしたモジュール式グリッドレイアウトコンポーネント\n *\n * 複数のLCARSパネルを配置し、レスポンシブ対応のグリッドレイアウトを提供します。\n * 流れるような接続デザインでSF的な雰囲気を演出します。\n *\n * @example\n * ```tsx\n * <LCARSGrid columns={3} gap=\"lg\">\n *   <LCARSPanel>Panel 1</LCARSPanel>\n *   <LCARSPanel>Panel 2</LCARSPanel>\n *   <LCARSPanel>Panel 3</LCARSPanel>\n * </LCARSGrid>\n * ```\n */\nconst LCARSGrid = React.forwardRef<HTMLDivElement, LCARSGridProps>(\n  ({ className, columns, gap, layout, children, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"grid\",\n          lcarsGridVariants({ columns, gap, layout }),\n          className\n        )}\n        {...props}\n      >\n        {children}\n      </div>\n    );\n  }\n);\nLCARSGrid.displayName = \"LCARSGrid\";\n\nexport { LCARSGrid, lcarsGridVariants };\n\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

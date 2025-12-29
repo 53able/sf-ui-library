@@ -72,63 +72,64 @@ STORYBOOK_URL=http://localhost:6006
 
 ### 他プロジェクトでの使用
 
-このRegistryを使用してコンポーネントをインストールするには：
+このRegistryを使用してコンポーネントをインストールするには、**shadcn/ui CLIの標準コマンド**を使用します。
 
-1. **Registry URLを設定**
+#### 1. components.jsonの設定
 
-   `components.json`にRegistry URLを追加：
-
-   ```json
-   {
-     "registry": {
-       "url": "https://raw.githubusercontent.com/53able/sf-ui-library/main/registry.json"
-     }
-   }
-   ```
-
-2. **コンポーネントを追加**
-
-   `components.json`でRegistry URLを設定した後、以下のコマンドでコンポーネントを追加：
-
-   ```bash
-   npx shadcn@latest add <component-name>
-   ```
-
-   **注意**: `--registry`オプションはshadcn/uiの最新バージョンではサポートされていません。必ず`components.json`でRegistry URLを設定してください。
-
-### 簡単セットアップ（推奨）
-
-このライブラリを使用する際、**Tailwind CSSの設定やフォント設定を手動で行う必要はありません**。以下の手順で自動的に設定されます：
-
-#### 1. Registry URLを設定
-
-まず、`components.json`にRegistry URLを設定します：
-
-```json
-{
-  "registry": {
-    "url": "https://raw.githubusercontent.com/53able/sf-ui-library/main/registry.json"
-  }
-}
-```
-
-#### 2. テーマスタイルのインストール
-
-LCARSカラーとアニメーション設定を含むテーマファイルをインストールします：
+まず、プロジェクトルートに`components.json`を作成します。shadcn/ui CLIで初期化していない場合は、以下のコマンドで作成できます：
 
 ```bash
-npx shadcn@latest add sf-ui-theme
+npx shadcn@latest init
 ```
+
+#### 2. コンポーネントのインストール
+
+**公式の方法**: shadcn/ui CLIを使用してコンポーネントをインストールします。
+
+```bash
+# 個別のコンポーネントをインストール
+npx shadcn@latest add http://localhost:3000/r/button.json
+
+# または、デプロイされたRegistryから
+npx shadcn@latest add https://your-registry-url.com/r/button.json
+```
+
+**ローカル開発時**（このリポジトリで開発サーバーを起動している場合）:
+
+```bash
+# 開発サーバーを起動
+pnpm dev
+
+# 別のターミナルでコンポーネントをインストール
+npx shadcn@latest add http://localhost:3000/r/button.json
+```
+
+**本番環境での使用**:
+
+Registryをデプロイした後、デプロイされたURLからコンポーネントをインストールできます：
+
+```bash
+npx shadcn@latest add https://your-registry-url.com/r/sf-ui-theme.json
+npx shadcn@latest add https://your-registry-url.com/r/button.json
+```
+
+#### 3. Registryのビルドとデプロイ
+
+このプロジェクトでRegistryをビルドするには：
+
+```bash
+pnpm registry:build
+```
+
+これにより、`public/r/`ディレクトリに個別のJSONファイルが生成されます（例：`public/r/button.json`、`public/r/sf-ui-theme.json`など）。
+
+これらのファイルをデプロイして、上記のURLからアクセスできるようにします。
 
 #### 3. フォントの設定
 
 **Next.jsを使用している場合（推奨）:**
 
-```bash
-npx shadcn@latest add sf-ui-fonts-next
-```
-
-次に、`app/layout.tsx`（または`src/app/layout.tsx`）を更新：
+`sf-ui-fonts-next`をインストールした後、`app/layout.tsx`（または`src/app/layout.tsx`）を更新：
 
 ```tsx
 import { SfUiFontsNext } from "@/styles/fonts-next";
@@ -146,11 +147,7 @@ export default function RootLayout({ children }) {
 
 **その他のフレームワークの場合:**
 
-```bash
-npx shadcn@latest add sf-ui-fonts
-```
-
-`app/layout.tsx`（またはルートレイアウト）に追加：
+`sf-ui-fonts`をインストールした後、`app/layout.tsx`（またはルートレイアウト）に追加：
 
 ```tsx
 import { SfUiFonts } from "@/styles/fonts";
@@ -169,7 +166,7 @@ export default function RootLayout({ children }) {
 
 #### 4. グローバルCSSにテーマをインポート
 
-`app/globals.css`（または`src/app/globals.css`）に以下を追加：
+`sf-ui-theme`をインストールした後、`app/globals.css`（または`src/app/globals.css`）に以下を追加：
 
 ```css
 /* 注意: PostCSSではパスエイリアス（@/）が解決できないため、相対パスを使用してください */
@@ -193,6 +190,26 @@ export default function RootLayout({ children }) {
 <code className="font-cli">CLI風のコード</code>
 <div className="font-sf">SF風のテキスト</div>
 ```
+
+### トラブルシューティング
+
+#### コンポーネントのインストールが失敗する場合
+
+1. **Registry URLが正しいか確認**
+   - ローカル開発時は`http://localhost:3000/r/[NAME].json`の形式を使用
+   - 本番環境ではデプロイされたURLを確認
+
+2. **開発サーバーが起動しているか確認**
+   - ローカル開発時は`pnpm dev`で開発サーバーを起動
+   - Registryファイルは`public/r/`ディレクトリに配置される必要があります
+
+3. **components.jsonが正しく設定されているか確認**
+   - `aliases`が正しく設定されているか確認してください
+   - パスエイリアス（`@/components`など）が正しく解決されるか確認してください
+
+4. **Registryのビルドを実行**
+   - `pnpm registry:build`を実行してRegistryファイルを生成
+   - `public/r/`ディレクトリにJSONファイルが生成されているか確認
 
 ### 利用可能なコンポーネント
 
@@ -238,7 +255,10 @@ pnpm build-storybook
 
 ### Vercelでの公開
 
-StorybookをVercelで公開するには、以下の手順を実行します：
+このプロジェクトをVercelで公開すると、以下が利用可能になります：
+- Next.jsアプリ（メインページ）
+- Registryファイルの配信（`/r/[NAME].json`）
+- Storybookへのリンク
 
 #### 方法1: Vercel CLIを使用（推奨）
 
@@ -267,7 +287,9 @@ StorybookをVercelで公開するには、以下の手順を実行します：
    vercel --prod
    ```
 
-   これで本番環境にデプロイされます。
+   これで本番環境にデプロイされます。`vercel.json`が設定されているため、自動的に以下が実行されます：
+   - Registryのビルド（`pnpm registry:build`）
+   - Next.jsアプリのビルド（`pnpm build`）
 
 4. **GitHub連携の完了（自動デプロイ設定）**
 
@@ -285,23 +307,43 @@ StorybookをVercelで公開するには、以下の手順を実行します：
 2. **ビルド設定の確認**
 
    `vercel.json`が既に設定されているため、Vercelは自動的に以下を認識します：
-   - ビルドコマンド: `pnpm build-storybook`
-   - 出力ディレクトリ: `storybook-static`
+   - Framework: Next.js
+   - ビルドコマンド: `pnpm registry:build && pnpm build`
+   - Registryファイルは`public/r/`ディレクトリから自動的に配信されます
 
 3. **デプロイ**
 
-   Vercelは自動的にデプロイを実行します。デプロイ後、Vercelから提供されるURLでStorybookにアクセスできます。
+   Vercelは自動的にデプロイを実行します。デプロイ後、以下のURLでアクセスできます：
+   - メインページ: `https://your-project.vercel.app`
+   - Registryファイル: `https://your-project.vercel.app/r/button.json`
 
 #### 環境変数の設定（オプション）
 
-Registryのビルド時にStorybook URLを含める場合は、Vercelの環境変数に`STORYBOOK_URL`を設定します：
+Storybook URLを設定する場合は、Vercelの環境変数に`NEXT_PUBLIC_STORYBOOK_URL`を設定します：
 - Vercelダッシュボード → Settings → Environment Variables
-- `STORYBOOK_URL`にVercelのデプロイURLを設定
+- `NEXT_PUBLIC_STORYBOOK_URL`にStorybookのURLを設定（例: `https://your-storybook.vercel.app`）
 
 または、CLIから設定：
 
 ```bash
-vercel env add STORYBOOK_URL production
+vercel env add NEXT_PUBLIC_STORYBOOK_URL production
+```
+
+#### デプロイ後の確認
+
+デプロイが完了したら、以下のURLでRegistryファイルが正しく配信されているか確認してください：
+
+```bash
+# Registryファイルの確認
+curl https://your-project.vercel.app/r/button.json
+curl https://your-project.vercel.app/r/sf-ui-theme.json
+```
+
+他のプロジェクトからコンポーネントをインストールする際は、デプロイされたURLを使用します：
+
+```bash
+npx shadcn@latest add https://your-project.vercel.app/r/button.json
+npx shadcn@latest add https://your-project.vercel.app/r/sf-ui-theme.json
 ```
 
 ### StorybookとRegistryの連携

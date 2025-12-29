@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FeedbackControl } from './feedback-control';
-import { DataDisplay } from './data-display';
+import { FeedbackControl } from '@/registry/sf-ui/feedback-control/feedback-control';
+import { DataDisplay } from '@/registry/sf-ui/data-display/data-display';
 
 /**
  * FeedbackControlコンポーネントのStory定義

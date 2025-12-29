@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LCARSPanel } from './lcars-panel';
+import { LCARSPanel } from '@/registry/sf-ui/lcars-panel/lcars-panel';
 
 /**
  * LCARSPanelコンポーネントのStory定義

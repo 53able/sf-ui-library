@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LCARSPanel } from './lcars-panel';
-import { DataDisplay } from './data-display';
-import { StatusIndicator } from './status-indicator';
-import { ConnectedPanels } from './connected-panels';
-import { DisplayPanel } from './display-panel';
-import { ClockDisplay } from './clock-display';
-import { LCARSGrid } from './lcars-grid';
-import { GlowButton } from './glow-button';
-import { GlowText } from './glow-text';
-import { CLIInterface } from './cli-interface';
-import { WarningScreen } from './warning-screen';
-import { TransparentLayer } from './transparent-layer';
-import { FeedbackControl } from './feedback-control';
-import { SpatialFileManager } from './spatial-file-manager';
-import { LCARSDiagram } from './lcars-diagram';
-import { Button } from './button';
+import { LCARSPanel } from '@/registry/sf-ui/lcars-panel/lcars-panel';
+import { DataDisplay } from '@/registry/sf-ui/data-display/data-display';
+import { StatusIndicator } from '@/registry/sf-ui/status-indicator/status-indicator';
+import { ConnectedPanels } from '@/registry/sf-ui/connected-panels/connected-panels';
+import { DisplayPanel } from '@/registry/sf-ui/display-panel/display-panel';
+import { ClockDisplay } from '@/registry/sf-ui/clock-display/clock-display';
+import { LCARSGrid } from '@/registry/sf-ui/lcars-grid/lcars-grid';
+import { GlowButton } from '@/registry/sf-ui/glow-button/glow-button';
+import { GlowText } from '@/registry/sf-ui/glow-text/glow-text';
+import { CLIInterface } from '@/registry/sf-ui/cli-interface/cli-interface';
+import { WarningScreen } from '@/registry/sf-ui/warning-screen/warning-screen';
+import { TransparentLayer } from '@/registry/sf-ui/transparent-layer/transparent-layer';
+import { FeedbackControl } from '@/registry/sf-ui/feedback-control/feedback-control';
+import { SpatialFileManager } from '@/registry/sf-ui/spatial-file-manager/spatial-file-manager';
+import { LCARSDiagram } from '@/registry/sf-ui/lcars-diagram/lcars-diagram';
+import { Button } from '@/registry/sf-ui/button/button';
 
 /**
  * コンセプトイメージのPage要素

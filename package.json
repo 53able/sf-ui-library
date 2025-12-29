@@ -15,8 +15,9 @@
     "typecheck:legacy": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build:registry": "tsx scripts/build-registry.ts",
-    "publish:registry": "pnpm build:registry && echo 'Registry built. Deploy registry.json to your hosting service.'"
+    "registry:build": "shadcn build",
+    "build:registry": "pnpm registry:build",
+    "publish:registry": "pnpm registry:build && echo 'Registry built. Deploy public/r/*.json to your hosting service.'"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -51,6 +52,7 @@
     "playwright": "^1.57.0",
     "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.16",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "shadcn": "latest"
   }
 }

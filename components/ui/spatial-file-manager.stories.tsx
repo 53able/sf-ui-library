@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SpatialFileManager, type SpatialFileItem } from './spatial-file-manager';
+import { SpatialFileManager, type SpatialFileItem } from '@/registry/sf-ui/spatial-file-manager/spatial-file-manager';
 
 /**
  * SpatialFileManagerコンポーネントのStory定義

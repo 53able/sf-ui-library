@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sf-ui-fonts-next",
+  "title": "SF UI Fonts (Next.js)",
+  "description": "Optimized font loader component for Next.js",
+  "files": [
+    {
+      "path": "registry/sf-ui/sf-ui-fonts-next/fonts-next.tsx",
+      "content": "/**\n * SF UI Library Fonts Loader for Next.js\n * \n * Next.jsのnext/font/googleを使用した最適化されたフォント読み込み。\n * \n * 使用方法:\n * 1. プロジェクトのルートレイアウト（例: app/layout.tsx）に追加:\n * \n *    import { SfUiFontsNext } from \"@/styles/fonts-next\";\n * \n *    export default function RootLayout({ children }) {\n *      return (\n *        <html>\n *          <body className={SfUiFontsNext.className}>\n *            {children}\n *          </body>\n *        </html>\n *      );\n *    }\n * \n * 2. または、個別のフォントを使用する場合:\n * \n *    import { lcarsFont, cliFont, sfFont } from \"@/styles/fonts-next\";\n * \n *    export default function RootLayout({ children }) {\n *      return (\n *        <html>\n *          <body className={`${lcarsFont.variable} ${cliFont.variable} ${sfFont.variable}`}>\n *            {children}\n *          </body>\n *        </html>\n *      );\n *    }\n */\n\nimport { Rajdhani, Share_Tech_Mono, Orbitron } from \"next/font/google\";\n\n/**\n * LCARS風フォント（Rajdhani）\n */\nexport const lcarsFont = Rajdhani({\n  subsets: [\"latin\"],\n  weight: [\"300\", \"400\", \"500\", \"600\", \"700\"],\n  variable: \"--font-lcars\",\n  display: \"swap\",\n});\n\n/**\n * CLI風フォント（Share Tech Mono）\n */\nexport const cliFont = Share_Tech_Mono({\n  subsets: [\"latin\"],\n  weight: [\"400\"],\n  variable: \"--font-cli\",\n  display: \"swap\",\n});\n\n/**\n * SF風フォント（Orbitron）\n */\nexport const sfFont = Orbitron({\n  subsets: [\"latin\"],\n  weight: [\"400\", \"500\", \"600\", \"700\", \"800\", \"900\"],\n  variable: \"--font-sf\",\n  display: \"swap\",\n});\n\n/**\n * すべてのフォントをまとめたオブジェクト\n * classNameプロパティを使用してbodyタグに適用できます\n */\nexport const SfUiFontsNext = {\n  className: `${lcarsFont.variable} ${cliFont.variable} ${sfFont.variable}`,\n};\n\n\n\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

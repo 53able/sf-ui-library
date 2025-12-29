@@ -1,5 +1,5 @@
-import { GlowButton } from "@/components/ui/glow-button";
-import { GlowText } from "@/components/ui/glow-text";
+import { GlowButton } from "@/registry/sf-ui/glow-button/glow-button";
+import { GlowText } from "@/registry/sf-ui/glow-text/glow-text";
 
 /**
  * Storybook URL from environment variable or default to localhost.

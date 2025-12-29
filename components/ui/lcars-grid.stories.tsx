@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LCARSGrid } from './lcars-grid';
-import { LCARSPanel } from './lcars-panel';
+import { LCARSGrid } from '@/registry/sf-ui/lcars-grid/lcars-grid';
+import { LCARSPanel } from '@/registry/sf-ui/lcars-panel/lcars-panel';
 
 /**
  * LCARSGridコンポーネントのStory定義

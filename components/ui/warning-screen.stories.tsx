@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { WarningScreen } from './warning-screen';
+import { WarningScreen } from '@/registry/sf-ui/warning-screen/warning-screen';
 
 /**
  * WarningScreenコンポーネントのStory定義

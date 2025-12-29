@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LCARSDiagram } from './lcars-diagram';
+import { LCARSDiagram } from '@/registry/sf-ui/lcars-diagram/lcars-diagram';
 
 /**
  * LCARSDiagramコンポーネントのStory定義

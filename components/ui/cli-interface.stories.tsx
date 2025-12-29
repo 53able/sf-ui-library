@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CLIInterface } from './cli-interface';
+import { CLIInterface } from '@/registry/sf-ui/cli-interface/cli-interface';
 
 /**
  * CLIInterfaceコンポーネントのStory定義

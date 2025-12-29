@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { GlowText } from './glow-text';
+import { GlowText } from '@/registry/sf-ui/glow-text/glow-text';
 
 /**
  * GlowTextコンポーネントのStory定義

@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const config: StorybookConfig = {
   stories: [
     '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../registry/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
     '@chromatic-com/storybook',
@@ -18,10 +19,11 @@ const config: StorybookConfig = {
   ],
   framework: '@storybook/nextjs-vite',
   async viteFinal(config) {
+    const rootDir = path.resolve(__dirname, '../');
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '../'),
+          '@': rootDir,
         },
       },
     });

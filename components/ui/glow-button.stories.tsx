@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { GlowButton } from './glow-button';
+import { GlowButton } from '@/registry/sf-ui/glow-button/glow-button';
 
 /**
  * GlowButtonコンポーネントのStory定義

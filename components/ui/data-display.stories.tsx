@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DataDisplay } from './data-display';
+import { DataDisplay } from '@/registry/sf-ui/data-display/data-display';
 
 /**
  * DataDisplayコンポーネントのStory定義

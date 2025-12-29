@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DisplayPanel } from './display-panel';
+import { DisplayPanel } from '@/registry/sf-ui/display-panel/display-panel';
 
 /**
  * DisplayPanelコンポーネントのStory定義

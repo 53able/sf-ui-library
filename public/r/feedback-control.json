@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feedback-control",
+  "title": "Feedback Control",
+  "description": "Feedback loop component with input and output",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sf-ui/feedback-control/feedback-control.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\n/**\n * Feedback Controlのバリアント定義\n * 入力と出力の近接配置によるフィードバックループの強化\n */\nconst feedbackControlVariants = cva(\"flex gap-4\", {\n  variants: {\n    direction: {\n      horizontal: \"flex-row items-center\",\n      vertical: \"flex-col items-stretch\",\n    },\n    alignment: {\n      start: \"justify-start\",\n      center: \"justify-center\",\n      end: \"justify-end\",\n    },\n  },\n  defaultVariants: {\n    direction: \"horizontal\",\n    alignment: \"start\",\n  },\n});\n\n/**\n * Feedback ControlコンポーネントのProps\n */\nexport interface FeedbackControlProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof feedbackControlVariants> {\n  /**\n   * 入力コントロール（ノブ、スライダーなど）\n   */\n  input: React.ReactNode;\n  /**\n   * 出力表示（スクリーン、数値表示など）\n   */\n  output: React.ReactNode;\n  /**\n   * ラベルテキスト\n   */\n  label?: string;\n  /**\n   * 説明文\n   */\n  description?: string;\n}\n\n/**\n * SF映画のインタフェースデザインをインスパイアしたフィードバックループコンポーネント\n *\n * 入力と出力を近接配置することで、操作と結果をリアルタイムで確認可能にします。\n * 『地球最後の日』のように、軌道を示すスクリーン（出力）のすぐ隣に操作ノブ（入力）を配置し、\n * 認知負荷を軽減し、より直感的でミスの少ないインタラクションを実現します。\n *\n * 原則：フィードバックループの強化\n * - 入力と出力の近接配置\n * - 視線を大きく動かすことなく操作と結果を確認\n * - リアルタイムでの微調整が可能\n *\n * @example\n * ```tsx\n * <FeedbackControl\n *   direction=\"horizontal\"\n *   input={<input type=\"range\" />}\n *   output={<DataDisplay value={50} label=\"Power\" unit=\"%\" />}\n *   label=\"Warp Core\"\n * />\n * ```\n */\nconst FeedbackControl = React.forwardRef<HTMLDivElement, FeedbackControlProps>(\n  (\n    { className, direction, alignment, input, output, label, description, ...props },\n    ref\n  ) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          feedbackControlVariants({ direction, alignment }),\n          \"font-lcars\",\n          className\n        )}\n        {...props}\n      >\n        {/* ラベルと説明 */}\n        {(label || description) && (\n          <div className=\"flex flex-col gap-1 mb-2\">\n            {label && (\n              <label className=\"text-hierarchy-secondary text-lcars-blue\">\n                {label}\n              </label>\n            )}\n            {description && (\n              <p className=\"text-hierarchy-tertiary text-lcars-blue/70\">\n                {description}\n              </p>\n            )}\n          </div>\n        )}\n\n        {/* 入力コントロール */}\n        <div\n          className={cn(\n            \"flex-shrink-0\",\n            direction === \"horizontal\" ? \"w-auto\" : \"w-full\"\n          )}\n        >\n          {input}\n        </div>\n\n        {/* 出力表示 */}\n        <div\n          className={cn(\n            \"flex-1\",\n            direction === \"horizontal\" ? \"ml-4\" : \"mt-4\"\n          )}\n        >\n          {output}\n        </div>\n      </div>\n    );\n  }\n);\nFeedbackControl.displayName = \"FeedbackControl\";\n\nexport { FeedbackControl, feedbackControlVariants };\n\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

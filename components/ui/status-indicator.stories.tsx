@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StatusIndicator } from './status-indicator';
+import { StatusIndicator } from '@/registry/sf-ui/status-indicator/status-indicator';
 
 /**
  * StatusIndicatorコンポーネントのStory定義
