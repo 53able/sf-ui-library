@@ -1,0 +1,3 @@
+{
+  "buildCommand": "pnpm registry:build && pnpm build"
+}
