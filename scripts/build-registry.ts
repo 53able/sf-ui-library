@@ -7,14 +7,15 @@ const rootDir = resolve(__dirname, "..");
 
 /**
  * Registryエントリの型定義
+ * 最新のshadcn/ui Registry仕様に準拠（2025年7月のユニバーサルレジストリアイテム対応を含む）
  */
 interface RegistryEntry {
   name: string;
-  type: "components" | "hooks" | "utils";
+  type: "components" | "hooks" | "utils" | "universal";
   files: Array<{
     path: string;
     content: string;
-    type: "component" | "lib" | "registry";
+    type: "component" | "lib" | "registry" | "css" | "style";
   }>;
   dependencies?: string[];
   registryDependencies?: string[];
@@ -228,7 +229,7 @@ const buildRegistry = (): void => {
   });
 
   // utilsエントリを追加（必要な場合）
-  const finalRegistry = hasUtils
+  const registryWithUtils = hasUtils
     ? (() => {
         const utilsPath = join(rootDir, "lib", "utils.ts");
         const utilsContent = readFileSync(utilsPath, "utf-8");
@@ -249,6 +250,43 @@ const buildRegistry = (): void => {
         ];
       })()
     : registryWithUtilsRemoved;
+
+  // スタイルファイルとフォントローダーを追加
+  const themePath = join(rootDir, "styles", "sf-ui-theme.css");
+  const fontsPath = join(rootDir, "styles", "fonts.tsx");
+  const themeContent = readFileSync(themePath, "utf-8");
+  const fontsContent = readFileSync(fontsPath, "utf-8");
+
+  const finalRegistry = [
+    // テーマスタイル（ユニバーサルアイテム - フレームワーク非依存）
+    // 最新仕様（2025年7月）のユニバーサルレジストリアイテムを使用
+    {
+      name: "sf-ui-theme",
+      type: "universal" as const,
+      files: [
+        {
+          path: "styles/sf-ui-theme.css",
+          content: themeContent,
+          type: "css" as const,
+        },
+      ],
+      peerDependencies: ["tailwindcss"],
+    },
+    // フォントローダー（Reactコンポーネントなのでcomponentsタイプ）
+    {
+      name: "sf-ui-fonts",
+      type: "components" as const,
+      files: [
+        {
+          path: "styles/fonts.tsx",
+          content: fontsContent,
+          type: "component" as const,
+        },
+      ],
+      peerDependencies: ["react", "react-dom"],
+    },
+    ...registryWithUtils,
+  ];
 
   // registry.jsonを出力
   const outputPath = join(rootDir, "registry.json");

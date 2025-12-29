@@ -1,0 +1,130 @@
+/**
+ * SF UI Library Theme
+ * 
+ * このファイルをインポートするだけで、LCARSカラーとフォント設定が自動的に適用されます。
+ * Tailwind CSS 4.xの@themeディレクティブを使用しています。
+ * 
+ * 使用方法:
+ * 1. このファイルをプロジェクトのグローバルCSSファイル（例: app/globals.css）にインポート
+ *    @import "sf-ui-library/styles/sf-ui-theme.css";
+ * 
+ * 2. または、Registryからインストールした場合は:
+ *    @import "@/styles/sf-ui-theme.css";
+ */
+
+@import "tailwindcss";
+
+@theme {
+  /* LCARS風カラーパレット */
+  --color-lcars-blue: #4A9EFF;
+  --color-lcars-orange: #FF9E4A;
+  --color-lcars-red: #FF4A4A;
+  --color-lcars-yellow: #FFE04A;
+  --color-lcars-purple: #9E4AFF;
+  --color-lcars-gray: #808080;
+  --color-lcars-green: #4AFF9E;
+  --color-lcars-dark: #000000;
+  --color-lcars-blue-glow: #6BB5FF;
+  --color-lcars-red-glow: #FF6B6B;
+  --color-lcars-yellow-glow: #FFF06B;
+  --color-lcars-purple-glow: #B56BFF;
+  --color-lcars-gray-glow: #A0A0A0;
+  --color-lcars-green-glow: #6BFFB5;
+
+  /* カスタムフォントファミリー */
+  --font-family-lcars: "Rajdhani", system-ui, -apple-system, sans-serif;
+  --font-family-cli: "Share Tech Mono", monospace;
+  --font-family-sf: "Orbitron", system-ui, -apple-system, sans-serif;
+
+  /* 発光アニメーション */
+  --animate-glow: glow 2s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+  --animate-glow-intense: glow-intense 1.5s ease-in-out infinite;
+  --animate-system-active: system-active 3s ease-in-out infinite;
+  --animate-file-transfer: file-transfer 2s linear infinite;
+  --animate-background-shift: background-shift 20s ease-in-out infinite;
+  --animate-data-flow: data-flow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+@keyframes glow-intense {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor;
+  }
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor, 0 0 80px currentColor;
+  }
+}
+
+@keyframes system-active {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes file-transfer {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes background-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+}
+
