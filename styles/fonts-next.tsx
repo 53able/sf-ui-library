@@ -73,3 +73,4 @@ export const SfUiFontsNext = {
   className: `${lcarsFont.variable} ${cliFont.variable} ${sfFont.variable}`,
 };
 
+

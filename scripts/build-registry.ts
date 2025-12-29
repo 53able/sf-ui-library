@@ -254,8 +254,17 @@ const buildRegistry = (): void => {
   // スタイルファイルとフォントローダーを追加
   const themePath = join(rootDir, "styles", "sf-ui-theme.css");
   const fontsPath = join(rootDir, "styles", "fonts.tsx");
+  const fontsNextPath = join(rootDir, "styles", "fonts-next.tsx");
   const themeContent = readFileSync(themePath, "utf-8");
   const fontsContent = readFileSync(fontsPath, "utf-8");
+  
+  // fonts-next.tsxが存在するか確認
+  let fontsNextContent: string | null = null;
+  try {
+    fontsNextContent = readFileSync(fontsNextPath, "utf-8");
+  } catch (error) {
+    console.warn("fonts-next.tsx not found, skipping Next.js font component");
+  }
 
   const finalRegistry = [
     // テーマスタイル（ユニバーサルアイテム - フレームワーク非依存）
@@ -285,6 +294,23 @@ const buildRegistry = (): void => {
       ],
       peerDependencies: ["react", "react-dom"],
     },
+    // Next.js用フォントローダー（Next.js専用）
+    ...(fontsNextContent
+      ? [
+          {
+            name: "sf-ui-fonts-next",
+            type: "components" as const,
+            files: [
+              {
+                path: "styles/fonts-next.tsx",
+                content: fontsNextContent,
+                type: "component" as const,
+              },
+            ],
+            peerDependencies: ["react", "react-dom", "next"],
+          },
+        ]
+      : []),
     ...registryWithUtils,
   ];
 

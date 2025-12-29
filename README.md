@@ -81,41 +81,51 @@ STORYBOOK_URL=http://localhost:6006
    ```json
    {
      "registry": {
-       "url": "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json"
+       "url": "https://raw.githubusercontent.com/53able/sf-ui-library/main/registry.json"
      }
    }
    ```
 
 2. **コンポーネントを追加**
 
-   ```bash
-   npx shadcn@latest add <component-name> --registry https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json
-   ```
-
-   または、`components.json`で設定済みの場合：
+   `components.json`でRegistry URLを設定した後、以下のコマンドでコンポーネントを追加：
 
    ```bash
    npx shadcn@latest add <component-name>
    ```
 
+   **注意**: `--registry`オプションはshadcn/uiの最新バージョンではサポートされていません。必ず`components.json`でRegistry URLを設定してください。
+
 ### 簡単セットアップ（推奨）
 
 このライブラリを使用する際、**Tailwind CSSの設定やフォント設定を手動で行う必要はありません**。以下の手順で自動的に設定されます：
 
-#### 1. テーマスタイルのインストール
+#### 1. Registry URLを設定
 
-まず、LCARSカラーとアニメーション設定を含むテーマファイルをインストールします：
+まず、`components.json`にRegistry URLを設定します：
 
-```bash
-npx shadcn@latest add sf-ui-theme --registry https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json
+```json
+{
+  "registry": {
+    "url": "https://raw.githubusercontent.com/53able/sf-ui-library/main/registry.json"
+  }
+}
 ```
 
-#### 2. フォントの設定
+#### 2. テーマスタイルのインストール
+
+LCARSカラーとアニメーション設定を含むテーマファイルをインストールします：
+
+```bash
+npx shadcn@latest add sf-ui-theme
+```
+
+#### 3. フォントの設定
 
 **Next.jsを使用している場合（推奨）:**
 
 ```bash
-npx shadcn@latest add sf-ui-fonts --registry https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json
+npx shadcn@latest add sf-ui-fonts-next
 ```
 
 次に、`app/layout.tsx`（または`src/app/layout.tsx`）を更新：
@@ -137,7 +147,7 @@ export default function RootLayout({ children }) {
 **その他のフレームワークの場合:**
 
 ```bash
-npx shadcn@latest add sf-ui-fonts --registry https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json
+npx shadcn@latest add sf-ui-fonts
 ```
 
 `app/layout.tsx`（またはルートレイアウト）に追加：
@@ -157,13 +167,16 @@ export default function RootLayout({ children }) {
 }
 ```
 
-#### 3. グローバルCSSにテーマをインポート
+#### 4. グローバルCSSにテーマをインポート
 
 `app/globals.css`（または`src/app/globals.css`）に以下を追加：
 
 ```css
-@import "@/styles/sf-ui-theme.css";
+/* 注意: PostCSSではパスエイリアス（@/）が解決できないため、相対パスを使用してください */
+@import "../styles/sf-ui-theme.css";
 ```
+
+**重要**: `@import "@/styles/sf-ui-theme.css"`は動作しません。必ず相対パス（`../styles/sf-ui-theme.css`）を使用してください。
 
 これで完了です！LCARSカラー（`lcars-blue`、`lcars-orange`など）やカスタムフォント（`font-lcars`、`font-cli`、`font-sf`）が自動的に使用可能になります。
 
