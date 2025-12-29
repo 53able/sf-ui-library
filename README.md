@@ -98,6 +98,89 @@ STORYBOOK_URL=http://localhost:6006
    npx shadcn@latest add <component-name>
    ```
 
+### 簡単セットアップ（推奨）
+
+このライブラリを使用する際、**Tailwind CSSの設定やフォント設定を手動で行う必要はありません**。以下の手順で自動的に設定されます：
+
+#### 1. テーマスタイルのインストール
+
+まず、LCARSカラーとアニメーション設定を含むテーマファイルをインストールします：
+
+```bash
+npx shadcn@latest add sf-ui-theme --registry https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json
+```
+
+#### 2. フォントの設定
+
+**Next.jsを使用している場合（推奨）:**
+
+```bash
+npx shadcn@latest add sf-ui-fonts --registry https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json
+```
+
+次に、`app/layout.tsx`（または`src/app/layout.tsx`）を更新：
+
+```tsx
+import { SfUiFontsNext } from "@/styles/fonts-next";
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body className={SfUiFontsNext.className}>
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+**その他のフレームワークの場合:**
+
+```bash
+npx shadcn@latest add sf-ui-fonts --registry https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/registry.json
+```
+
+`app/layout.tsx`（またはルートレイアウト）に追加：
+
+```tsx
+import { SfUiFonts } from "@/styles/fonts";
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <head>
+        <SfUiFonts />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+#### 3. グローバルCSSにテーマをインポート
+
+`app/globals.css`（または`src/app/globals.css`）に以下を追加：
+
+```css
+@import "@/styles/sf-ui-theme.css";
+```
+
+これで完了です！LCARSカラー（`lcars-blue`、`lcars-orange`など）やカスタムフォント（`font-lcars`、`font-cli`、`font-sf`）が自動的に使用可能になります。
+
+#### 使用例
+
+```tsx
+// LCARSカラーの使用
+<div className="bg-lcars-blue text-lcars-orange">
+  LCARS風のスタイル
+</div>
+
+// カスタムフォントの使用
+<h1 className="font-lcars">LCARS風のタイトル</h1>
+<code className="font-cli">CLI風のコード</code>
+<div className="font-sf">SF風のテキスト</div>
+```
+
 ### 利用可能なコンポーネント
 
 以下のコンポーネントがRegistryに登録されています：
@@ -162,7 +245,7 @@ StorybookをVercelで公開するには、以下の手順を実行します：
 
    対話的に以下を設定します：
    - 既存のプロジェクトとリンクするか、新規作成するか
-   - プロジェクト名（デフォルト: `sf-ui-library`）
+   - プロジェクト名（任意の名前を設定可能）
    - Gitリポジトリの設定
 
 3. **初回デプロイ**
