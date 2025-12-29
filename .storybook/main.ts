@@ -29,12 +29,21 @@ const config: StorybookConfig = {
       },
       // "use client" ディレクティブの警告を抑制
       build: {
+        // 本番ビルドではsourcemapを無効化（エラー回避のため）
+        sourcemap: false,
         rollupOptions: {
           onwarn(warning, warn) {
             // "use client" ディレクティブに関する警告を無視
             if (
               warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
               warning.message?.includes('use client')
+            ) {
+              return;
+            }
+            // sourcemap関連のエラーを無視
+            if (
+              warning.message?.includes('sourcemap') ||
+              warning.message?.includes('Can\'t resolve original location')
             ) {
               return;
             }
