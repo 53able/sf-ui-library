@@ -1,38 +1,38 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ConnectedPanels } from '@/registry/sf-ui/connected-panels/connected-panels';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ConnectedPanels } from "@/registry/sf-ui/connected-panels/connected-panels";
 
 /**
  * ConnectedPanelsコンポーネントのStory定義
  */
 const meta: Meta<typeof ConnectedPanels> = {
-  title: 'Molecules/ConnectedPanels',
+  title: "Molecules/ConnectedPanels",
   component: ConnectedPanels,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     direction: {
-      control: 'select',
-      options: ['horizontal', 'vertical'],
-      description: 'パネルの配置方向',
+      control: "select",
+      options: ["horizontal", "vertical"],
+      description: "パネルの配置方向",
     },
     connection: {
-      control: 'select',
-      options: ['none', 'curve', 'line'],
-      description: '接続線のスタイル',
+      control: "select",
+      options: ["none", "curve", "line"],
+      description: "接続線のスタイル",
     },
     connectorStyle: {
-      control: 'select',
-      options: ['solid', 'dashed', 'glow'],
-      description: '接続線のスタイル',
+      control: "select",
+      options: ["solid", "dashed", "glow"],
+      description: "接続線のスタイル",
     },
   },
 };
@@ -46,9 +46,9 @@ type Story = StoryObj<typeof ConnectedPanels>;
 export const Default: Story = {
   args: {
     panels: [
-      { content: 'Panel 1', panelProps: { variant: 'default' } },
-      { content: 'Panel 2', panelProps: { variant: 'orange' } },
-      { content: 'Panel 3', panelProps: { variant: 'default' } },
+      { content: "Panel 1", panelProps: { variant: "default" } },
+      { content: "Panel 2", panelProps: { variant: "orange" } },
+      { content: "Panel 3", panelProps: { variant: "default" } },
     ],
   },
 };
@@ -58,11 +58,11 @@ export const Default: Story = {
  */
 export const Vertical: Story = {
   args: {
-    direction: 'vertical',
+    direction: "vertical",
     panels: [
-      { content: 'Panel 1', panelProps: { variant: 'default' } },
-      { content: 'Panel 2', panelProps: { variant: 'orange' } },
-      { content: 'Panel 3', panelProps: { variant: 'default' } },
+      { content: "Panel 1", panelProps: { variant: "default" } },
+      { content: "Panel 2", panelProps: { variant: "orange" } },
+      { content: "Panel 3", panelProps: { variant: "default" } },
     ],
   },
 };
@@ -72,11 +72,11 @@ export const Vertical: Story = {
  */
 export const NoConnection: Story = {
   args: {
-    connection: 'none',
+    connection: "none",
     panels: [
-      { content: 'Panel 1', panelProps: { variant: 'default' } },
-      { content: 'Panel 2', panelProps: { variant: 'orange' } },
-      { content: 'Panel 3', panelProps: { variant: 'default' } },
+      { content: "Panel 1", panelProps: { variant: "default" } },
+      { content: "Panel 2", panelProps: { variant: "orange" } },
+      { content: "Panel 3", panelProps: { variant: "default" } },
     ],
   },
 };
@@ -86,12 +86,12 @@ export const NoConnection: Story = {
  */
 export const LineConnection: Story = {
   args: {
-    connection: 'line',
-    connectorStyle: 'solid',
+    connection: "line",
+    connectorStyle: "solid",
     panels: [
-      { content: 'Panel 1', panelProps: { variant: 'default' } },
-      { content: 'Panel 2', panelProps: { variant: 'orange' } },
-      { content: 'Panel 3', panelProps: { variant: 'default' } },
+      { content: "Panel 1", panelProps: { variant: "default" } },
+      { content: "Panel 2", panelProps: { variant: "orange" } },
+      { content: "Panel 3", panelProps: { variant: "default" } },
     ],
   },
 };
@@ -101,12 +101,12 @@ export const LineConnection: Story = {
  */
 export const CurveConnection: Story = {
   args: {
-    connection: 'curve',
-    connectorStyle: 'glow',
+    connection: "curve",
+    connectorStyle: "glow",
     panels: [
-      { content: 'Panel 1', panelProps: { variant: 'default' } },
-      { content: 'Panel 2', panelProps: { variant: 'orange' } },
-      { content: 'Panel 3', panelProps: { variant: 'default' } },
+      { content: "Panel 1", panelProps: { variant: "default" } },
+      { content: "Panel 2", panelProps: { variant: "orange" } },
+      { content: "Panel 3", panelProps: { variant: "default" } },
     ],
   },
 };
@@ -122,8 +122,8 @@ export const ConnectorStyles: Story = {
         <ConnectedPanels
           connectorStyle="solid"
           panels={[
-            { content: 'Panel 1', panelProps: { variant: 'default' } },
-            { content: 'Panel 2', panelProps: { variant: 'orange' } },
+            { content: "Panel 1", panelProps: { variant: "default" } },
+            { content: "Panel 2", panelProps: { variant: "orange" } },
           ]}
         />
       </div>
@@ -132,8 +132,8 @@ export const ConnectorStyles: Story = {
         <ConnectedPanels
           connectorStyle="dashed"
           panels={[
-            { content: 'Panel 1', panelProps: { variant: 'default' } },
-            { content: 'Panel 2', panelProps: { variant: 'orange' } },
+            { content: "Panel 1", panelProps: { variant: "default" } },
+            { content: "Panel 2", panelProps: { variant: "orange" } },
           ]}
         />
       </div>
@@ -142,8 +142,8 @@ export const ConnectorStyles: Story = {
         <ConnectedPanels
           connectorStyle="glow"
           panels={[
-            { content: 'Panel 1', panelProps: { variant: 'default' } },
-            { content: 'Panel 2', panelProps: { variant: 'orange' } },
+            { content: "Panel 1", panelProps: { variant: "default" } },
+            { content: "Panel 2", panelProps: { variant: "orange" } },
           ]}
         />
       </div>
@@ -157,11 +157,10 @@ export const ConnectorStyles: Story = {
 export const MultiplePanels: Story = {
   args: {
     panels: [
-      { content: 'System 1', panelProps: { variant: 'default', title: 'Core' } },
-      { content: 'System 2', panelProps: { variant: 'orange', title: 'Shields' } },
-      { content: 'System 3', panelProps: { variant: 'default', title: 'Weapons' } },
-      { content: 'System 4', panelProps: { variant: 'yellow', title: 'Sensors' } },
+      { content: "System 1", panelProps: { variant: "default", title: "Core" } },
+      { content: "System 2", panelProps: { variant: "orange", title: "Shields" } },
+      { content: "System 3", panelProps: { variant: "default", title: "Weapons" } },
+      { content: "System 4", panelProps: { variant: "yellow", title: "Sensors" } },
     ],
   },
 };
-

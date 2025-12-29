@@ -1,43 +1,43 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { DataDisplay } from '@/registry/sf-ui/data-display/data-display';
+import type { Meta, StoryObj } from "@storybook/react";
+import { DataDisplay } from "@/registry/sf-ui/data-display/data-display";
 
 /**
  * DataDisplayコンポーネントのStory定義
  */
 const meta: Meta<typeof DataDisplay> = {
-  title: 'Atoms/DataDisplay',
+  title: "Atoms/DataDisplay",
   component: DataDisplay,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'orange', 'red', 'yellow', 'purple', 'gray', 'green'],
-      description: 'カラーバリアント',
+      control: "select",
+      options: ["default", "orange", "red", "yellow", "purple", "gray", "green"],
+      description: "カラーバリアント",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'default', 'lg', 'xl', '2xl', '3xl', '4xl'],
-      description: 'サイズ',
+      control: "select",
+      options: ["sm", "default", "lg", "xl", "2xl", "3xl", "4xl"],
+      description: "サイズ",
     },
     glow: {
-      control: 'select',
-      options: ['none', 'subtle', 'normal', 'intense'],
-      description: '発光効果の強さ',
+      control: "select",
+      options: ["none", "subtle", "normal", "intense"],
+      description: "発光効果の強さ",
     },
     value: {
-      control: 'number',
-      description: '表示する値',
+      control: "number",
+      description: "表示する値",
     },
     label: {
-      control: 'text',
-      description: 'ラベルテキスト',
+      control: "text",
+      description: "ラベルテキスト",
     },
     unit: {
-      control: 'text',
-      description: '単位テキスト',
+      control: "text",
+      description: "単位テキスト",
     },
   },
 };
@@ -51,8 +51,8 @@ type Story = StoryObj<typeof DataDisplay>;
 export const Default: Story = {
   args: {
     value: 1009,
-    label: 'Warp Core',
-    unit: '%',
+    label: "Warp Core",
+    unit: "%",
   },
 };
 
@@ -62,10 +62,10 @@ export const Default: Story = {
 export const LargeValue: Story = {
   args: {
     value: 7490,
-    label: 'Power',
-    unit: 'MW',
-    size: '2xl',
-    glow: 'intense',
+    label: "Power",
+    unit: "MW",
+    size: "2xl",
+    glow: "intense",
   },
 };
 
@@ -122,8 +122,8 @@ export const SizeVariants: Story = {
  */
 export const StringValue: Story = {
   args: {
-    value: 'ST-001',
-    label: 'Station ID',
+    value: "ST-001",
+    label: "Station ID",
   },
 };
 
@@ -133,14 +133,13 @@ export const StringValue: Story = {
 export const CustomFormat: Story = {
   args: {
     value: 1234567.89,
-    label: 'Balance',
-    unit: 'USD',
+    label: "Balance",
+    unit: "USD",
     formatValue: (value: number | string) => {
-      if (typeof value === 'number') {
-        return `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      if (typeof value === "number") {
+        return `$${value.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
       }
       return String(value);
     },
   },
 };
-

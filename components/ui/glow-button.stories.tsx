@@ -1,47 +1,47 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { GlowButton } from '@/registry/sf-ui/glow-button/glow-button';
+import type { Meta, StoryObj } from "@storybook/react";
+import { GlowButton } from "@/registry/sf-ui/glow-button/glow-button";
 
 /**
  * GlowButtonコンポーネントのStory定義
  */
 const meta: Meta<typeof GlowButton> = {
-  title: 'Atoms/GlowButton',
+  title: "Atoms/GlowButton",
   component: GlowButton,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'destructive', 'warning', 'purple', 'green', 'outline', 'ghost', 'link'],
-      description: 'ボタンのバリアント',
+      control: "select",
+      options: ["default", "destructive", "warning", "purple", "green", "outline", "ghost", "link"],
+      description: "ボタンのバリアント",
     },
     shape: {
-      control: 'select',
-      options: ['default', 'pill', 'lcars'],
-      description: 'ボタンの形状',
+      control: "select",
+      options: ["default", "pill", "lcars"],
+      description: "ボタンの形状",
     },
     size: {
-      control: 'select',
-      options: ['default', 'sm', 'lg', 'icon'],
-      description: 'ボタンのサイズ',
+      control: "select",
+      options: ["default", "sm", "lg", "icon"],
+      description: "ボタンのサイズ",
     },
     glow: {
-      control: 'select',
-      options: ['none', 'subtle', 'normal', 'intense'],
-      description: '発光効果の強さ',
+      control: "select",
+      options: ["none", "subtle", "normal", "intense"],
+      description: "発光効果の強さ",
     },
     disabled: {
-      control: 'boolean',
-      description: '無効化状態',
+      control: "boolean",
+      description: "無効化状態",
     },
   },
 };
@@ -54,7 +54,7 @@ type Story = StoryObj<typeof GlowButton>;
  */
 export const Default: Story = {
   args: {
-    children: 'Engage',
+    children: "Engage",
   },
 };
 
@@ -63,8 +63,8 @@ export const Default: Story = {
  */
 export const Destructive: Story = {
   args: {
-    variant: 'destructive',
-    children: 'Emergency',
+    variant: "destructive",
+    children: "Emergency",
   },
 };
 
@@ -73,8 +73,8 @@ export const Destructive: Story = {
  */
 export const Warning: Story = {
   args: {
-    variant: 'warning',
-    children: 'Warning',
+    variant: "warning",
+    children: "Warning",
   },
 };
 
@@ -83,8 +83,8 @@ export const Warning: Story = {
  */
 export const Purple: Story = {
   args: {
-    variant: 'purple',
-    children: 'Purple',
+    variant: "purple",
+    children: "Purple",
   },
 };
 
@@ -93,8 +93,8 @@ export const Purple: Story = {
  */
 export const Green: Story = {
   args: {
-    variant: 'green',
-    children: 'Green',
+    variant: "green",
+    children: "Green",
   },
 };
 
@@ -103,8 +103,8 @@ export const Green: Story = {
  */
 export const Outline: Story = {
   args: {
-    variant: 'outline',
-    children: 'Outline',
+    variant: "outline",
+    children: "Outline",
   },
 };
 
@@ -113,8 +113,8 @@ export const Outline: Story = {
  */
 export const Ghost: Story = {
   args: {
-    variant: 'ghost',
-    children: 'Ghost',
+    variant: "ghost",
+    children: "Ghost",
   },
 };
 
@@ -123,8 +123,8 @@ export const Ghost: Story = {
  */
 export const Link: Story = {
   args: {
-    variant: 'link',
-    children: 'Link',
+    variant: "link",
+    children: "Link",
   },
 };
 
@@ -185,4 +185,3 @@ export const Disabled: Story = {
     </div>
   ),
 };
-

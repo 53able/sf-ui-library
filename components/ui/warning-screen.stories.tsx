@@ -1,46 +1,46 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { WarningScreen } from '@/registry/sf-ui/warning-screen/warning-screen';
+import type { Meta, StoryObj } from "@storybook/react";
+import { WarningScreen } from "@/registry/sf-ui/warning-screen/warning-screen";
 
 /**
  * WarningScreenコンポーネントのStory定義
  */
 const meta: Meta<typeof WarningScreen> = {
-  title: 'Molecules/WarningScreen',
+  title: "Molecules/WarningScreen",
   component: WarningScreen,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['warning', 'danger', 'restricted', 'standby'],
-      description: '警告の種類',
+      control: "select",
+      options: ["warning", "danger", "restricted", "standby"],
+      description: "警告の種類",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'default', 'lg'],
-      description: '画面のサイズ',
+      control: "select",
+      options: ["sm", "default", "lg"],
+      description: "画面のサイズ",
     },
     animate: {
-      control: 'select',
-      options: ['none', 'pulse', 'intense'],
-      description: 'アニメーション効果',
+      control: "select",
+      options: ["none", "pulse", "intense"],
+      description: "アニメーション効果",
     },
     mainText: {
-      control: 'text',
-      description: 'メインテキスト',
+      control: "text",
+      description: "メインテキスト",
     },
     subText: {
-      control: 'text',
-      description: 'サブテキスト',
+      control: "text",
+      description: "サブテキスト",
     },
   },
 };
@@ -53,7 +53,7 @@ type Story = StoryObj<typeof WarningScreen>;
  */
 export const Default: Story = {
   args: {
-    mainText: 'WARNING',
+    mainText: "WARNING",
   },
 };
 
@@ -62,9 +62,9 @@ export const Default: Story = {
  */
 export const Restricted: Story = {
   args: {
-    variant: 'restricted',
-    mainText: 'ACCESS RESTRICTED',
-    subText: 'Unauthorized access detected',
+    variant: "restricted",
+    mainText: "ACCESS RESTRICTED",
+    subText: "Unauthorized access detected",
   },
 };
 
@@ -73,9 +73,9 @@ export const Restricted: Story = {
  */
 export const Standby: Story = {
   args: {
-    variant: 'standby',
-    mainText: 'STANDBY',
-    subText: 'System is in standby mode',
+    variant: "standby",
+    mainText: "STANDBY",
+    subText: "System is in standby mode",
   },
 };
 
@@ -84,9 +84,9 @@ export const Standby: Story = {
  */
 export const Danger: Story = {
   args: {
-    variant: 'danger',
-    mainText: 'DANGER',
-    subText: 'Critical system failure detected',
+    variant: "danger",
+    mainText: "DANGER",
+    subText: "Critical system failure detected",
   },
 };
 
@@ -139,9 +139,8 @@ export const Animations: Story = {
  */
 export const WithIcon: Story = {
   args: {
-    mainText: 'WARNING',
-    subText: 'System alert with icon',
+    mainText: "WARNING",
+    subText: "System alert with icon",
     icon: <span className="text-4xl">⚠️</span>,
   },
 };
-

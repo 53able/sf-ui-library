@@ -65,16 +65,7 @@ export interface DisplayPanelProps
  */
 const DisplayPanel = React.forwardRef<HTMLDivElement, DisplayPanelProps>(
   (
-    {
-      className,
-      transparency,
-      border,
-      animated = false,
-      title,
-      description,
-      children,
-      ...props
-    },
+    { className, transparency, border, animated = false, title, description, children, ...props },
     ref
   ) => {
     return (
@@ -98,4 +89,3 @@ const DisplayPanel = React.forwardRef<HTMLDivElement, DisplayPanelProps>(
 DisplayPanel.displayName = "DisplayPanel";
 
 export { DisplayPanel, displayPanelVariants };
-

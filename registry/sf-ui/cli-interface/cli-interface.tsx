@@ -109,21 +109,13 @@ const CLIInterface = React.forwardRef<HTMLDivElement, CLIInterfaceProps>(
         <div className="space-y-1">
           {lines.map((line, index) => (
             <div key={`line-${index}-${line.slice(0, 10)}`} className="flex items-start gap-2">
-              {prompt && (
-                <span className="text-lcars-green-glow shrink-0">
-                  {prompt}
-                </span>
-              )}
+              {prompt && <span className="text-lcars-green-glow shrink-0">{prompt}</span>}
               <span className="flex-1 whitespace-pre-wrap wrap-break-word">{line}</span>
             </div>
           ))}
           {showCursor && (
             <div className="flex items-start gap-2">
-              {prompt && (
-                <span className="text-lcars-green-glow shrink-0">
-                  {prompt}
-                </span>
-              )}
+              {prompt && <span className="text-lcars-green-glow shrink-0">{prompt}</span>}
               <span
                 className={cn(
                   "inline-block w-2 h-4 bg-lcars-green",
@@ -141,4 +133,3 @@ const CLIInterface = React.forwardRef<HTMLDivElement, CLIInterfaceProps>(
 CLIInterface.displayName = "CLIInterface";
 
 export { CLIInterface, cliInterfaceVariants };
-

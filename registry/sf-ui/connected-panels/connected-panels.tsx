@@ -16,7 +16,8 @@ const connectedPanelsVariants = cva("relative font-lcars", {
     },
     connection: {
       none: "",
-      curve: "before:content-[''] before:absolute before:border-2 before:border-lcars-blue before:rounded-full",
+      curve:
+        "before:content-[''] before:absolute before:border-2 before:border-lcars-blue before:rounded-full",
       line: "before:content-[''] before:absolute before:border before:border-lcars-blue",
     },
   },
@@ -94,26 +95,19 @@ const ConnectedPanels = React.forwardRef<HTMLDivElement, ConnectedPanelsProps>(
                   <svg
                     className={cn(
                       "absolute",
-                      direction === "horizontal"
-                        ? "w-8 h-8 -top-4 left-0"
-                        : "w-8 h-8 -left-4 top-0"
+                      direction === "horizontal" ? "w-8 h-8 -top-4 left-0" : "w-8 h-8 -left-4 top-0"
                     )}
                     viewBox="0 0 32 32"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d={
-                        direction === "horizontal"
-                          ? "M 0 16 Q 16 0 32 16"
-                          : "M 16 0 Q 0 16 16 32"
-                      }
+                      d={direction === "horizontal" ? "M 0 16 Q 16 0 32 16" : "M 16 0 Q 0 16 16 32"}
                       stroke="rgb(74, 158, 255)"
                       strokeWidth="2"
                       fill="none"
                       className={cn(
-                        connectorStyle === "glow" &&
-                          "drop-shadow-[0_0_10px_rgba(74,158,255,0.5)]"
+                        connectorStyle === "glow" && "drop-shadow-[0_0_10px_rgba(74,158,255,0.5)]"
                       )}
                     />
                   </svg>
@@ -129,4 +123,3 @@ const ConnectedPanels = React.forwardRef<HTMLDivElement, ConnectedPanelsProps>(
 ConnectedPanels.displayName = "ConnectedPanels";
 
 export { ConnectedPanels, connectedPanelsVariants };
-

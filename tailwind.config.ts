@@ -19,22 +19,9 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        lcars: [
-          '"Rajdhani"',
-          "system-ui",
-          "-apple-system",
-          "sans-serif",
-        ],
-        cli: [
-          '"Share Tech Mono"',
-          "monospace",
-        ],
-        sf: [
-          '"Orbitron"',
-          "system-ui",
-          "-apple-system",
-          "sans-serif",
-        ],
+        lcars: ['"Rajdhani"', "system-ui", "-apple-system", "sans-serif"],
+        cli: ['"Share Tech Mono"', "monospace"],
+        sf: ['"Orbitron"', "system-ui", "-apple-system", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -126,11 +113,13 @@ const config: Config = {
         "glow-intense": {
           "0%, 100%": {
             opacity: "1",
-            boxShadow: "0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor",
+            boxShadow:
+              "0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor",
           },
           "50%": {
             opacity: "0.9",
-            boxShadow: "0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor, 0 0 80px currentColor",
+            boxShadow:
+              "0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor, 0 0 80px currentColor",
           },
         },
         "system-active": {

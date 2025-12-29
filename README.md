@@ -240,12 +240,35 @@ export default function RootLayout({ children }) {
    - `public/r/`ディレクトリにJSONファイルが生成されているか確認
 
 5. **依存関係のエラーが発生する場合**
-   - エラーメッセージ: `The item at https://ui.shadcn.com/r/styles/new-york-v4/lcars-panel.json was not found.`
-   - **原因**: `connected-panels`、`display-panel`、`lcars-diagram`は`lcars-panel`に依存しています
-   - **解決策**: 先に`lcars-panel`をインストールしてください
-   ```bash
-   npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-panel.json
+   
+   **エラーメッセージ例**:
    ```
+   The item at https://ui.shadcn.com/r/styles/default/lcars-panel.json was not found. 
+   It may not exist at the registry.
+   ```
+   
+   **原因**: 
+   - `connected-panels`、`display-panel`、`lcars-diagram`は`lcars-panel`に依存しています（`registryDependencies`）
+   - shadcn CLIが依存関係を解決する際、デフォルトのregistry（`https://ui.shadcn.com`）を参照しようとしている
+   - SF UI Libraryのコンポーネントは `https://sf-ui-library.vercel.app` に存在するため、解決に失敗
+   
+   **解決策**: 
+   - **重要**: 依存関係を持つコンポーネントをインストールする前に、必ず依存元のコンポーネントを先にインストールしてください
+   - 以下の順序でインストールしてください：
+   ```bash
+   # 1. 依存元コンポーネントを先にインストール
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-panel.json
+   
+   # 2. 依存先コンポーネントをインストール
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/connected-panels.json
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/display-panel.json
+   npx shadcn@latest add https://sf-ui-library.vercel.app/r/lcars-diagram.json
+   ```
+   
+   **注意**: 
+   - shadcn CLIは現在、カスタムregistryからの依存関係の自動解決を完全にはサポートしていません
+   - そのため、依存関係を持つコンポーネントは手動で正しい順序でインストールする必要があります
+   - Registryファイル内のインポートパスは自動的に`@/components`エイリアスに変換されます
 
 #### よくあるエラーと解決方法
 
@@ -271,7 +294,6 @@ export default function RootLayout({ children }) {
 - `button` - 基本的なボタンコンポーネント
 - `cli-interface` - CLI風インターフェース
 - `clock-display` - LCARS風デジタル時計
-- `concept-page` - コンセプトページ
 - `connected-panels` - 接続されたパネル
 - `data-display` - 数値表示コンポーネント
 - `display-panel` - 表示パネル

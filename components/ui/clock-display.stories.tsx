@@ -1,54 +1,54 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ClockDisplay } from '@/registry/sf-ui/clock-display/clock-display';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ClockDisplay } from "@/registry/sf-ui/clock-display/clock-display";
 
 /**
  * ClockDisplayコンポーネントのStory定義
  */
 const meta: Meta<typeof ClockDisplay> = {
-  title: 'Atoms/ClockDisplay',
+  title: "Atoms/ClockDisplay",
   component: ClockDisplay,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'orange', 'red', 'yellow'],
-      description: 'カラーバリアント',
+      control: "select",
+      options: ["default", "orange", "red", "yellow"],
+      description: "カラーバリアント",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'default', 'lg', 'xl'],
-      description: 'サイズ',
+      control: "select",
+      options: ["sm", "default", "lg", "xl"],
+      description: "サイズ",
     },
     glow: {
-      control: 'select',
-      options: ['none', 'subtle', 'normal', 'intense'],
-      description: '発光効果の強さ',
+      control: "select",
+      options: ["none", "subtle", "normal", "intense"],
+      description: "発光効果の強さ",
     },
     use24Hour: {
-      control: 'boolean',
-      description: '24時間形式で表示するか',
+      control: "boolean",
+      description: "24時間形式で表示するか",
     },
     showSeconds: {
-      control: 'boolean',
-      description: '秒を表示するか',
+      control: "boolean",
+      description: "秒を表示するか",
     },
     showDate: {
-      control: 'boolean',
-      description: '日付を表示するか',
+      control: "boolean",
+      description: "日付を表示するか",
     },
     label: {
-      control: 'text',
-      description: 'ラベルテキスト',
+      control: "text",
+      description: "ラベルテキスト",
     },
   },
 };
@@ -94,7 +94,7 @@ export const WithDate: Story = {
     use24Hour: true,
     showSeconds: true,
     showDate: true,
-    label: 'Stardate',
+    label: "Stardate",
   },
 };
 
@@ -145,11 +145,10 @@ export const SizeVariants: Story = {
  */
 export const CustomTime: Story = {
   args: {
-    customTime: new Date('2024-01-01T12:34:56'),
+    customTime: new Date("2024-01-01T12:34:56"),
     use24Hour: true,
     showSeconds: true,
     showDate: true,
-    label: 'Custom Time',
+    label: "Custom Time",
   },
 };
-

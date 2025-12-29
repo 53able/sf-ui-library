@@ -1,53 +1,67 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { GlowText } from '@/registry/sf-ui/glow-text/glow-text';
+import type { Meta, StoryObj } from "@storybook/react";
+import { GlowText } from "@/registry/sf-ui/glow-text/glow-text";
 
 /**
  * GlowTextコンポーネントのStory定義
  */
 const meta: Meta<typeof GlowText> = {
-  title: 'Atoms/GlowText',
+  title: "Atoms/GlowText",
   component: GlowText,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     color: {
-      control: 'select',
-      options: ['blue', 'orange', 'red', 'yellow', 'purple', 'gray', 'green', 'blue-glow', 'red-glow', 'yellow-glow', 'purple-glow', 'gray-glow', 'green-glow'],
-      description: 'テキストの色',
+      control: "select",
+      options: [
+        "blue",
+        "orange",
+        "red",
+        "yellow",
+        "purple",
+        "gray",
+        "green",
+        "blue-glow",
+        "red-glow",
+        "yellow-glow",
+        "purple-glow",
+        "gray-glow",
+        "green-glow",
+      ],
+      description: "テキストの色",
     },
     intensity: {
-      control: 'select',
-      options: ['none', 'subtle', 'normal', 'intense'],
-      description: '発光効果の強さ',
+      control: "select",
+      options: ["none", "subtle", "normal", "intense"],
+      description: "発光効果の強さ",
     },
     size: {
-      control: 'select',
-      options: ['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl'],
-      description: 'テキストのサイズ',
+      control: "select",
+      options: ["xs", "sm", "base", "lg", "xl", "2xl", "3xl", "4xl"],
+      description: "テキストのサイズ",
     },
     weight: {
-      control: 'select',
-      options: ['normal', 'medium', 'semibold', 'bold'],
-      description: 'フォントの太さ',
+      control: "select",
+      options: ["normal", "medium", "semibold", "bold"],
+      description: "フォントの太さ",
     },
     animate: {
-      control: 'select',
-      options: ['none', 'pulse', 'glow'],
-      description: 'アニメーション効果',
+      control: "select",
+      options: ["none", "pulse", "glow"],
+      description: "アニメーション効果",
     },
     as: {
-      control: 'select',
-      options: ['span', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div'],
-      description: 'レンダリングするHTML要素',
+      control: "select",
+      options: ["span", "p", "h1", "h2", "h3", "h4", "h5", "h6", "div"],
+      description: "レンダリングするHTML要素",
     },
   },
 };
@@ -60,7 +74,7 @@ type Story = StoryObj<typeof GlowText>;
  */
 export const Default: Story = {
   args: {
-    children: 'SYSTEM ONLINE',
+    children: "SYSTEM ONLINE",
   },
 };
 
@@ -172,4 +186,3 @@ export const Combinations: Story = {
     </div>
   ),
 };
-

@@ -1,13 +1,13 @@
 /**
  * SF UI Library Fonts Loader for Next.js
- * 
+ *
  * Next.jsのnext/font/googleを使用した最適化されたフォント読み込み。
- * 
+ *
  * 使用方法:
  * 1. プロジェクトのルートレイアウト（例: app/layout.tsx）に追加:
- * 
+ *
  *    import { SfUiFontsNext } from "@/styles/fonts-next";
- * 
+ *
  *    export default function RootLayout({ children }) {
  *      return (
  *        <html>
@@ -17,11 +17,11 @@
  *        </html>
  *      );
  *    }
- * 
+ *
  * 2. または、個別のフォントを使用する場合:
- * 
+ *
  *    import { lcarsFont, cliFont, sfFont } from "@/styles/fonts-next";
- * 
+ *
  *    export default function RootLayout({ children }) {
  *      return (
  *        <html>
@@ -72,6 +72,3 @@ export const sfFont = Orbitron({
 export const SfUiFontsNext = {
   className: `${lcarsFont.variable} ${cliFont.variable} ${sfFont.variable}`,
 };
-
-
-

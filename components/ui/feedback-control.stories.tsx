@@ -1,34 +1,34 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { FeedbackControl } from '@/registry/sf-ui/feedback-control/feedback-control';
-import { DataDisplay } from '@/registry/sf-ui/data-display/data-display';
+import type { Meta, StoryObj } from "@storybook/react";
+import { FeedbackControl } from "@/registry/sf-ui/feedback-control/feedback-control";
+import { DataDisplay } from "@/registry/sf-ui/data-display/data-display";
 
 /**
  * FeedbackControlコンポーネントのStory定義
  */
 const meta: Meta<typeof FeedbackControl> = {
-  title: 'Molecules/FeedbackControl',
+  title: "Molecules/FeedbackControl",
   component: FeedbackControl,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     direction: {
-      control: 'select',
-      options: ['horizontal', 'vertical'],
-      description: '入力と出力の配置方向',
+      control: "select",
+      options: ["horizontal", "vertical"],
+      description: "入力と出力の配置方向",
     },
     alignment: {
-      control: 'select',
-      options: ['start', 'center', 'end'],
-      description: '配置の整列',
+      control: "select",
+      options: ["start", "center", "end"],
+      description: "配置の整列",
     },
   },
 };
@@ -51,7 +51,7 @@ export const Default: Story = {
       />
     ),
     output: <DataDisplay value={50} label="Power" unit="%" />,
-    label: 'Warp Core',
+    label: "Warp Core",
   },
 };
 
@@ -60,7 +60,7 @@ export const Default: Story = {
  */
 export const Horizontal: Story = {
   args: {
-    direction: 'horizontal',
+    direction: "horizontal",
     input: (
       <input
         type="range"
@@ -71,7 +71,7 @@ export const Horizontal: Story = {
       />
     ),
     output: <DataDisplay value={75} label="Shield" unit="%" />,
-    label: 'Shield Generator',
+    label: "Shield Generator",
   },
 };
 
@@ -80,7 +80,7 @@ export const Horizontal: Story = {
  */
 export const Vertical: Story = {
   args: {
-    direction: 'vertical',
+    direction: "vertical",
     input: (
       <input
         type="range"
@@ -88,11 +88,11 @@ export const Vertical: Story = {
         max="100"
         defaultValue="25"
         className="w-32 h-2 bg-lcars-dark border border-lcars-blue rounded-lg appearance-none cursor-pointer"
-        style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+        style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
       />
     ),
     output: <DataDisplay value={25} label="Temperature" unit="°C" />,
-    label: 'Cooling System',
+    label: "Cooling System",
   },
 };
 
@@ -107,8 +107,8 @@ export const KnobControl: Story = {
       </div>
     ),
     output: <DataDisplay value={45} label="Frequency" unit="MHz" />,
-    label: 'Communication Array',
-    description: 'Adjust frequency for optimal signal',
+    label: "Communication Array",
+    description: "Adjust frequency for optimal signal",
   },
 };
 
@@ -209,4 +209,3 @@ export const AlignmentVariants: Story = {
     </div>
   ),
 };
-

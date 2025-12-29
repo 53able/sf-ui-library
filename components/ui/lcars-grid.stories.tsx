@@ -1,34 +1,34 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { LCARSGrid } from '@/registry/sf-ui/lcars-grid/lcars-grid';
-import { LCARSPanel } from '@/registry/sf-ui/lcars-panel/lcars-panel';
+import type { Meta, StoryObj } from "@storybook/react";
+import { LCARSGrid } from "@/registry/sf-ui/lcars-grid/lcars-grid";
+import { LCARSPanel } from "@/registry/sf-ui/lcars-panel/lcars-panel";
 
 /**
  * LCARSGridコンポーネントのStory定義
  */
 const meta: Meta<typeof LCARSGrid> = {
-  title: 'Molecules/LCARSGrid',
+  title: "Molecules/LCARSGrid",
   component: LCARSGrid,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     columns: {
-      control: 'select',
+      control: "select",
       options: [1, 2, 3, 4, 5, 6],
-      description: 'グリッドの列数',
+      description: "グリッドの列数",
     },
     gap: {
-      control: 'select',
-      options: ['none', 'sm', 'default', 'lg', 'xl'],
-      description: 'グリッドアイテム間の間隔',
+      control: "select",
+      options: ["none", "sm", "default", "lg", "xl"],
+      description: "グリッドアイテム間の間隔",
     },
   },
 };
@@ -67,10 +67,18 @@ export const TwoColumns: Story = {
 export const FourColumns: Story = {
   render: () => (
     <LCARSGrid columns={4}>
-      <LCARSPanel variant="default" title="Core">100%</LCARSPanel>
-      <LCARSPanel variant="orange" title="Shields">85%</LCARSPanel>
-      <LCARSPanel variant="red" title="Weapons">92%</LCARSPanel>
-      <LCARSPanel variant="yellow" title="Sensors">78%</LCARSPanel>
+      <LCARSPanel variant="default" title="Core">
+        100%
+      </LCARSPanel>
+      <LCARSPanel variant="orange" title="Shields">
+        85%
+      </LCARSPanel>
+      <LCARSPanel variant="red" title="Weapons">
+        92%
+      </LCARSPanel>
+      <LCARSPanel variant="yellow" title="Sensors">
+        78%
+      </LCARSPanel>
     </LCARSGrid>
   ),
 };
@@ -166,4 +174,3 @@ export const MultipleRows: Story = {
     </LCARSGrid>
   ),
 };
-

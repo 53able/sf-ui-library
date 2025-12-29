@@ -1,37 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { LCARSDiagram } from '@/registry/sf-ui/lcars-diagram/lcars-diagram';
+import type { Meta, StoryObj } from "@storybook/react";
+import { LCARSDiagram } from "@/registry/sf-ui/lcars-diagram/lcars-diagram";
 
 /**
  * LCARSDiagramコンポーネントのStory定義
  */
 const meta: Meta<typeof LCARSDiagram> = {
-  title: 'Molecules/LCARSDiagram',
+  title: "Molecules/LCARSDiagram",
   component: LCARSDiagram,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'orange', 'red', 'yellow'],
-      description: 'グラフのカラーバリアント',
+      control: "select",
+      options: ["default", "orange", "red", "yellow"],
+      description: "グラフのカラーバリアント",
     },
     type: {
-      control: 'select',
-      options: ['bar', 'line', 'area'],
-      description: 'グラフのタイプ',
+      control: "select",
+      options: ["bar", "line", "area"],
+      description: "グラフのタイプ",
     },
     title: {
-      control: 'text',
-      description: 'グラフのタイトル',
+      control: "text",
+      description: "グラフのタイトル",
     },
   },
 };
@@ -44,10 +44,10 @@ type Story = StoryObj<typeof LCARSDiagram>;
  */
 export const Default: Story = {
   args: {
-    title: 'Power Levels',
+    title: "Power Levels",
     data: [75, 90, 60, 85],
-    labels: ['Core', 'Shields', 'Weapons', 'Sensors'],
-    type: 'bar',
+    labels: ["Core", "Shields", "Weapons", "Sensors"],
+    type: "bar",
   },
 };
 
@@ -61,28 +61,28 @@ export const Variants: Story = {
         variant="default"
         title="Blue System"
         data={[80, 70, 90]}
-        labels={['A', 'B', 'C']}
+        labels={["A", "B", "C"]}
         type="bar"
       />
       <LCARSDiagram
         variant="orange"
         title="Orange System"
         data={[80, 70, 90]}
-        labels={['A', 'B', 'C']}
+        labels={["A", "B", "C"]}
         type="bar"
       />
       <LCARSDiagram
         variant="red"
         title="Red System"
         data={[80, 70, 90]}
-        labels={['A', 'B', 'C']}
+        labels={["A", "B", "C"]}
         type="bar"
       />
       <LCARSDiagram
         variant="yellow"
         title="Yellow System"
         data={[80, 70, 90]}
-        labels={['A', 'B', 'C']}
+        labels={["A", "B", "C"]}
         type="bar"
       />
     </div>
@@ -98,19 +98,19 @@ export const GraphTypes: Story = {
       <LCARSDiagram
         title="Bar Chart"
         data={[75, 90, 60, 85, 70]}
-        labels={['Q1', 'Q2', 'Q3', 'Q4', 'Q5']}
+        labels={["Q1", "Q2", "Q3", "Q4", "Q5"]}
         type="bar"
       />
       <LCARSDiagram
         title="Line Chart"
         data={[75, 90, 60, 85, 70]}
-        labels={['Q1', 'Q2', 'Q3', 'Q4', 'Q5']}
+        labels={["Q1", "Q2", "Q3", "Q4", "Q5"]}
         type="line"
       />
       <LCARSDiagram
         title="Area Chart"
         data={[75, 90, 60, 85, 70]}
-        labels={['Q1', 'Q2', 'Q3', 'Q4', 'Q5']}
+        labels={["Q1", "Q2", "Q3", "Q4", "Q5"]}
         type="area"
       />
     </div>
@@ -122,23 +122,10 @@ export const GraphTypes: Story = {
  */
 export const LargeDataset: Story = {
   args: {
-    title: 'Monthly Performance',
+    title: "Monthly Performance",
     data: [65, 72, 80, 75, 85, 90, 88, 92, 87, 95, 90, 88],
-    labels: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ],
-    type: 'bar',
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    type: "bar",
   },
 };
 
@@ -147,7 +134,7 @@ export const LargeDataset: Story = {
  */
 export const CustomContent: Story = {
   args: {
-    title: 'Custom Diagram',
+    title: "Custom Diagram",
     children: (
       <div className="space-y-2">
         <div className="text-lcars-blue">Custom content can be placed here</div>
@@ -162,21 +149,20 @@ export const CustomContent: Story = {
  */
 export const RealTimeData: Story = {
   args: {
-    title: 'Real-time Sensor Data',
+    title: "Real-time Sensor Data",
     data: [45, 67, 89, 34, 56, 78, 90, 23, 45, 67],
     labels: [
-      'Sensor 1',
-      'Sensor 2',
-      'Sensor 3',
-      'Sensor 4',
-      'Sensor 5',
-      'Sensor 6',
-      'Sensor 7',
-      'Sensor 8',
-      'Sensor 9',
-      'Sensor 10',
+      "Sensor 1",
+      "Sensor 2",
+      "Sensor 3",
+      "Sensor 4",
+      "Sensor 5",
+      "Sensor 6",
+      "Sensor 7",
+      "Sensor 8",
+      "Sensor 9",
+      "Sensor 10",
     ],
-    type: 'bar',
+    type: "bar",
   },
 };
-

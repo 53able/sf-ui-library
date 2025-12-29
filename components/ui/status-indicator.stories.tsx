@@ -1,52 +1,52 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { StatusIndicator } from '@/registry/sf-ui/status-indicator/status-indicator';
+import type { Meta, StoryObj } from "@storybook/react";
+import { StatusIndicator } from "@/registry/sf-ui/status-indicator/status-indicator";
 
 /**
  * StatusIndicatorコンポーネントのStory定義
  */
 const meta: Meta<typeof StatusIndicator> = {
-  title: 'Atoms/StatusIndicator',
+  title: "Atoms/StatusIndicator",
   component: StatusIndicator,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     status: {
-      control: 'select',
-      options: ['normal', 'warning', 'danger', 'success'],
-      description: 'ステータスの種類',
+      control: "select",
+      options: ["normal", "warning", "danger", "success"],
+      description: "ステータスの種類",
     },
     shape: {
-      control: 'select',
-      options: ['circle', 'square', 'rounded'],
-      description: 'インジケーターの形状',
+      control: "select",
+      options: ["circle", "square", "rounded"],
+      description: "インジケーターの形状",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'default', 'lg', 'xl'],
-      description: 'インジケーターのサイズ',
+      control: "select",
+      options: ["sm", "default", "lg", "xl"],
+      description: "インジケーターのサイズ",
     },
     pulse: {
-      control: 'select',
-      options: ['none', 'subtle', 'normal', 'intense'],
-      description: 'パルスアニメーション',
+      control: "select",
+      options: ["none", "subtle", "normal", "intense"],
+      description: "パルスアニメーション",
     },
     label: {
-      control: 'text',
-      description: 'ラベルテキスト',
+      control: "text",
+      description: "ラベルテキスト",
     },
     labelPosition: {
-      control: 'select',
-      options: ['left', 'right', 'top', 'bottom'],
-      description: 'ラベルの位置',
+      control: "select",
+      options: ["left", "right", "top", "bottom"],
+      description: "ラベルの位置",
     },
   },
 };
@@ -143,4 +143,3 @@ export const WithoutLabel: Story = {
     </div>
   ),
 };
-

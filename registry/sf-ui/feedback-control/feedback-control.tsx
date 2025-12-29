@@ -72,55 +72,30 @@ export interface FeedbackControlProps
  * ```
  */
 const FeedbackControl = React.forwardRef<HTMLDivElement, FeedbackControlProps>(
-  (
-    { className, direction, alignment, input, output, label, description, ...props },
-    ref
-  ) => {
+  ({ className, direction, alignment, input, output, label, description, ...props }, ref) => {
     return (
       <div
         ref={ref}
-        className={cn(
-          feedbackControlVariants({ direction, alignment }),
-          "font-lcars",
-          className
-        )}
+        className={cn(feedbackControlVariants({ direction, alignment }), "font-lcars", className)}
         {...props}
       >
         {/* ラベルと説明 */}
         {(label || description) && (
           <div className="flex flex-col gap-1 mb-2">
-            {label && (
-              <label className="text-hierarchy-secondary text-lcars-blue">
-                {label}
-              </label>
-            )}
+            {label && <label className="text-hierarchy-secondary text-lcars-blue">{label}</label>}
             {description && (
-              <p className="text-hierarchy-tertiary text-lcars-blue/70">
-                {description}
-              </p>
+              <p className="text-hierarchy-tertiary text-lcars-blue/70">{description}</p>
             )}
           </div>
         )}
 
         {/* 入力コントロール */}
-        <div
-          className={cn(
-            "flex-shrink-0",
-            direction === "horizontal" ? "w-auto" : "w-full"
-          )}
-        >
+        <div className={cn("flex-shrink-0", direction === "horizontal" ? "w-auto" : "w-full")}>
           {input}
         </div>
 
         {/* 出力表示 */}
-        <div
-          className={cn(
-            "flex-1",
-            direction === "horizontal" ? "ml-4" : "mt-4"
-          )}
-        >
-          {output}
-        </div>
+        <div className={cn("flex-1", direction === "horizontal" ? "ml-4" : "mt-4")}>{output}</div>
       </div>
     );
   }
@@ -128,4 +103,3 @@ const FeedbackControl = React.forwardRef<HTMLDivElement, FeedbackControlProps>(
 FeedbackControl.displayName = "FeedbackControl";
 
 export { FeedbackControl, feedbackControlVariants };
-

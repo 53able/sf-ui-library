@@ -43,12 +43,7 @@ export default function Home() {
           LCARS-inspired component library built with shadcn/ui
         </GlowText>
         <div className="flex justify-center">
-          <GlowButton
-            variant="default"
-            size="lg"
-            asChild
-            className="text-lg px-8 py-6"
-          >
+          <GlowButton variant="default" size="lg" asChild className="text-lg px-8 py-6">
             <a href={STORYBOOK_URL} target="_blank" rel="noopener noreferrer">
               Open Storybook
             </a>

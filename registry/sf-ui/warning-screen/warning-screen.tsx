@@ -91,12 +91,7 @@ const WarningScreen = React.forwardRef<HTMLDivElement, WarningScreenProps>(
           {mainText}
         </h2>
         {subText && (
-          <p
-            className={cn(
-              "text-sm opacity-90 text-center max-w-md",
-              "text-shadow-subtle"
-            )}
-          >
+          <p className={cn("text-sm opacity-90 text-center max-w-md", "text-shadow-subtle")}>
             {subText}
           </p>
         )}
@@ -107,4 +102,3 @@ const WarningScreen = React.forwardRef<HTMLDivElement, WarningScreenProps>(
 WarningScreen.displayName = "WarningScreen";
 
 export { WarningScreen, warningScreenVariants };
-

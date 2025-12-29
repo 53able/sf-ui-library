@@ -1,45 +1,45 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { DisplayPanel } from '@/registry/sf-ui/display-panel/display-panel';
+import type { Meta, StoryObj } from "@storybook/react";
+import { DisplayPanel } from "@/registry/sf-ui/display-panel/display-panel";
 
 /**
  * DisplayPanelコンポーネントのStory定義
  */
 const meta: Meta<typeof DisplayPanel> = {
-  title: 'Molecules/DisplayPanel',
+  title: "Molecules/DisplayPanel",
   component: DisplayPanel,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     transparency: {
-      control: 'select',
-      options: ['none', 'subtle', 'medium', 'high', 'full'],
-      description: '透過度レベル',
+      control: "select",
+      options: ["none", "subtle", "medium", "high", "full"],
+      description: "透過度レベル",
     },
     border: {
-      control: 'select',
-      options: ['none', 'subtle', 'normal', 'intense'],
-      description: 'ボーダーの強調レベル',
+      control: "select",
+      options: ["none", "subtle", "normal", "intense"],
+      description: "ボーダーの強調レベル",
     },
     animated: {
-      control: 'boolean',
-      description: 'モーショングラフィックス効果',
+      control: "boolean",
+      description: "モーショングラフィックス効果",
     },
     title: {
-      control: 'text',
-      description: 'パネルのタイトル',
+      control: "text",
+      description: "パネルのタイトル",
     },
     description: {
-      control: 'text',
-      description: 'パネルの説明文',
+      control: "text",
+      description: "パネルの説明文",
     },
   },
 };
@@ -52,8 +52,8 @@ type Story = StoryObj<typeof DisplayPanel>;
  */
 export const Default: Story = {
   args: {
-    title: 'Sensor Data',
-    children: 'Reading: 42.7',
+    title: "Sensor Data",
+    children: "Reading: 42.7",
   },
 };
 
@@ -109,8 +109,8 @@ export const BorderVariants: Story = {
  */
 export const Animated: Story = {
   args: {
-    title: 'Animated Panel',
-    children: 'Hover to see animation',
+    title: "Animated Panel",
+    children: "Hover to see animation",
     animated: true,
   },
 };
@@ -120,9 +120,9 @@ export const Animated: Story = {
  */
 export const WithDescription: Story = {
   args: {
-    title: 'Warp Core',
-    description: 'Main propulsion system status',
-    children: 'Status: Nominal',
+    title: "Warp Core",
+    description: "Main propulsion system status",
+    children: "Status: Nominal",
   },
 };
 
@@ -152,4 +152,3 @@ export const Combinations: Story = {
     </div>
   ),
 };
-

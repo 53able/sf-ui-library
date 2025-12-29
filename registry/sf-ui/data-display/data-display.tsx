@@ -9,42 +9,39 @@ import { cn } from "@/lib/utils";
  * Data Displayのバリアント定義
  * LCARS風の数値表示コンポーネント
  */
-const dataDisplayVariants = cva(
-  "font-lcars tracking-wide transition-all duration-300",
-  {
-    variants: {
-      variant: {
-        default: "text-lcars-blue",
-        orange: "text-lcars-orange",
-        red: "text-lcars-red",
-        yellow: "text-lcars-yellow",
-        purple: "text-lcars-purple",
-        gray: "text-lcars-gray",
-        green: "text-lcars-green",
-      },
-      size: {
-        sm: "text-sm",
-        default: "text-base",
-        lg: "text-lg",
-        xl: "text-xl",
-        "2xl": "text-2xl",
-        "3xl": "text-3xl",
-        "4xl": "text-4xl",
-      },
-      glow: {
-        none: "",
-        subtle: "text-shadow-subtle",
-        normal: "text-shadow-normal",
-        intense: "text-shadow-intense",
-      },
+const dataDisplayVariants = cva("font-lcars tracking-wide transition-all duration-300", {
+  variants: {
+    variant: {
+      default: "text-lcars-blue",
+      orange: "text-lcars-orange",
+      red: "text-lcars-red",
+      yellow: "text-lcars-yellow",
+      purple: "text-lcars-purple",
+      gray: "text-lcars-gray",
+      green: "text-lcars-green",
     },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-      glow: "normal",
+    size: {
+      sm: "text-sm",
+      default: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
+      "3xl": "text-3xl",
+      "4xl": "text-4xl",
     },
-  }
-);
+    glow: {
+      none: "",
+      subtle: "text-shadow-subtle",
+      normal: "text-shadow-normal",
+      intense: "text-shadow-intense",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "default",
+    glow: "normal",
+  },
+});
 
 /**
  * Data DisplayコンポーネントのProps
@@ -83,10 +80,7 @@ export interface DataDisplayProps
  * ```
  */
 const DataDisplay = React.forwardRef<HTMLDivElement, DataDisplayProps>(
-  (
-    { className, variant, size, glow, value, label, unit, formatValue, ...props },
-    ref
-  ) => {
+  ({ className, variant, size, glow, value, label, unit, formatValue, ...props }, ref) => {
     const formattedValue = React.useMemo(() => {
       if (formatValue) {
         return formatValue(value);
@@ -149,4 +143,3 @@ const DataDisplay = React.forwardRef<HTMLDivElement, DataDisplayProps>(
 DataDisplay.displayName = "DataDisplay";
 
 export { DataDisplay, dataDisplayVariants };
-

@@ -1,38 +1,38 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { LCARSPanel } from '@/registry/sf-ui/lcars-panel/lcars-panel';
-import { DataDisplay } from '@/registry/sf-ui/data-display/data-display';
-import { StatusIndicator } from '@/registry/sf-ui/status-indicator/status-indicator';
-import { ConnectedPanels } from '@/registry/sf-ui/connected-panels/connected-panels';
-import { DisplayPanel } from '@/registry/sf-ui/display-panel/display-panel';
-import { ClockDisplay } from '@/registry/sf-ui/clock-display/clock-display';
-import { LCARSGrid } from '@/registry/sf-ui/lcars-grid/lcars-grid';
-import { GlowButton } from '@/registry/sf-ui/glow-button/glow-button';
-import { GlowText } from '@/registry/sf-ui/glow-text/glow-text';
-import { CLIInterface } from '@/registry/sf-ui/cli-interface/cli-interface';
-import { WarningScreen } from '@/registry/sf-ui/warning-screen/warning-screen';
-import { TransparentLayer } from '@/registry/sf-ui/transparent-layer/transparent-layer';
-import { FeedbackControl } from '@/registry/sf-ui/feedback-control/feedback-control';
-import { SpatialFileManager } from '@/registry/sf-ui/spatial-file-manager/spatial-file-manager';
-import { LCARSDiagram } from '@/registry/sf-ui/lcars-diagram/lcars-diagram';
-import { Button } from '@/registry/sf-ui/button/button';
+import type { Meta, StoryObj } from "@storybook/react";
+import { LCARSPanel } from "@/registry/sf-ui/lcars-panel/lcars-panel";
+import { DataDisplay } from "@/registry/sf-ui/data-display/data-display";
+import { StatusIndicator } from "@/registry/sf-ui/status-indicator/status-indicator";
+import { ConnectedPanels } from "@/registry/sf-ui/connected-panels/connected-panels";
+import { DisplayPanel } from "@/registry/sf-ui/display-panel/display-panel";
+import { ClockDisplay } from "@/registry/sf-ui/clock-display/clock-display";
+import { LCARSGrid } from "@/registry/sf-ui/lcars-grid/lcars-grid";
+import { GlowButton } from "@/registry/sf-ui/glow-button/glow-button";
+import { GlowText } from "@/registry/sf-ui/glow-text/glow-text";
+import { CLIInterface } from "@/registry/sf-ui/cli-interface/cli-interface";
+import { WarningScreen } from "@/registry/sf-ui/warning-screen/warning-screen";
+import { TransparentLayer } from "@/registry/sf-ui/transparent-layer/transparent-layer";
+import { FeedbackControl } from "@/registry/sf-ui/feedback-control/feedback-control";
+import { SpatialFileManager } from "@/registry/sf-ui/spatial-file-manager/spatial-file-manager";
+import { LCARSDiagram } from "@/registry/sf-ui/lcars-diagram/lcars-diagram";
+import { Button } from "@/registry/sf-ui/button/button";
 
 /**
  * コンセプトイメージのPage要素
  * SF映画のインタフェースデザインをインスパイアしたページ全体のストーリー
  */
 const meta: Meta = {
-  title: 'Pages/Concept',
+  title: "Pages/Concept",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'space', value: '#0a0a1a' },
+        { name: "dark", value: "#000000" },
+        { name: "space", value: "#0a0a1a" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -70,7 +70,7 @@ export const CockpitDashboard: Story = {
                   <DataDisplay value={100} label="Warp Core" unit="%" size="2xl" />
                 </div>
               ),
-              panelProps: { variant: 'default', title: 'Core Systems' },
+              panelProps: { variant: "default", title: "Core Systems" },
             },
             {
               content: (
@@ -79,7 +79,7 @@ export const CockpitDashboard: Story = {
                   <DataDisplay value={87} label="Shields" unit="%" size="2xl" />
                 </div>
               ),
-              panelProps: { variant: 'orange', title: 'Defense' },
+              panelProps: { variant: "orange", title: "Defense" },
             },
             {
               content: (
@@ -88,7 +88,7 @@ export const CockpitDashboard: Story = {
                   <DataDisplay value={45} label="Weapons" unit="%" size="2xl" />
                 </div>
               ),
-              panelProps: { variant: 'yellow', title: 'Weapons' },
+              panelProps: { variant: "yellow", title: "Weapons" },
             },
           ]}
         />
@@ -225,7 +225,7 @@ export const SystemMonitoring: Story = {
                   <StatusIndicator status="normal" label="Stable" />
                 </div>
               ),
-              panelProps: { variant: 'default', title: 'Network Status' },
+              panelProps: { variant: "default", title: "Network Status" },
             },
             {
               content: (
@@ -234,7 +234,7 @@ export const SystemMonitoring: Story = {
                   <StatusIndicator status="normal" label="Normal" />
                 </div>
               ),
-              panelProps: { variant: 'orange', title: 'Connections' },
+              panelProps: { variant: "orange", title: "Connections" },
             },
             {
               content: (
@@ -243,7 +243,7 @@ export const SystemMonitoring: Story = {
                   <StatusIndicator status="normal" label="Optimal" />
                 </div>
               ),
-              panelProps: { variant: 'default', title: 'Performance' },
+              panelProps: { variant: "default", title: "Performance" },
             },
           ]}
         />
@@ -295,11 +295,25 @@ export const DataAnalytics: Story = {
           </LCARSPanel>
 
           <LCARSPanel variant="orange" title="Revenue">
-            <DataDisplay value={2847590} label="Today" unit="$" size="3xl" variant="orange" glow="intense" />
+            <DataDisplay
+              value={2847590}
+              label="Today"
+              unit="$"
+              size="3xl"
+              variant="orange"
+              glow="intense"
+            />
           </LCARSPanel>
 
           <LCARSPanel variant="yellow" title="Growth">
-            <DataDisplay value={+12.5} label="Rate" unit="%" size="3xl" variant="yellow" glow="intense" />
+            <DataDisplay
+              value={+12.5}
+              label="Rate"
+              unit="%"
+              size="3xl"
+              variant="yellow"
+              glow="intense"
+            />
           </LCARSPanel>
 
           <LCARSPanel variant="default" title="Engagement">
@@ -344,7 +358,12 @@ export const DataAnalytics: Story = {
                 <span className="text-sm text-lcars-blue/80">Uptime</span>
                 <DataDisplay value={99.9} unit="%" size="lg" />
               </div>
-              <StatusIndicator status="normal" size="lg" pulse="normal" label="All Systems Operational" />
+              <StatusIndicator
+                status="normal"
+                size="lg"
+                pulse="normal"
+                label="All Systems Operational"
+              />
             </div>
           </DisplayPanel>
         </div>
@@ -362,7 +381,7 @@ export const DataAnalytics: Story = {
                   <StatusIndicator status="normal" label="Active" />
                 </div>
               ),
-              panelProps: { variant: 'default', title: 'Current' },
+              panelProps: { variant: "default", title: "Current" },
             },
             {
               content: (
@@ -371,7 +390,7 @@ export const DataAnalytics: Story = {
                   <StatusIndicator status="normal" label="Today" />
                 </div>
               ),
-              panelProps: { variant: 'orange', title: 'Today' },
+              panelProps: { variant: "orange", title: "Today" },
             },
             {
               content: (
@@ -380,7 +399,7 @@ export const DataAnalytics: Story = {
                   <StatusIndicator status="normal" label="This Week" />
                 </div>
               ),
-              panelProps: { variant: 'yellow', title: 'This Week' },
+              panelProps: { variant: "yellow", title: "This Week" },
             },
           ]}
         />
@@ -423,7 +442,7 @@ export const AllComponentsShowcase: Story = {
           <GlowText as="h2" color="blue" intensity="normal" size="2xl" weight="bold">
             Control Interface
           </GlowText>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <LCARSPanel variant="default" title="Action Buttons">
               <div className="space-y-4">
@@ -470,7 +489,9 @@ export const AllComponentsShowcase: Story = {
                       className="w-32 h-2 bg-lcars-dark rounded-lg appearance-none cursor-pointer accent-lcars-orange"
                     />
                   }
-                  output={<DataDisplay value={75} label="Power" unit="%" size="xl" variant="orange" />}
+                  output={
+                    <DataDisplay value={75} label="Power" unit="%" size="xl" variant="orange" />
+                  }
                 />
                 <FeedbackControl
                   direction="horizontal"
@@ -559,7 +580,7 @@ export const AllComponentsShowcase: Story = {
                     <StatusIndicator status="normal" size="lg" pulse="normal" label="Online" />
                   </div>
                 ),
-                panelProps: { variant: 'default', title: 'Core Systems' },
+                panelProps: { variant: "default", title: "Core Systems" },
               },
               {
                 content: (
@@ -568,7 +589,7 @@ export const AllComponentsShowcase: Story = {
                     <StatusIndicator status="normal" size="lg" pulse="normal" label="Active" />
                   </div>
                 ),
-                panelProps: { variant: 'orange', title: 'Defense' },
+                panelProps: { variant: "orange", title: "Defense" },
               },
               {
                 content: (
@@ -577,7 +598,7 @@ export const AllComponentsShowcase: Story = {
                     <StatusIndicator status="warning" size="lg" pulse="normal" label="Standby" />
                   </div>
                 ),
-                panelProps: { variant: 'yellow', title: 'Weapons' },
+                panelProps: { variant: "yellow", title: "Weapons" },
               },
             ]}
           />
@@ -666,7 +687,12 @@ export const AllComponentsShowcase: Story = {
                   FOREGROUND INFORMATION
                 </GlowText>
                 <DataDisplay value={2847} label="Critical Data" size="2xl" glow="intense" />
-                <StatusIndicator status="normal" size="lg" pulse="normal" label="Active Monitoring" />
+                <StatusIndicator
+                  status="normal"
+                  size="lg"
+                  pulse="normal"
+                  label="Active Monitoring"
+                />
               </div>
             }
           />
@@ -682,11 +708,41 @@ export const AllComponentsShowcase: Story = {
             <div className="h-[500px]">
               <SpatialFileManager
                 files={[
-                  { id: '1', name: 'system.log', type: 'Log', size: 100, position: { x: -20, y: -15, z: -30 } },
-                  { id: '2', name: 'config.json', type: 'Config', size: 200, position: { x: 15, y: -20, z: -20 } },
-                  { id: '3', name: 'data.db', type: 'Database', size: 500, position: { x: 10, y: -10, z: 80 } },
-                  { id: '4', name: 'backup.tar', type: 'Archive', size: 300, position: { x: -15, y: 15, z: -30 } },
-                  { id: '5', name: 'readme.md', type: 'Document', size: 50, position: { x: 20, y: 20, z: 50 } },
+                  {
+                    id: "1",
+                    name: "system.log",
+                    type: "Log",
+                    size: 100,
+                    position: { x: -20, y: -15, z: -30 },
+                  },
+                  {
+                    id: "2",
+                    name: "config.json",
+                    type: "Config",
+                    size: 200,
+                    position: { x: 15, y: -20, z: -20 },
+                  },
+                  {
+                    id: "3",
+                    name: "data.db",
+                    type: "Database",
+                    size: 500,
+                    position: { x: 10, y: -10, z: 80 },
+                  },
+                  {
+                    id: "4",
+                    name: "backup.tar",
+                    type: "Archive",
+                    size: 300,
+                    position: { x: -15, y: 15, z: -30 },
+                  },
+                  {
+                    id: "5",
+                    name: "readme.md",
+                    type: "Document",
+                    size: 50,
+                    position: { x: 20, y: 20, z: 50 },
+                  },
                 ]}
                 mode="mixed"
                 activeFileId="3"
@@ -748,4 +804,3 @@ export const AllComponentsShowcase: Story = {
     </div>
   ),
 };
-

@@ -1,34 +1,34 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '@/registry/sf-ui/button/button';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "@/registry/sf-ui/button/button";
 
 /**
  * ButtonコンポーネントのStory定義
  */
 const meta: Meta<typeof Button> = {
-  title: 'Atoms/Button',
+  title: "Atoms/Button",
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
-      description: 'ボタンのバリアント',
+      control: "select",
+      options: ["default", "destructive", "outline", "secondary", "ghost", "link"],
+      description: "ボタンのバリアント",
     },
     size: {
-      control: 'select',
-      options: ['default', 'sm', 'lg', 'icon'],
-      description: 'ボタンのサイズ',
+      control: "select",
+      options: ["default", "sm", "lg", "icon"],
+      description: "ボタンのサイズ",
     },
     asChild: {
-      control: 'boolean',
-      description: 'Radix UIのSlotコンポーネントとして使用するか',
+      control: "boolean",
+      description: "Radix UIのSlotコンポーネントとして使用するか",
     },
     disabled: {
-      control: 'boolean',
-      description: '無効化状態',
+      control: "boolean",
+      description: "無効化状態",
     },
   },
 };
@@ -41,7 +41,7 @@ type Story = StoryObj<typeof Button>;
  */
 export const Default: Story = {
   args: {
-    children: 'Button',
+    children: "Button",
   },
 };
 
@@ -50,8 +50,8 @@ export const Default: Story = {
  */
 export const Destructive: Story = {
   args: {
-    variant: 'destructive',
-    children: 'Delete',
+    variant: "destructive",
+    children: "Delete",
   },
 };
 
@@ -60,8 +60,8 @@ export const Destructive: Story = {
  */
 export const Outline: Story = {
   args: {
-    variant: 'outline',
-    children: 'Outline',
+    variant: "outline",
+    children: "Outline",
   },
 };
 
@@ -70,8 +70,8 @@ export const Outline: Story = {
  */
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
-    children: 'Secondary',
+    variant: "secondary",
+    children: "Secondary",
   },
 };
 
@@ -80,8 +80,8 @@ export const Secondary: Story = {
  */
 export const Ghost: Story = {
   args: {
-    variant: 'ghost',
-    children: 'Ghost',
+    variant: "ghost",
+    children: "Ghost",
   },
 };
 
@@ -90,8 +90,8 @@ export const Ghost: Story = {
  */
 export const Link: Story = {
   args: {
-    variant: 'link',
-    children: 'Link',
+    variant: "link",
+    children: "Link",
   },
 };
 
@@ -125,4 +125,3 @@ export const Disabled: Story = {
     </div>
   ),
 };
-

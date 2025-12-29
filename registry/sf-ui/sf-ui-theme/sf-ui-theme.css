@@ -1,13 +1,13 @@
 /**
  * SF UI Library Theme
- * 
+ *
  * このファイルをインポートするだけで、LCARSカラーとフォント設定が自動的に適用されます。
  * Tailwind CSS 4.xの@themeディレクティブを使用しています。
- * 
+ *
  * 使用方法:
  * 1. このファイルをプロジェクトのグローバルCSSファイル（例: app/globals.css）にインポート
  *    @import "sf-ui-library/styles/sf-ui-theme.css";
- * 
+ *
  * 2. または、Registryからインストールした場合は:
  *    @import "@/styles/sf-ui-theme.css";
  */
@@ -16,20 +16,20 @@
 
 @theme {
   /* LCARS風カラーパレット */
-  --color-lcars-blue: #4A9EFF;
-  --color-lcars-orange: #FF9E4A;
-  --color-lcars-red: #FF4A4A;
-  --color-lcars-yellow: #FFE04A;
-  --color-lcars-purple: #9E4AFF;
+  --color-lcars-blue: #4a9eff;
+  --color-lcars-orange: #ff9e4a;
+  --color-lcars-red: #ff4a4a;
+  --color-lcars-yellow: #ffe04a;
+  --color-lcars-purple: #9e4aff;
   --color-lcars-gray: #808080;
-  --color-lcars-green: #4AFF9E;
+  --color-lcars-green: #4aff9e;
   --color-lcars-dark: #000000;
-  --color-lcars-blue-glow: #6BB5FF;
-  --color-lcars-red-glow: #FF6B6B;
-  --color-lcars-yellow-glow: #FFF06B;
-  --color-lcars-purple-glow: #B56BFF;
-  --color-lcars-gray-glow: #A0A0A0;
-  --color-lcars-green-glow: #6BFFB5;
+  --color-lcars-blue-glow: #6bb5ff;
+  --color-lcars-red-glow: #ff6b6b;
+  --color-lcars-yellow-glow: #fff06b;
+  --color-lcars-purple-glow: #b56bff;
+  --color-lcars-gray-glow: #a0a0a0;
+  --color-lcars-green-glow: #6bffb5;
 
   /* カスタムフォントファミリー */
   --font-family-lcars: "Rajdhani", system-ui, -apple-system, sans-serif;
@@ -47,7 +47,8 @@
 }
 
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     filter: brightness(1);
   }
@@ -58,29 +59,46 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
-    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+    box-shadow:
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
   }
   50% {
     opacity: 0.7;
-    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    box-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
   }
 }
 
 @keyframes glow-intense {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
-    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor;
+    box-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor,
+      0 0 40px currentColor;
   }
   50% {
     opacity: 0.9;
-    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor, 0 0 80px currentColor;
+    box-shadow:
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 60px currentColor,
+      0 0 80px currentColor;
   }
 }
 
 @keyframes system-active {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -105,7 +123,8 @@
 }
 
 @keyframes background-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -127,6 +146,3 @@
     opacity: 0.8;
   }
 }
-
-
-

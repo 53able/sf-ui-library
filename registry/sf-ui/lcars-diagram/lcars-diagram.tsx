@@ -69,10 +69,7 @@ export interface LCARSDiagramProps
  * ```
  */
 const LCARSDiagram = React.forwardRef<HTMLDivElement, LCARSDiagramProps>(
-  (
-    { className, variant, title, data, labels, children, type = "bar", ...props },
-    ref
-  ) => {
+  ({ className, variant, title, data, labels, children, type = "bar", ...props }, ref) => {
     const renderChart = React.useCallback(() => {
       if (children) {
         return children;
@@ -94,12 +91,8 @@ const LCARSDiagram = React.forwardRef<HTMLDivElement, LCARSDiagramProps>(
               return (
                 <div key={index} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-lcars-blue uppercase tracking-wider">
-                      {label}
-                    </span>
-                    <span className="text-lcars-blue font-bold tabular-nums">
-                      {value}%
-                    </span>
+                    <span className="text-lcars-blue uppercase tracking-wider">{label}</span>
+                    <span className="text-lcars-blue font-bold tabular-nums">{value}%</span>
                   </div>
                   <div className="relative h-4 bg-lcars-dark rounded border border-lcars-blue/30 overflow-hidden">
                     <div
@@ -128,11 +121,7 @@ const LCARSDiagram = React.forwardRef<HTMLDivElement, LCARSDiagramProps>(
 
               return (
                 <div className="relative h-32">
-                  <svg
-                    viewBox="0 0 100 100"
-                    className="w-full h-full"
-                    preserveAspectRatio="none"
-                  >
+                  <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
                     {type === "area" && (
                       <polygon
                         points={`0,100 ${points.join(" ")} 100,100`}
@@ -156,13 +145,7 @@ const LCARSDiagram = React.forwardRef<HTMLDivElement, LCARSDiagramProps>(
                       className="drop-shadow-[0_0_5px_currentColor]"
                     />
                     <defs>
-                      <linearGradient
-                        id={`gradient-${variant}`}
-                        x1="0%"
-                        y1="0%"
-                        x2="0%"
-                        y2="100%"
-                      >
+                      <linearGradient id={`gradient-${variant}`} x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop
                           offset="0%"
                           stopColor={
@@ -206,4 +189,3 @@ const LCARSDiagram = React.forwardRef<HTMLDivElement, LCARSDiagramProps>(
 LCARSDiagram.displayName = "LCARSDiagram";
 
 export { LCARSDiagram, lcarsDiagramVariants };
-

@@ -1,51 +1,51 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { LCARSPanel } from '@/registry/sf-ui/lcars-panel/lcars-panel';
+import type { Meta, StoryObj } from "@storybook/react";
+import { LCARSPanel } from "@/registry/sf-ui/lcars-panel/lcars-panel";
 
 /**
  * LCARSPanelコンポーネントのStory定義
  */
 const meta: Meta<typeof LCARSPanel> = {
-  title: 'Molecules/LCARSPanel',
+  title: "Molecules/LCARSPanel",
   component: LCARSPanel,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'orange', 'red', 'yellow', 'purple', 'gray', 'green', 'filled'],
-      description: 'パネルのバリアント',
+      control: "select",
+      options: ["default", "orange", "red", "yellow", "purple", "gray", "green", "filled"],
+      description: "パネルのバリアント",
     },
     shape: {
-      control: 'select',
-      options: ['default', 'pill', 'lcars'],
-      description: 'パネルの形状',
+      control: "select",
+      options: ["default", "pill", "lcars"],
+      description: "パネルの形状",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'default', 'lg'],
-      description: 'パネルのサイズ',
+      control: "select",
+      options: ["sm", "default", "lg"],
+      description: "パネルのサイズ",
     },
     glow: {
-      control: 'select',
-      options: ['none', 'subtle', 'normal', 'intense'],
-      description: '発光効果の強さ',
+      control: "select",
+      options: ["none", "subtle", "normal", "intense"],
+      description: "発光効果の強さ",
     },
     title: {
-      control: 'text',
-      description: 'パネルのタイトル',
+      control: "text",
+      description: "パネルのタイトル",
     },
     description: {
-      control: 'text',
-      description: 'パネルの説明文',
+      control: "text",
+      description: "パネルの説明文",
     },
   },
 };
@@ -58,7 +58,7 @@ type Story = StoryObj<typeof LCARSPanel>;
  */
 export const Default: Story = {
   args: {
-    children: 'All systems operational',
+    children: "All systems operational",
   },
 };
 
@@ -67,8 +67,8 @@ export const Default: Story = {
  */
 export const WithTitle: Story = {
   args: {
-    title: 'System Status',
-    children: 'All systems operational',
+    title: "System Status",
+    children: "All systems operational",
   },
 };
 
@@ -77,9 +77,9 @@ export const WithTitle: Story = {
  */
 export const WithTitleAndDescription: Story = {
   args: {
-    title: 'Warp Core',
-    description: 'Main propulsion system',
-    children: 'Status: Nominal',
+    title: "Warp Core",
+    description: "Main propulsion system",
+    children: "Status: Nominal",
   },
 };
 
@@ -176,4 +176,3 @@ export const GlowVariants: Story = {
     </div>
   ),
 };
-

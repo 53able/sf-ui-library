@@ -1,38 +1,38 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { TransparentLayer } from '@/registry/sf-ui/transparent-layer/transparent-layer';
+import type { Meta, StoryObj } from "@storybook/react";
+import { TransparentLayer } from "@/registry/sf-ui/transparent-layer/transparent-layer";
 
 /**
  * TransparentLayerコンポーネントのStory定義
  */
 const meta: Meta<typeof TransparentLayer> = {
-  title: 'Molecules/TransparentLayer',
+  title: "Molecules/TransparentLayer",
   component: TransparentLayer,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'orange', 'red', 'yellow', 'purple', 'green'],
-      description: 'レイヤーのバリアント',
+      control: "select",
+      options: ["default", "orange", "red", "yellow", "purple", "green"],
+      description: "レイヤーのバリアント",
     },
     opacity: {
-      control: 'select',
-      options: ['subtle', 'normal', 'strong'],
-      description: '透明度の強さ',
+      control: "select",
+      options: ["subtle", "normal", "strong"],
+      description: "透明度の強さ",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'default', 'lg'],
-      description: 'レイヤーのサイズ',
+      control: "select",
+      options: ["sm", "default", "lg"],
+      description: "レイヤーのサイズ",
     },
   },
 };
@@ -57,7 +57,9 @@ export const WithBackground: Story = {
     backgroundContent: (
       <div className="p-8 text-lcars-blue/50">
         <div className="text-2xl mb-4">Background Context</div>
-        <div className="text-sm">This is contextual information that appears behind the main content.</div>
+        <div className="text-sm">
+          This is contextual information that appears behind the main content.
+        </div>
       </div>
     ),
     foregroundContent: (
@@ -179,4 +181,3 @@ export const InformationHierarchy: Story = {
     </div>
   ),
 };
-

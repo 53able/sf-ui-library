@@ -1,50 +1,50 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { CLIInterface } from '@/registry/sf-ui/cli-interface/cli-interface';
+import type { Meta, StoryObj } from "@storybook/react";
+import { CLIInterface } from "@/registry/sf-ui/cli-interface/cli-interface";
 
 /**
  * CLIInterfaceコンポーネントのStory定義
  */
 const meta: Meta<typeof CLIInterface> = {
-  title: 'Molecules/CLIInterface',
+  title: "Molecules/CLIInterface",
   component: CLIInterface,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#000000' },
-        { name: 'light', value: '#ffffff' },
+        { name: "dark", value: "#000000" },
+        { name: "light", value: "#ffffff" },
       ],
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'hacker', 'retro', 'warning', 'error'],
-      description: 'CLIのバリアント',
+      control: "select",
+      options: ["default", "hacker", "retro", "warning", "error"],
+      description: "CLIのバリアント",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'default', 'lg'],
-      description: 'CLIのサイズ',
+      control: "select",
+      options: ["sm", "default", "lg"],
+      description: "CLIのサイズ",
     },
     glow: {
-      control: 'select',
-      options: ['none', 'subtle', 'normal', 'intense'],
-      description: '発光効果の強さ',
+      control: "select",
+      options: ["none", "subtle", "normal", "intense"],
+      description: "発光効果の強さ",
     },
     prompt: {
-      control: 'text',
-      description: 'プロンプト記号',
+      control: "text",
+      description: "プロンプト記号",
     },
     showCursor: {
-      control: 'boolean',
-      description: 'カーソルを表示するか',
+      control: "boolean",
+      description: "カーソルを表示するか",
     },
     cursorBlink: {
-      control: 'boolean',
-      description: 'カーソルの点滅アニメーション',
+      control: "boolean",
+      description: "カーソルの点滅アニメーション",
     },
   },
 };
@@ -57,8 +57,8 @@ type Story = StoryObj<typeof CLIInterface>;
  */
 export const Default: Story = {
   args: {
-    content: 'SYSTEM ACCESS GRANTED',
-    prompt: '$',
+    content: "SYSTEM ACCESS GRANTED",
+    prompt: "$",
   },
 };
 
@@ -68,12 +68,12 @@ export const Default: Story = {
 export const MultiLine: Story = {
   args: {
     content: [
-      'INITIALIZING SYSTEM...',
-      'LOADING MODULES...',
-      'CONNECTING TO DATABASE...',
-      'SYSTEM READY',
+      "INITIALIZING SYSTEM...",
+      "LOADING MODULES...",
+      "CONNECTING TO DATABASE...",
+      "SYSTEM READY",
     ],
-    prompt: '>',
+    prompt: ">",
   },
 };
 
@@ -82,15 +82,15 @@ export const MultiLine: Story = {
  */
 export const Hacker: Story = {
   args: {
-    variant: 'hacker',
+    variant: "hacker",
     content: [
-      'ACCESSING SECURE SERVER...',
-      'BYPASSING FIREWALL...',
-      'ENCRYPTION BREACHED',
-      'ROOT ACCESS OBTAINED',
+      "ACCESSING SECURE SERVER...",
+      "BYPASSING FIREWALL...",
+      "ENCRYPTION BREACHED",
+      "ROOT ACCESS OBTAINED",
     ],
-    prompt: '#',
-    glow: 'intense',
+    prompt: "#",
+    glow: "intense",
   },
 };
 
@@ -99,13 +99,9 @@ export const Hacker: Story = {
  */
 export const Retro: Story = {
   args: {
-    variant: 'retro',
-    content: [
-      'COMPUTER SYSTEM v2.0',
-      'COPYRIGHT 1985',
-      'READY',
-    ],
-    prompt: '>',
+    variant: "retro",
+    content: ["COMPUTER SYSTEM v2.0", "COPYRIGHT 1985", "READY"],
+    prompt: ">",
   },
 };
 
@@ -114,13 +110,13 @@ export const Retro: Story = {
  */
 export const Warning: Story = {
   args: {
-    variant: 'warning',
+    variant: "warning",
     content: [
-      'WARNING: UNAUTHORIZED ACCESS DETECTED',
-      'SECURITY PROTOCOL ACTIVATED',
-      'SYSTEM LOCKDOWN IN 10 SECONDS',
+      "WARNING: UNAUTHORIZED ACCESS DETECTED",
+      "SECURITY PROTOCOL ACTIVATED",
+      "SYSTEM LOCKDOWN IN 10 SECONDS",
     ],
-    prompt: '!',
+    prompt: "!",
   },
 };
 
@@ -129,14 +125,14 @@ export const Warning: Story = {
  */
 export const Error: Story = {
   args: {
-    variant: 'error',
+    variant: "error",
     content: [
-      'ERROR: SYSTEM FAILURE',
-      'CRITICAL COMPONENT OFFLINE',
-      'EMERGENCY SHUTDOWN INITIATED',
+      "ERROR: SYSTEM FAILURE",
+      "CRITICAL COMPONENT OFFLINE",
+      "EMERGENCY SHUTDOWN INITIATED",
     ],
-    prompt: 'X',
-    glow: 'intense',
+    prompt: "X",
+    glow: "intense",
   },
 };
 
@@ -145,8 +141,8 @@ export const Error: Story = {
  */
 export const WithCursor: Story = {
   args: {
-    content: 'READY FOR COMMAND',
-    prompt: '$',
+    content: "READY FOR COMMAND",
+    prompt: "$",
     showCursor: true,
     cursorBlink: true,
   },
@@ -184,17 +180,17 @@ export const GlowVariants: Story = {
  */
 export const SystemLog: Story = {
   args: {
-    variant: 'default',
+    variant: "default",
     content: [
-      '[2024-01-15 10:23:45] SYSTEM BOOT INITIATED',
-      '[2024-01-15 10:23:46] LOADING CORE MODULES...',
-      '[2024-01-15 10:23:47] INITIALIZING NETWORK INTERFACE',
-      '[2024-01-15 10:23:48] CONNECTING TO DATABASE...',
-      '[2024-01-15 10:23:49] DATABASE CONNECTION ESTABLISHED',
-      '[2024-01-15 10:23:50] ALL SYSTEMS OPERATIONAL',
-      '[2024-01-15 10:23:51] READY FOR COMMANDS',
+      "[2024-01-15 10:23:45] SYSTEM BOOT INITIATED",
+      "[2024-01-15 10:23:46] LOADING CORE MODULES...",
+      "[2024-01-15 10:23:47] INITIALIZING NETWORK INTERFACE",
+      "[2024-01-15 10:23:48] CONNECTING TO DATABASE...",
+      "[2024-01-15 10:23:49] DATABASE CONNECTION ESTABLISHED",
+      "[2024-01-15 10:23:50] ALL SYSTEMS OPERATIONAL",
+      "[2024-01-15 10:23:51] READY FOR COMMANDS",
     ],
-    prompt: '>',
+    prompt: ">",
     showCursor: true,
   },
 };
@@ -204,20 +200,19 @@ export const SystemLog: Story = {
  */
 export const HackingScene: Story = {
   args: {
-    variant: 'hacker',
+    variant: "hacker",
     content: [
-      'CONNECTING TO TARGET SYSTEM...',
-      'SCANNING FOR VULNERABILITIES...',
-      'FIREWALL DETECTED',
-      'ATTEMPTING BYPASS...',
-      '...',
-      'ACCESS GRANTED',
-      'DOWNLOADING DATA...',
-      'TRANSFER COMPLETE',
+      "CONNECTING TO TARGET SYSTEM...",
+      "SCANNING FOR VULNERABILITIES...",
+      "FIREWALL DETECTED",
+      "ATTEMPTING BYPASS...",
+      "...",
+      "ACCESS GRANTED",
+      "DOWNLOADING DATA...",
+      "TRANSFER COMPLETE",
     ],
-    prompt: '#',
-    glow: 'intense',
+    prompt: "#",
+    glow: "intense",
     showCursor: true,
   },
 };
-

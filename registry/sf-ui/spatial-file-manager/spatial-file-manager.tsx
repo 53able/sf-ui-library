@@ -104,10 +104,7 @@ export interface SpatialFileManagerProps
  * ```
  */
 const SpatialFileManager = React.forwardRef<HTMLDivElement, SpatialFileManagerProps>(
-  (
-    { className, perspective, files, mode = "mixed", activeFileId, ...props },
-    ref
-  ) => {
+  ({ className, perspective, files, mode = "mixed", activeFileId, ...props }, ref) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const [hoveredFileId, setHoveredFileId] = React.useState<string | null>(null);
 
@@ -175,14 +172,11 @@ const SpatialFileManager = React.forwardRef<HTMLDivElement, SpatialFileManagerPr
                     "p-3 rounded-lg border-2 border-lcars-blue",
                     "bg-lcars-dark/80 backdrop-blur-sm",
                     "shadow-[0_0_10px_rgba(74,158,255,0.3)]",
-                    isActive &&
-                      "shadow-[0_0_20px_rgba(74,158,255,0.6)] border-lcars-blue-glow"
+                    isActive && "shadow-[0_0_20px_rgba(74,158,255,0.6)] border-lcars-blue-glow"
                   )}
                 >
                   {mode === "icon" && file.icon && (
-                    <div className="flex items-center justify-center mb-2">
-                      {file.icon}
-                    </div>
+                    <div className="flex items-center justify-center mb-2">{file.icon}</div>
                   )}
                   {(mode === "text" || mode === "mixed") && (
                     <div
@@ -195,9 +189,7 @@ const SpatialFileManager = React.forwardRef<HTMLDivElement, SpatialFileManagerPr
                     </div>
                   )}
                   {mode === "mixed" && file.type && (
-                    <div className="text-xs text-hierarchy-tertiary mt-1">
-                      {file.type}
-                    </div>
+                    <div className="text-xs text-hierarchy-tertiary mt-1">{file.type}</div>
                   )}
                 </div>
               </div>
@@ -211,4 +203,3 @@ const SpatialFileManager = React.forwardRef<HTMLDivElement, SpatialFileManagerPr
 SpatialFileManager.displayName = "SpatialFileManager";
 
 export { SpatialFileManager, spatialFileManagerVariants };
-

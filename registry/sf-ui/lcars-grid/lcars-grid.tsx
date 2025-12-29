@@ -69,11 +69,7 @@ const LCARSGrid = React.forwardRef<HTMLDivElement, LCARSGridProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          "grid",
-          lcarsGridVariants({ columns, gap, layout }),
-          className
-        )}
+        className={cn("grid", lcarsGridVariants({ columns, gap, layout }), className)}
         {...props}
       >
         {children}
@@ -84,4 +80,3 @@ const LCARSGrid = React.forwardRef<HTMLDivElement, LCARSGridProps>(
 LCARSGrid.displayName = "LCARSGrid";
 
 export { LCARSGrid, lcarsGridVariants };
-

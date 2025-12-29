@@ -7,68 +7,65 @@ import { cn } from "@/lib/utils";
  * Glow Textのバリアント定義
  * 発光効果付きテキストコンポーネント
  */
-const glowTextVariants = cva(
-  "font-lcars tracking-wide transition-all duration-300",
-  {
-    variants: {
-      color: {
-        blue: "text-lcars-blue",
-        orange: "text-lcars-orange",
-        red: "text-lcars-red",
-        yellow: "text-lcars-yellow",
-        purple: "text-lcars-purple",
-        gray: "text-lcars-gray",
-        green: "text-lcars-green",
-        "blue-glow": "text-lcars-blue-glow",
-        "red-glow": "text-lcars-red-glow",
-        "yellow-glow": "text-lcars-yellow-glow",
-        "purple-glow": "text-lcars-purple-glow",
-        "gray-glow": "text-lcars-gray-glow",
-        "green-glow": "text-lcars-green-glow",
-      },
-      intensity: {
-        none: "",
-        subtle: "text-shadow-subtle",
-        normal: "text-shadow-normal",
-        intense: "text-shadow-intense",
-      },
-      size: {
-        xs: "text-xs",
-        sm: "text-sm",
-        base: "text-base",
-        lg: "text-lg",
-        xl: "text-xl",
-        "2xl": "text-2xl",
-        "3xl": "text-3xl",
-        "4xl": "text-4xl",
-      },
-      weight: {
-        normal: "font-normal",
-        medium: "font-medium",
-        semibold: "font-semibold",
-        bold: "font-bold",
-      },
-      animate: {
-        none: "",
-        pulse: "animate-glow-pulse",
-        glow: "animate-glow",
-      },
+const glowTextVariants = cva("font-lcars tracking-wide transition-all duration-300", {
+  variants: {
+    color: {
+      blue: "text-lcars-blue",
+      orange: "text-lcars-orange",
+      red: "text-lcars-red",
+      yellow: "text-lcars-yellow",
+      purple: "text-lcars-purple",
+      gray: "text-lcars-gray",
+      green: "text-lcars-green",
+      "blue-glow": "text-lcars-blue-glow",
+      "red-glow": "text-lcars-red-glow",
+      "yellow-glow": "text-lcars-yellow-glow",
+      "purple-glow": "text-lcars-purple-glow",
+      "gray-glow": "text-lcars-gray-glow",
+      "green-glow": "text-lcars-green-glow",
     },
-    defaultVariants: {
-      color: "blue",
-      intensity: "normal",
-      size: "base",
-      weight: "normal",
-      animate: "none",
+    intensity: {
+      none: "",
+      subtle: "text-shadow-subtle",
+      normal: "text-shadow-normal",
+      intense: "text-shadow-intense",
     },
-  }
-);
+    size: {
+      xs: "text-xs",
+      sm: "text-sm",
+      base: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
+      "3xl": "text-3xl",
+      "4xl": "text-4xl",
+    },
+    weight: {
+      normal: "font-normal",
+      medium: "font-medium",
+      semibold: "font-semibold",
+      bold: "font-bold",
+    },
+    animate: {
+      none: "",
+      pulse: "animate-glow-pulse",
+      glow: "animate-glow",
+    },
+  },
+  defaultVariants: {
+    color: "blue",
+    intensity: "normal",
+    size: "base",
+    weight: "normal",
+    animate: "none",
+  },
+});
 
 /**
  * Glow TextコンポーネントのProps
  */
 export interface GlowTextProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, 'color'>,
+  extends Omit<React.HTMLAttributes<HTMLElement>, "color">,
     VariantProps<typeof glowTextVariants> {
   /**
    * レンダリングするHTML要素
@@ -91,16 +88,7 @@ export interface GlowTextProps
  */
 const GlowText = React.forwardRef<HTMLElement, GlowTextProps>(
   (
-    {
-      className,
-      color,
-      intensity,
-      size,
-      weight,
-      animate,
-      as: Component = "span",
-      ...props
-    },
+    { className, color, intensity, size, weight, animate, as: Component = "span", ...props },
     ref
   ) => {
     return (
@@ -115,4 +103,3 @@ const GlowText = React.forwardRef<HTMLElement, GlowTextProps>(
 GlowText.displayName = "GlowText";
 
 export { GlowText, glowTextVariants };
-

@@ -96,9 +96,7 @@ const ClockDisplay = React.forwardRef<HTMLDivElement, ClockDisplayProps>(
     },
     ref
   ) => {
-    const [currentTime, setCurrentTime] = React.useState<Date>(
-      customTime || new Date()
-    );
+    const [currentTime, setCurrentTime] = React.useState<Date>(customTime || new Date());
 
     React.useEffect(() => {
       if (customTime) {
@@ -152,12 +150,7 @@ const ClockDisplay = React.forwardRef<HTMLDivElement, ClockDisplayProps>(
           </span>
         )}
         <div className="flex flex-col gap-1">
-          <span
-            className={cn(
-              clockDisplayVariants({ variant, size, glow }),
-              "font-bold"
-            )}
-          >
+          <span className={cn(clockDisplayVariants({ variant, size, glow }), "font-bold")}>
             {formatTime(currentTime)}
           </span>
           {showDate && (
@@ -178,4 +171,3 @@ const ClockDisplay = React.forwardRef<HTMLDivElement, ClockDisplayProps>(
 ClockDisplay.displayName = "ClockDisplay";
 
 export { ClockDisplay, clockDisplayVariants };
-
