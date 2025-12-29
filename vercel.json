@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm registry:build && pnpm build",
+  "buildCommand": "pnpm build-storybook && mkdir -p public/storybook && cp -r storybook-static/* public/storybook/ && pnpm registry:build && pnpm build",
   "framework": "nextjs",
   "installCommand": "pnpm install",
   "outputDirectory": null

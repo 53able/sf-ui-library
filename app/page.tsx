@@ -2,11 +2,24 @@ import { GlowButton } from "@/registry/sf-ui/glow-button/glow-button";
 import { GlowText } from "@/registry/sf-ui/glow-text/glow-text";
 
 /**
- * Storybook URL from environment variable or default to localhost.
- * Set NEXT_PUBLIC_STORYBOOK_URL environment variable for production.
+ * Storybook URL construction:
+ * - In Vercel: automatically uses VERCEL_URL to build https://{VERCEL_URL}/storybook
+ * - Local development: uses NEXT_PUBLIC_STORYBOOK_URL or defaults to localhost:6006
  */
-const STORYBOOK_URL =
-  process.env.NEXT_PUBLIC_STORYBOOK_URL ?? "http://localhost:6006";
+const getStorybookUrl = (): string => {
+  // Vercel environment: use VERCEL_URL to build the Storybook URL
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}/storybook`;
+  }
+  // Custom URL from environment variable
+  if (process.env.NEXT_PUBLIC_STORYBOOK_URL) {
+    return process.env.NEXT_PUBLIC_STORYBOOK_URL;
+  }
+  // Default to localhost for local development
+  return "http://localhost:6006";
+};
+
+const STORYBOOK_URL = getStorybookUrl();
 
 /**
  * Minimal landing page that redirects to Storybook.
