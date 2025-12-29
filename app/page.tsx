@@ -3,17 +3,22 @@ import { GlowText } from "@/registry/sf-ui/glow-text/glow-text";
 
 /**
  * Storybook URL construction:
- * - In Vercel: automatically uses VERCEL_URL to build https://{VERCEL_URL}/storybook
+ * - Production: uses fixed production URL
+ * - Preview/Development: uses VERCEL_URL to build https://{VERCEL_URL}/storybook
  * - Local development: uses NEXT_PUBLIC_STORYBOOK_URL or defaults to localhost:6006
  */
 const getStorybookUrl = (): string => {
-  // Vercel environment: use VERCEL_URL to build the Storybook URL
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}/storybook`;
+  // Production environment: use fixed production URL
+  if (process.env.VERCEL_ENV === "production") {
+    return "https://sf-ui-library.vercel.app/storybook";
   }
-  // Custom URL from environment variable
+  // Custom URL from environment variable (takes precedence over VERCEL_URL)
   if (process.env.NEXT_PUBLIC_STORYBOOK_URL) {
     return process.env.NEXT_PUBLIC_STORYBOOK_URL;
+  }
+  // Preview/Development in Vercel: use VERCEL_URL to build the Storybook URL
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}/storybook`;
   }
   // Default to localhost for local development
   return "http://localhost:6006";
