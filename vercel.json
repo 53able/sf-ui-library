@@ -1,3 +1,5 @@
 {
-  "buildCommand": "pnpm registry:build && pnpm build"
+  "buildCommand": "pnpm registry:build && pnpm build",
+  "framework": "nextjs",
+  "installCommand": "pnpm install"
 }
