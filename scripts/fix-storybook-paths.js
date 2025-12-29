@@ -13,6 +13,14 @@ const iframeHtmlPath = join(storybookDir, 'iframe.html');
  * HTMLファイル内の相対パスを/storybook/ベースの絶対パスに変換
  */
 const fixPaths = (htmlContent) => {
+  // <head>タグの直後に<base>タグを追加（まだ存在しない場合）
+  if (!htmlContent.includes('<base')) {
+    htmlContent = htmlContent.replace(
+      /(<head[^>]*>)/i,
+      '$1\n    <base href="/storybook/" />'
+    );
+  }
+  
   // 相対パス（./で始まるパス）を/storybook/ベースの絶対パスに変換
   return htmlContent
     .replace(/href="\.\//g, 'href="/storybook/')
