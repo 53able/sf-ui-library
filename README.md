@@ -147,7 +147,9 @@ export default function RootLayout({ children }) {
 }
 ```
 
-**その他のフレームワークの場合:**
+**重要**: `sf-ui-fonts-next`はNext.js専用です。Viteプロジェクトでは使用できません。
+
+**Viteプロジェクトやその他のフレームワークの場合:**
 
 `sf-ui-fonts`をインストールした後、`app/layout.tsx`（またはルートレイアウト）に追加：
 
@@ -165,6 +167,12 @@ export default function RootLayout({ children }) {
   );
 }
 ```
+
+**Viteプロジェクトでの注意事項:**
+
+- `sf-ui-fonts-next`は`next/font/google`に依存しているため、Viteプロジェクトでは使用できません
+- Viteプロジェクトでは必ず`sf-ui-fonts`を使用してください
+- TypeScriptの型エラーを避けるため、`tsconfig.app.json`（または`tsconfig.json`）で`sf-ui-fonts-next`を除外することを推奨します
 
 #### 4. グローバルCSSにテーマをインポート
 
@@ -284,6 +292,18 @@ export default function RootLayout({ children }) {
 
 - **原因**: プロパティ名が間違っている、またはコンポーネントのAPIが変更された可能性があります
 - **解決策**: [Storybook](#storybook)でコンポーネントの正しいプロパティと使用方法を確認してください
+
+**エラー: Viteプロジェクトで`sf-ui-fonts-next`を使用した場合の型エラー**
+
+- **原因**: `sf-ui-fonts-next`は`next/font/google`に依存しており、Viteプロジェクトでは使用できません
+- **解決策**: 
+  - Viteプロジェクトでは`sf-ui-fonts`を使用してください
+  - 誤って`sf-ui-fonts-next`をインストールした場合は、`tsconfig.app.json`（または`tsconfig.json`）で除外してください：
+    ```json
+    {
+      "exclude": ["**/fonts-next.tsx"]
+    }
+    ```
 
 コンポーネント固有のエラーや詳細な解決方法については、[Storybook](#storybook)で各コンポーネントのドキュメントを確認してください。
 

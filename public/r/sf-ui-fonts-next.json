@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sf-ui-fonts-next",
   "title": "SF UI Fonts (Next.js)",
-  "description": "Optimized font loader component for Next.js",
+  "description": "Optimized font loader component for Next.js. Next.js専用。Viteプロジェクトでは使用不可。Viteプロジェクトの場合は `sf-ui-fonts` を使用してください。",
   "files": [
     {
       "path": "registry/sf-ui/sf-ui-fonts-next/fonts-next.tsx",

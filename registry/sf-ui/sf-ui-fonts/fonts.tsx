@@ -1,3 +1,5 @@
+import * as React from "react";
+
 /**
  * SF UI Library Fonts Loader
  *
@@ -25,7 +27,7 @@
 /**
  * SF UI Libraryで使用するフォントを読み込むコンポーネント
  */
-export const SfUiFonts = (): JSX.Element => {
+export const SfUiFonts = (): React.ReactElement => {
   return (
     <>
       {/* Rajdhani - LCARS風フォント */}

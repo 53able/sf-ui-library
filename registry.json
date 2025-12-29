@@ -10,7 +10,7 @@
       "description": "Utility functions for class name merging",
       "files": [
         {
-          "path": "registry/sf-ui/utils/utils.ts",
+          "path": "lib/utils.ts",
           "type": "registry:lib"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "sf-ui-fonts-next",
       "type": "registry:component",
       "title": "SF UI Fonts (Next.js)",
-      "description": "Optimized font loader component for Next.js",
+      "description": "Optimized font loader component for Next.js. Next.js専用。Viteプロジェクトでは使用不可。Viteプロジェクトの場合は `sf-ui-fonts` を使用してください。",
       "files": [
         {
           "path": "registry/sf-ui/sf-ui-fonts-next/fonts-next.tsx",
