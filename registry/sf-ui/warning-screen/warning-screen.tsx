@@ -49,11 +49,11 @@ export interface WarningScreenProps
   /**
    * メインテキスト（例: "ACCESS RESTRICTED", "STANDBY"）
    */
-  title: string;
+  mainText: string;
   /**
    * サブテキスト（オプション）
    */
-  message?: string;
+  subText?: string;
   /**
    * アイコンまたは追加要素
    */
@@ -68,12 +68,12 @@ export interface WarningScreenProps
  *
  * @example
  * ```tsx
- * <WarningScreen variant="restricted" title="ACCESS RESTRICTED" message="Unauthorized access detected" />
- * <WarningScreen variant="standby" title="STANDBY" animate="pulse" />
+ * <WarningScreen variant="restricted" mainText="ACCESS RESTRICTED" subText="Unauthorized access detected" />
+ * <WarningScreen variant="standby" mainText="STANDBY" animate="pulse" />
  * ```
  */
 const WarningScreen = React.forwardRef<HTMLDivElement, WarningScreenProps>(
-  ({ className, variant, size, animate, title, message, icon, ...props }, ref) => {
+  ({ className, variant, size, animate, mainText, subText, icon, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -88,16 +88,16 @@ const WarningScreen = React.forwardRef<HTMLDivElement, WarningScreenProps>(
             "text-shadow-intense"
           )}
         >
-          {title}
+          {mainText}
         </h2>
-        {message && (
+        {subText && (
           <p
             className={cn(
               "text-sm opacity-90 text-center max-w-md",
               "text-shadow-subtle"
             )}
           >
-            {message}
+            {subText}
           </p>
         )}
       </div>

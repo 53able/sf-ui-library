@@ -34,11 +34,11 @@ const meta: Meta<typeof WarningScreen> = {
       options: ['none', 'pulse', 'intense'],
       description: 'アニメーション効果',
     },
-    title: {
+    mainText: {
       control: 'text',
       description: 'メインテキスト',
     },
-    message: {
+    subText: {
       control: 'text',
       description: 'サブテキスト',
     },
@@ -53,7 +53,7 @@ type Story = StoryObj<typeof WarningScreen>;
  */
 export const Default: Story = {
   args: {
-    title: 'WARNING',
+    mainText: 'WARNING',
   },
 };
 
@@ -63,8 +63,8 @@ export const Default: Story = {
 export const Restricted: Story = {
   args: {
     variant: 'restricted',
-    title: 'ACCESS RESTRICTED',
-    message: 'Unauthorized access detected',
+    mainText: 'ACCESS RESTRICTED',
+    subText: 'Unauthorized access detected',
   },
 };
 
@@ -74,8 +74,8 @@ export const Restricted: Story = {
 export const Standby: Story = {
   args: {
     variant: 'standby',
-    title: 'STANDBY',
-    message: 'System is in standby mode',
+    mainText: 'STANDBY',
+    subText: 'System is in standby mode',
   },
 };
 
@@ -85,8 +85,8 @@ export const Standby: Story = {
 export const Danger: Story = {
   args: {
     variant: 'danger',
-    title: 'DANGER',
-    message: 'Critical system failure detected',
+    mainText: 'DANGER',
+    subText: 'Critical system failure detected',
   },
 };
 
@@ -96,14 +96,14 @@ export const Danger: Story = {
 export const Variants: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
-      <WarningScreen variant="warning" title="WARNING" message="System alert" />
-      <WarningScreen variant="danger" title="DANGER" message="Critical alert" />
+      <WarningScreen variant="warning" mainText="WARNING" subText="System alert" />
+      <WarningScreen variant="danger" mainText="DANGER" subText="Critical alert" />
       <WarningScreen
         variant="restricted"
-        title="ACCESS RESTRICTED"
-        message="Unauthorized access"
+        mainText="ACCESS RESTRICTED"
+        subText="Unauthorized access"
       />
-      <WarningScreen variant="standby" title="STANDBY" message="System standby" />
+      <WarningScreen variant="standby" mainText="STANDBY" subText="System standby" />
     </div>
   ),
 };
@@ -114,9 +114,9 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
-      <WarningScreen size="sm" title="SMALL" message="Small size warning" />
-      <WarningScreen size="default" title="DEFAULT" message="Default size warning" />
-      <WarningScreen size="lg" title="LARGE" message="Large size warning" />
+      <WarningScreen size="sm" mainText="SMALL" subText="Small size warning" />
+      <WarningScreen size="default" mainText="DEFAULT" subText="Default size warning" />
+      <WarningScreen size="lg" mainText="LARGE" subText="Large size warning" />
     </div>
   ),
 };
@@ -127,9 +127,9 @@ export const Sizes: Story = {
 export const Animations: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
-      <WarningScreen animate="none" title="NO ANIMATION" message="Static display" />
-      <WarningScreen animate="pulse" title="PULSE" message="Pulsing animation" />
-      <WarningScreen animate="intense" title="INTENSE" message="Intense animation" />
+      <WarningScreen animate="none" mainText="NO ANIMATION" subText="Static display" />
+      <WarningScreen animate="pulse" mainText="PULSE" subText="Pulsing animation" />
+      <WarningScreen animate="intense" mainText="INTENSE" subText="Intense animation" />
     </div>
   ),
 };
@@ -139,8 +139,8 @@ export const Animations: Story = {
  */
 export const WithIcon: Story = {
   args: {
-    title: 'WARNING',
-    message: 'System alert with icon',
+    mainText: 'WARNING',
+    subText: 'System alert with icon',
     icon: <span className="text-4xl">⚠️</span>,
   },
 };
