@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
-import { readFileSync, existsSync, statSync } from "fs";
-import { join } from "path";
+import { existsSync, readFileSync, statSync } from "node:fs";
+import { join } from "node:path";
+import { type NextRequest, NextResponse } from "next/server";
 
 /**
  * Storybookの静的ファイルを配信するルートハンドラー
  * /storybook以下のすべてのリクエストをpublic/storybookから配信
  */
-export async function GET(request: NextRequest, { params }: { params: { path?: string[] } }) {
+export async function GET(_request: NextRequest, { params }: { params: { path?: string[] } }) {
   // パスを取得（配列または空）
   const pathSegments = params.path || [];
   const filePath = pathSegments.length > 0 ? pathSegments.join("/") : "index.html";

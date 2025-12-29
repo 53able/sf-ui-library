@@ -1,6 +1,6 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { NextResponse } from "next/server";
-import { readFileSync, existsSync } from "fs";
-import { join } from "path";
 
 /**
  * Storybookのルート（/storybook）を処理するルートハンドラー

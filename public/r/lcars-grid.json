@@ -3,8 +3,12 @@
   "name": "lcars-grid",
   "title": "LCARS Grid",
   "description": "Modular grid layout component with LCARS design",
-  "dependencies": ["class-variance-authority"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "registry/sf-ui/lcars-grid/lcars-grid.tsx",

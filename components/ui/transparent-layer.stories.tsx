@@ -156,7 +156,7 @@ export const InformationHierarchy: Story = {
   render: () => (
     <div className="w-full max-w-2xl">
       <TransparentLayer
-        variant="blue"
+        variant="default"
         size="lg"
         backgroundContent={
           <div className="p-8 text-lcars-blue/30">

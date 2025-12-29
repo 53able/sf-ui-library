@@ -1,8 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-
-import { cn } from "@/lib/utils";
 import { LCARSPanel, type LCARSPanelProps } from "@/components/ui/lcars-panel";
+import { cn } from "@/lib/utils";
 
 /**
  * Display Panelのバリアント定義

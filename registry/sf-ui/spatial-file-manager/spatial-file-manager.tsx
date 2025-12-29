@@ -150,11 +150,13 @@ const SpatialFileManager = React.forwardRef<HTMLDivElement, SpatialFileManagerPr
             const position = file.position || { x: 0, y: 0, z: 0 };
 
             return (
-              <div
+              <button
                 key={file.id}
+                type="button"
                 className={cn(
                   "absolute transition-all duration-300 cursor-pointer",
                   "font-lcars text-lcars-blue",
+                  "border-0 bg-transparent p-0",
                   isActive && "z-10"
                 )}
                 style={{
@@ -192,7 +194,7 @@ const SpatialFileManager = React.forwardRef<HTMLDivElement, SpatialFileManagerPr
                     <div className="text-xs text-hierarchy-tertiary mt-1">{file.type}</div>
                   )}
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>

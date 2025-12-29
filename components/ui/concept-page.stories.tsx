@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { LCARSPanel } from "@/registry/sf-ui/lcars-panel/lcars-panel";
-import { DataDisplay } from "@/registry/sf-ui/data-display/data-display";
-import { StatusIndicator } from "@/registry/sf-ui/status-indicator/status-indicator";
-import { ConnectedPanels } from "@/registry/sf-ui/connected-panels/connected-panels";
-import { DisplayPanel } from "@/registry/sf-ui/display-panel/display-panel";
+import { Button } from "@/registry/sf-ui/button/button";
+import { CLIInterface } from "@/registry/sf-ui/cli-interface/cli-interface";
 import { ClockDisplay } from "@/registry/sf-ui/clock-display/clock-display";
-import { LCARSGrid } from "@/registry/sf-ui/lcars-grid/lcars-grid";
+import { ConnectedPanels } from "@/registry/sf-ui/connected-panels/connected-panels";
+import { DataDisplay } from "@/registry/sf-ui/data-display/data-display";
+import { DisplayPanel } from "@/registry/sf-ui/display-panel/display-panel";
+import { FeedbackControl } from "@/registry/sf-ui/feedback-control/feedback-control";
 import { GlowButton } from "@/registry/sf-ui/glow-button/glow-button";
 import { GlowText } from "@/registry/sf-ui/glow-text/glow-text";
-import { CLIInterface } from "@/registry/sf-ui/cli-interface/cli-interface";
-import { WarningScreen } from "@/registry/sf-ui/warning-screen/warning-screen";
-import { TransparentLayer } from "@/registry/sf-ui/transparent-layer/transparent-layer";
-import { FeedbackControl } from "@/registry/sf-ui/feedback-control/feedback-control";
-import { SpatialFileManager } from "@/registry/sf-ui/spatial-file-manager/spatial-file-manager";
 import { LCARSDiagram } from "@/registry/sf-ui/lcars-diagram/lcars-diagram";
-import { Button } from "@/registry/sf-ui/button/button";
+import { LCARSGrid } from "@/registry/sf-ui/lcars-grid/lcars-grid";
+import { LCARSPanel } from "@/registry/sf-ui/lcars-panel/lcars-panel";
+import { SpatialFileManager } from "@/registry/sf-ui/spatial-file-manager/spatial-file-manager";
+import { StatusIndicator } from "@/registry/sf-ui/status-indicator/status-indicator";
+import { TransparentLayer } from "@/registry/sf-ui/transparent-layer/transparent-layer";
+import { WarningScreen } from "@/registry/sf-ui/warning-screen/warning-screen";
 
 /**
  * コンセプトイメージのPage要素
@@ -52,7 +52,7 @@ export const CockpitDashboard: Story = {
             <h1 className="text-3xl font-bold uppercase tracking-wider text-lcars-blue">
               Command Center
             </h1>
-            <p className="mt-1 text-sm text-lcars-blue/70">Stardate 2401.05</p>
+            <p className="mt-1 text-sm text-lcars-blue/80">Stardate 2401.05</p>
           </div>
           <ClockDisplay use24Hour showSeconds showDate label="Ship Time" size="lg" />
         </div>
@@ -281,7 +281,7 @@ export const DataAnalytics: Story = {
             <h1 className="text-4xl font-bold uppercase tracking-wider text-lcars-blue">
               Analytics Dashboard
             </h1>
-            <p className="mt-2 text-sm text-lcars-blue/70">
+            <p className="mt-2 text-sm text-lcars-blue/80">
               Real-time data analysis and visualization
             </p>
           </div>
@@ -430,7 +430,7 @@ export const AllComponentsShowcase: Story = {
             >
               Component Library Showcase
             </GlowText>
-            <GlowText color="blue" intensity="normal" size="lg" className="opacity-80">
+            <GlowText color="blue" intensity="normal" size="lg" className="opacity-90">
               SF映画をインスパイアしたUIコンポーネントの完全な統合デモ
             </GlowText>
           </div>

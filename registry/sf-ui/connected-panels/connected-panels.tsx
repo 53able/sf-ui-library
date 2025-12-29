@@ -1,8 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-
-import { cn } from "@/lib/utils";
 import { LCARSPanel, type LCARSPanelProps } from "@/components/ui/lcars-panel";
+import { cn } from "@/lib/utils";
 
 /**
  * Connected Panelsのバリアント定義
@@ -77,45 +76,54 @@ const ConnectedPanels = React.forwardRef<HTMLDivElement, ConnectedPanelsProps>(
         className={cn(connectedPanelsVariants({ direction, connection }), className)}
         {...props}
       >
-        {panels.map((panel, index) => (
-          <React.Fragment key={index}>
-            <LCARSPanel {...panel.panelProps}>{panel.content}</LCARSPanel>
-            {index < panels.length - 1 && (
-              <div
-                className={cn(
-                  "relative",
-                  direction === "horizontal" ? "w-8 h-0.5" : "h-8 w-0.5",
-                  connectorStyle === "glow" &&
-                    "bg-lcars-blue shadow-[0_0_10px_rgba(74,158,255,0.5)]",
-                  connectorStyle === "dashed" && "border-dashed border-lcars-blue",
-                  connectorStyle === "solid" && "bg-lcars-blue"
-                )}
-              >
-                {connection === "curve" && (
-                  <svg
-                    className={cn(
-                      "absolute",
-                      direction === "horizontal" ? "w-8 h-8 -top-4 left-0" : "w-8 h-8 -left-4 top-0"
-                    )}
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d={direction === "horizontal" ? "M 0 16 Q 16 0 32 16" : "M 16 0 Q 0 16 16 32"}
-                      stroke="rgb(74, 158, 255)"
-                      strokeWidth="2"
-                      fill="none"
+        {panels.map((panel, index) => {
+          const panelKey = `panel-${index}-${String(panel.content).slice(0, 20)}`;
+          return (
+            <React.Fragment key={panelKey}>
+              <LCARSPanel {...panel.panelProps}>{panel.content}</LCARSPanel>
+              {index < panels.length - 1 && (
+                <div
+                  className={cn(
+                    "relative",
+                    direction === "horizontal" ? "w-8 h-0.5" : "h-8 w-0.5",
+                    connectorStyle === "glow" &&
+                      "bg-lcars-blue shadow-[0_0_10px_rgba(74,158,255,0.5)]",
+                    connectorStyle === "dashed" && "border-dashed border-lcars-blue",
+                    connectorStyle === "solid" && "bg-lcars-blue"
+                  )}
+                >
+                  {connection === "curve" && (
+                    <svg
+                      role="img"
+                      aria-label={`Connection curve between panel ${index + 1} and ${index + 2}`}
                       className={cn(
-                        connectorStyle === "glow" && "drop-shadow-[0_0_10px_rgba(74,158,255,0.5)]"
+                        "absolute",
+                        direction === "horizontal"
+                          ? "w-8 h-8 -top-4 left-0"
+                          : "w-8 h-8 -left-4 top-0"
                       )}
-                    />
-                  </svg>
-                )}
-              </div>
-            )}
-          </React.Fragment>
-        ))}
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d={
+                          direction === "horizontal" ? "M 0 16 Q 16 0 32 16" : "M 16 0 Q 0 16 16 32"
+                        }
+                        stroke="rgb(74, 158, 255)"
+                        strokeWidth="2"
+                        fill="none"
+                        className={cn(
+                          connectorStyle === "glow" && "drop-shadow-[0_0_10px_rgba(74,158,255,0.5)]"
+                        )}
+                      />
+                    </svg>
+                  )}
+                </div>
+              )}
+            </React.Fragment>
+          );
+        })}
       </div>
     );
   }

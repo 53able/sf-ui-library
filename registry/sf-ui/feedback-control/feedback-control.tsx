@@ -82,9 +82,9 @@ const FeedbackControl = React.forwardRef<HTMLDivElement, FeedbackControlProps>(
         {/* ラベルと説明 */}
         {(label || description) && (
           <div className="flex flex-col gap-1 mb-2">
-            {label && <label className="text-hierarchy-secondary text-lcars-blue">{label}</label>}
+            {label && <span className="text-hierarchy-secondary text-lcars-blue">{label}</span>}
             {description && (
-              <p className="text-hierarchy-tertiary text-lcars-blue/70">{description}</p>
+              <p className="text-hierarchy-tertiary text-lcars-blue/80">{description}</p>
             )}
           </div>
         )}

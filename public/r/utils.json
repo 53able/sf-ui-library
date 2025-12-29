@@ -3,7 +3,10 @@
   "name": "utils",
   "title": "Utils",
   "description": "Utility functions for class name merging",
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "files": [
     {
       "path": "lib/utils.ts",

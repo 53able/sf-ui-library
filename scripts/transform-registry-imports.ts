@@ -83,7 +83,7 @@ const transformRegistryFile = async (filePath: string): Promise<void> => {
       }
 
       if (hasChanges) {
-        await writeFile(filePath, JSON.stringify(json, null, 2) + "\n", "utf-8");
+        await writeFile(filePath, `${JSON.stringify(json, null, 2)}\n`, "utf-8");
         console.log(`✓ Transformed: ${filePath}`);
       }
     }

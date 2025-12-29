@@ -123,7 +123,7 @@ export const Warning: Story = {
 /**
  * エラーバリアント
  */
-export const Error: Story = {
+export const ErrorVariant: Story = {
   args: {
     variant: "error",
     content: [

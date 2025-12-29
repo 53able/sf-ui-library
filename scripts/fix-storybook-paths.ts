@@ -3,7 +3,7 @@
 /**
  * Storybookのビルド後のindex.html内の相対パスを/storybook/ベースの絶対パスに変換するスクリプト
  */
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const storybookDir = join(process.cwd(), "public", "storybook");

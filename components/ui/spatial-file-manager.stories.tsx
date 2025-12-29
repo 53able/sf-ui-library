@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import {
-  SpatialFileManager,
   type SpatialFileItem,
+  SpatialFileManager,
 } from "@/registry/sf-ui/spatial-file-manager/spatial-file-manager";
 
 /**

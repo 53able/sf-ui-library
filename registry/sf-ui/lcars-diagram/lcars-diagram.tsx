@@ -2,9 +2,8 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-
-import { cn } from "@/lib/utils";
 import { LCARSPanel } from "@/components/ui/lcars-panel";
+import { cn } from "@/lib/utils";
 
 /**
  * LCARS Diagramのバリアント定義
@@ -86,10 +85,11 @@ const LCARSDiagram = React.forwardRef<HTMLDivElement, LCARSDiagramProps>(
           {data.map((value, index) => {
             const percentage = (value / maxValue) * 100;
             const label = labels?.[index] || `Item ${index + 1}`;
+            const itemKey = `item-${index}-${label}-${value}`;
 
             if (type === "bar") {
               return (
-                <div key={index} className="space-y-1">
+                <div key={itemKey} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-lcars-blue uppercase tracking-wider">{label}</span>
                     <span className="text-lcars-blue font-bold tabular-nums">{value}%</span>
@@ -120,8 +120,14 @@ const LCARSDiagram = React.forwardRef<HTMLDivElement, LCARSDiagramProps>(
               });
 
               return (
-                <div className="relative h-32">
-                  <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
+                <div key={itemKey} className="relative h-32">
+                  <svg
+                    role="img"
+                    aria-label={`${type} chart for ${label}`}
+                    viewBox="0 0 100 100"
+                    className="w-full h-full"
+                    preserveAspectRatio="none"
+                  >
                     {type === "area" && (
                       <polygon
                         points={`0,100 ${points.join(" ")} 100,100`}

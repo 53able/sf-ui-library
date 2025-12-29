@@ -33,7 +33,7 @@
  *    }
  */
 
-import { Rajdhani, Share_Tech_Mono, Orbitron } from "next/font/google";
+import { Orbitron, Rajdhani, Share_Tech_Mono } from "next/font/google";
 
 /**
  * LCARS風フォント（Rajdhani）

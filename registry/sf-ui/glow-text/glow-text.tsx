@@ -91,9 +91,12 @@ const GlowText = React.forwardRef<HTMLElement, GlowTextProps>(
     { className, color, intensity, size, weight, animate, as: Component = "span", ...props },
     ref
   ) => {
+    // 動的な要素を使う場合、refの型を完全に型安全にするのは難しいため、
+    // unknown経由で型アサーションを行う
     return (
       <Component
-        ref={ref as any}
+        // @ts-expect-error - 動的な要素のref型推論はTypeScriptでは完全に型安全にできない
+        ref={ref}
         className={cn(glowTextVariants({ color, intensity, size, weight, animate, className }))}
         {...props}
       />

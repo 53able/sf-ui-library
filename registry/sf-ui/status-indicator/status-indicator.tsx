@@ -78,8 +78,9 @@ const StatusIndicator = React.forwardRef<HTMLSpanElement, StatusIndicatorProps>(
     const indicator = (
       <span
         ref={ref}
-        className={cn(statusIndicatorVariants({ status, shape, size, pulse, className }))}
+        role="img"
         aria-label={label || `${status} status`}
+        className={cn(statusIndicatorVariants({ status, shape, size, pulse, className }))}
         {...props}
       />
     );
