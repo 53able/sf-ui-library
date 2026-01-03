@@ -421,8 +421,8 @@ export const AllComponentsShowcase: Story = {
           <div className="space-y-2">
             <GlowText
               as="h1"
-              color="blue"
-              intensity="intense"
+              variant="default"
+              glow="intense"
               size="4xl"
               weight="bold"
               animate="pulse"
@@ -430,7 +430,7 @@ export const AllComponentsShowcase: Story = {
             >
               Component Library Showcase
             </GlowText>
-            <GlowText color="blue" intensity="normal" size="lg" className="opacity-90">
+            <GlowText variant="default" glow="normal" size="lg" className="opacity-90">
               SF映画をインスパイアしたUIコンポーネントの完全な統合デモ
             </GlowText>
           </div>
@@ -439,7 +439,7 @@ export const AllComponentsShowcase: Story = {
 
         {/* コントロールセクション: GlowButton + FeedbackControl */}
         <section className="space-y-6">
-          <GlowText as="h2" color="blue" intensity="normal" size="2xl" weight="bold">
+          <GlowText as="h2" variant="default" glow="normal" size="2xl" weight="bold">
             Control Interface
           </GlowText>
 
@@ -515,7 +515,7 @@ export const AllComponentsShowcase: Story = {
 
         {/* データ表示セクション: DataDisplay + LCARSDiagram + StatusIndicator */}
         <section className="space-y-6">
-          <GlowText as="h2" color="blue" intensity="normal" size="2xl" weight="bold">
+          <GlowText as="h2" variant="default" glow="normal" size="2xl" weight="bold">
             Data Visualization
           </GlowText>
 
@@ -564,7 +564,7 @@ export const AllComponentsShowcase: Story = {
 
         {/* パネルセクション: LCARSPanel + DisplayPanel + ConnectedPanels */}
         <section className="space-y-6">
-          <GlowText as="h2" color="blue" intensity="normal" size="2xl" weight="bold">
+          <GlowText as="h2" variant="default" glow="normal" size="2xl" weight="bold">
             Panel Systems
           </GlowText>
 
@@ -629,7 +629,7 @@ export const AllComponentsShowcase: Story = {
 
         {/* 特殊インターフェースセクション: CLIInterface + WarningScreen + TransparentLayer */}
         <section className="space-y-6">
-          <GlowText as="h2" color="blue" intensity="normal" size="2xl" weight="bold">
+          <GlowText as="h2" variant="default" glow="normal" size="2xl" weight="bold">
             Special Interfaces
           </GlowText>
 
@@ -683,7 +683,7 @@ export const AllComponentsShowcase: Story = {
             }
             foregroundContent={
               <div className="space-y-4">
-                <GlowText color="blue" intensity="intense" size="xl" weight="bold">
+                <GlowText variant="default" glow="intense" size="xl" weight="bold">
                   FOREGROUND INFORMATION
                 </GlowText>
                 <DataDisplay value={2847} label="Critical Data" size="2xl" glow="intense" />
@@ -700,7 +700,7 @@ export const AllComponentsShowcase: Story = {
 
         {/* 3D空間セクション: SpatialFileManager */}
         <section className="space-y-6">
-          <GlowText as="h2" color="blue" intensity="normal" size="2xl" weight="bold">
+          <GlowText as="h2" variant="default" glow="normal" size="2xl" weight="bold">
             3D Spatial File Management
           </GlowText>
 
@@ -754,7 +754,7 @@ export const AllComponentsShowcase: Story = {
 
         {/* グリッドレイアウトセクション: LCARSGrid */}
         <section className="space-y-6">
-          <GlowText as="h2" color="blue" intensity="normal" size="2xl" weight="bold">
+          <GlowText as="h2" variant="default" glow="normal" size="2xl" weight="bold">
             Grid Layout System
           </GlowText>
 
@@ -776,25 +776,25 @@ export const AllComponentsShowcase: Story = {
 
         {/* テキストバリエーションセクション: GlowText */}
         <section className="space-y-6">
-          <GlowText as="h2" color="blue" intensity="normal" size="2xl" weight="bold">
+          <GlowText as="h2" variant="default" glow="normal" size="2xl" weight="bold">
             Text Variations
           </GlowText>
 
           <LCARSPanel variant="default" title="Glow Text Examples">
             <div className="space-y-4">
-              <GlowText color="blue" intensity="intense" size="3xl" weight="bold" animate="pulse">
+              <GlowText variant="default" glow="intense" size="3xl" weight="bold" animate="pulse">
                 SYSTEM ONLINE
               </GlowText>
-              <GlowText color="red" intensity="normal" size="2xl" weight="semibold">
+              <GlowText variant="red" glow="normal" size="2xl" weight="semibold">
                 WARNING DETECTED
               </GlowText>
-              <GlowText color="yellow" intensity="subtle" size="xl" weight="medium">
+              <GlowText variant="yellow" glow="subtle" size="xl" weight="medium">
                 Standby Mode Active
               </GlowText>
-              <GlowText color="green" intensity="normal" size="lg" animate="glow">
+              <GlowText variant="green" glow="normal" size="lg" animate="glow">
                 All Systems Operational
               </GlowText>
-              <GlowText color="purple" intensity="intense" size="base" weight="normal">
+              <GlowText variant="purple" glow="intense" size="base" weight="normal">
                 Secondary Systems Active
               </GlowText>
             </div>

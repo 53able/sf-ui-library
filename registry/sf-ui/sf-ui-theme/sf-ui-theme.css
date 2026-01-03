@@ -146,3 +146,28 @@
     opacity: 0.8;
   }
 }
+
+/**
+ * Text Shadow ユーティリティクラス
+ * GlowText, ClockDisplay, DataDisplay で使用される発光テキスト効果
+ */
+.text-shadow-subtle {
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor;
+}
+
+.text-shadow-normal {
+  text-shadow:
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+.text-shadow-intense {
+  text-shadow:
+    0 0 15px currentColor,
+    0 0 30px currentColor,
+    0 0 45px currentColor,
+    0 0 60px currentColor;
+}

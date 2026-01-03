@@ -35,8 +35,8 @@ export default function Home() {
       <div className="mx-auto max-w-2xl text-center space-y-8">
         <GlowText
           as="h1"
-          color="blue"
-          intensity="intense"
+          variant="default"
+          glow="intense"
           size="4xl"
           weight="bold"
           animate="pulse"
@@ -44,7 +44,7 @@ export default function Home() {
         >
           SF UI Library
         </GlowText>
-        <GlowText color="blue" intensity="normal" size="lg" className="opacity-90 mb-8">
+        <GlowText variant="default" glow="normal" size="lg" className="opacity-90 mb-8">
           LCARS-inspired component library built with shadcn/ui
         </GlowText>
         <div className="flex justify-center">
@@ -54,7 +54,7 @@ export default function Home() {
             </a>
           </GlowButton>
         </div>
-        <GlowText color="blue" intensity="normal" size="sm" className="opacity-75 mt-4">
+        <GlowText variant="default" glow="normal" size="sm" className="opacity-75 mt-4">
           Component previews and documentation are available in Storybook
         </GlowText>
       </div>

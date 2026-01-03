@@ -3,6 +3,10 @@ import { GlowText } from "@/registry/sf-ui/glow-text/glow-text";
 
 /**
  * GlowTextコンポーネントのStory定義
+ *
+ * 他のコンポーネントとのAPI一貫性のため、以下のプロパティ名を使用:
+ * - variant: カラーバリアント（LCARSPanel, GlowButton, DataDisplay と同じ）
+ * - glow: 発光強度（LCARSPanel, GlowButton, DataDisplay と同じ）
  */
 const meta: Meta<typeof GlowText> = {
   title: "Atoms/GlowText",
@@ -19,10 +23,10 @@ const meta: Meta<typeof GlowText> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    color: {
+    variant: {
       control: "select",
       options: [
-        "blue",
+        "default",
         "orange",
         "red",
         "yellow",
@@ -36,12 +40,12 @@ const meta: Meta<typeof GlowText> = {
         "gray-glow",
         "green-glow",
       ],
-      description: "テキストの色",
+      description: "テキストの色（他コンポーネントと統一されたAPI）",
     },
-    intensity: {
+    glow: {
       control: "select",
       options: ["none", "subtle", "normal", "intense"],
-      description: "発光効果の強さ",
+      description: "発光効果の強さ（他コンポーネントと統一されたAPI）",
     },
     size: {
       control: "select",
@@ -84,19 +88,19 @@ export const Default: Story = {
 export const Colors: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <GlowText color="blue">Blue Glow Text</GlowText>
-      <GlowText color="orange">Orange Glow Text</GlowText>
-      <GlowText color="red">Red Glow Text</GlowText>
-      <GlowText color="yellow">Yellow Glow Text</GlowText>
-      <GlowText color="purple">Purple Glow Text</GlowText>
-      <GlowText color="gray">Gray Glow Text</GlowText>
-      <GlowText color="green">Green Glow Text</GlowText>
-      <GlowText color="blue-glow">Blue Glow (Intense)</GlowText>
-      <GlowText color="red-glow">Red Glow (Intense)</GlowText>
-      <GlowText color="yellow-glow">Yellow Glow (Intense)</GlowText>
-      <GlowText color="purple-glow">Purple Glow (Intense)</GlowText>
-      <GlowText color="gray-glow">Gray Glow (Intense)</GlowText>
-      <GlowText color="green-glow">Green Glow (Intense)</GlowText>
+      <GlowText variant="default">Blue Glow Text (default)</GlowText>
+      <GlowText variant="orange">Orange Glow Text</GlowText>
+      <GlowText variant="red">Red Glow Text</GlowText>
+      <GlowText variant="yellow">Yellow Glow Text</GlowText>
+      <GlowText variant="purple">Purple Glow Text</GlowText>
+      <GlowText variant="gray">Gray Glow Text</GlowText>
+      <GlowText variant="green">Green Glow Text</GlowText>
+      <GlowText variant="blue-glow">Blue Glow (Intense)</GlowText>
+      <GlowText variant="red-glow">Red Glow (Intense)</GlowText>
+      <GlowText variant="yellow-glow">Yellow Glow (Intense)</GlowText>
+      <GlowText variant="purple-glow">Purple Glow (Intense)</GlowText>
+      <GlowText variant="gray-glow">Gray Glow (Intense)</GlowText>
+      <GlowText variant="green-glow">Green Glow (Intense)</GlowText>
     </div>
   ),
 };
@@ -104,13 +108,13 @@ export const Colors: Story = {
 /**
  * 発光強度のバリエーション
  */
-export const IntensityVariants: Story = {
+export const GlowVariants: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <GlowText intensity="none">No Glow</GlowText>
-      <GlowText intensity="subtle">Subtle Glow</GlowText>
-      <GlowText intensity="normal">Normal Glow</GlowText>
-      <GlowText intensity="intense">Intense Glow</GlowText>
+      <GlowText glow="none">No Glow</GlowText>
+      <GlowText glow="subtle">Subtle Glow</GlowText>
+      <GlowText glow="normal">Normal Glow</GlowText>
+      <GlowText glow="intense">Intense Glow</GlowText>
     </div>
   ),
 };
@@ -174,13 +178,13 @@ export const ElementVariants: Story = {
 export const Combinations: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
-      <GlowText color="blue" intensity="intense" size="3xl" weight="bold" animate="pulse">
+      <GlowText variant="default" glow="intense" size="3xl" weight="bold" animate="pulse">
         SYSTEM ONLINE
       </GlowText>
-      <GlowText color="red" intensity="normal" size="2xl" weight="semibold">
+      <GlowText variant="red" glow="normal" size="2xl" weight="semibold">
         WARNING
       </GlowText>
-      <GlowText color="yellow" intensity="subtle" size="xl" weight="medium">
+      <GlowText variant="yellow" glow="subtle" size="xl" weight="medium">
         STANDBY MODE
       </GlowText>
     </div>

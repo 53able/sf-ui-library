@@ -149,9 +149,19 @@ pnpm registry:build
 
 #### 3. フォントの設定
 
-**Next.jsを使用している場合（推奨）:**
+SF UI Libraryは以下のGoogle Fontsを使用します：
+
+- **Rajdhani** - LCARS風フォント（`font-lcars`）
+- **Share Tech Mono** - CLI風フォント（`font-cli`）
+- **Orbitron** - SF風フォント（`font-sf`）
+
+##### Next.jsを使用している場合（推奨）
 
 `sf-ui-fonts-next`をインストールした後、`app/layout.tsx`（または`src/app/layout.tsx`）を更新：
+
+```bash
+npx shadcn@latest add https://sf-ui-library.vercel.app/r/sf-ui-fonts-next.json
+```
 
 ```tsx
 import { SfUiFontsNext } from "@/styles/fonts-next";
@@ -169,41 +179,84 @@ export default function RootLayout({ children }) {
 
 **重要**: `sf-ui-fonts-next`はNext.js専用です。Viteプロジェクトでは使用できません。
 
-**Viteプロジェクトやその他のフレームワークの場合:**
+##### Viteプロジェクトの場合
 
-`sf-ui-fonts`をインストールした後、`app/layout.tsx`（またはルートレイアウト）に追加：
+Viteプロジェクトでは2つの方法があります。
+
+**方法1: sf-ui-fontsコンポーネントを使用（推奨）**
+
+```bash
+npx shadcn@latest add https://sf-ui-library.vercel.app/r/sf-ui-fonts.json
+```
+
+`src/App.tsx`または`src/main.tsx`で`SfUiFonts`コンポーネントを使用：
 
 ```tsx
 import { SfUiFonts } from "@/styles/fonts";
 
-export default function RootLayout({ children }) {
+export default function App() {
   return (
-    <html>
-      <head>
-        <SfUiFonts />
-      </head>
-      <body>{children}</body>
-    </html>
+    <>
+      <SfUiFonts />
+      {/* アプリケーションのコンテンツ */}
+    </>
   );
 }
+```
+
+**方法2: index.htmlに直接追加**
+
+`index.html`のheadセクションに以下を追加：
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 **Viteプロジェクトでの注意事項:**
 
 - `sf-ui-fonts-next`は`next/font/google`に依存しているため、Viteプロジェクトでは使用できません
-- Viteプロジェクトでは必ず`sf-ui-fonts`を使用してください
-- TypeScriptの型エラーを避けるため、`tsconfig.app.json`（または`tsconfig.json`）で`sf-ui-fonts-next`を除外することを推奨します
+- Viteプロジェクトでは必ず`sf-ui-fonts`を使用するか、index.htmlに直接Google Fontsを追加してください
+- 誤って`sf-ui-fonts-next`をインストールした場合は、`tsconfig.app.json`（または`tsconfig.json`）で除外することを推奨します：
+  ```json
+  {
+    "exclude": ["**/fonts-next.tsx"]
+  }
+  ```
 
 #### 4. グローバルCSSにテーマをインポート
 
-`sf-ui-theme`をインストールした後、`app/globals.css`（または`src/app/globals.css`）に以下を追加：
+`sf-ui-theme`をインストールした後、グローバルCSSファイルにテーマをインポートします。
+
+**注意**: shadcn CLIはテーマCSSを自動でインポートしません。手動で追加する必要があります。
+
+##### Next.jsプロジェクトの場合
+
+`app/globals.css`（または`src/app/globals.css`）に以下を追加：
 
 ```css
 /* 注意: PostCSSではパスエイリアス（@/）が解決できないため、相対パスを使用してください */
 @import "../styles/sf-ui-theme.css";
 ```
 
-**重要**: `@import "@/styles/sf-ui-theme.css"`は動作しません。必ず相対パス（`../styles/sf-ui-theme.css`）を使用してください。
+##### Viteプロジェクトの場合
+
+`src/index.css`（または`src/styles/globals.css`）に以下を追加：
+
+```css
+/* Viteプロジェクトの場合 - 配置場所に応じて相対パスを調整してください */
+@import "./components/sf-ui-theme.css";
+```
+
+**shadcn CLIのデフォルト設定を使用している場合**、テーマファイルは`src/components/`に配置されます。パスは`components.json`の`aliases.components`設定に依存します。
+
+**重要**:
+- `@import "@/styles/sf-ui-theme.css"`は動作しません。必ず相対パスを使用してください
+- Tailwind CSS 4.xを使用している場合、`@tailwindcss/postcss`が必須です
 
 これで完了です！LCARSカラー（`lcars-blue`、`lcars-orange`など）やカスタムフォント（`font-lcars`、`font-cli`、`font-sf`）が自動的に使用可能になります。
 
