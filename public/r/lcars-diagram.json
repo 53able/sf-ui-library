@@ -7,8 +7,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "utils",
-    "lcars-panel"
+    "https://sf-ui-library.vercel.app/r/utils.json",
+    "https://sf-ui-library.vercel.app/r/lcars-panel.json"
   ],
   "files": [
     {

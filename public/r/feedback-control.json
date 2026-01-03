@@ -7,7 +7,7 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "utils"
+    "https://sf-ui-library.vercel.app/r/utils.json"
   ],
   "files": [
     {
