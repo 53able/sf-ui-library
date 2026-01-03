@@ -14,7 +14,10 @@
           "type": "registry:lib"
         }
       ],
-      "dependencies": ["clsx", "tailwind-merge"]
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ]
     },
     {
       "name": "sf-ui-theme",
@@ -27,7 +30,9 @@
           "type": "registry:style"
         }
       ],
-      "peerDependencies": ["tailwindcss"]
+      "peerDependencies": [
+        "tailwindcss"
+      ]
     },
     {
       "name": "sf-ui-fonts",
@@ -40,7 +45,10 @@
           "type": "registry:component"
         }
       ],
-      "peerDependencies": ["react", "react-dom"]
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "sf-ui-fonts-next",
@@ -53,7 +61,11 @@
           "type": "registry:component"
         }
       ],
-      "peerDependencies": ["react", "react-dom", "next"]
+      "peerDependencies": [
+        "react",
+        "react-dom",
+        "next"
+      ]
     },
     {
       "name": "button",
@@ -66,9 +78,17 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "cli-interface",
@@ -81,9 +101,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "clock-display",
@@ -96,9 +123,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "connected-panels",
@@ -111,12 +145,17 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "https://sf-ui-library.vercel.app/r/utils.json",
         "https://sf-ui-library.vercel.app/r/lcars-panel.json"
       ],
-      "peerDependencies": ["react", "react-dom"]
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "data-display",
@@ -129,9 +168,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "display-panel",
@@ -144,12 +190,17 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "https://sf-ui-library.vercel.app/r/utils.json",
         "https://sf-ui-library.vercel.app/r/lcars-panel.json"
       ],
-      "peerDependencies": ["react", "react-dom"]
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "feedback-control",
@@ -162,9 +213,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "glow-button",
@@ -177,9 +235,17 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "glow-text",
@@ -192,9 +258,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "lcars-panel",
@@ -207,9 +280,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "lcars-diagram",
@@ -222,12 +302,17 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "https://sf-ui-library.vercel.app/r/utils.json",
         "https://sf-ui-library.vercel.app/r/lcars-panel.json"
       ],
-      "peerDependencies": ["react", "react-dom"]
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "lcars-grid",
@@ -240,9 +325,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "spatial-file-manager",
@@ -255,9 +347,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "status-indicator",
@@ -270,9 +369,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "transparent-layer",
@@ -285,9 +391,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     },
     {
       "name": "warning-screen",
@@ -300,9 +413,16 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["https://sf-ui-library.vercel.app/r/utils.json"],
-      "peerDependencies": ["react", "react-dom"]
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://sf-ui-library.vercel.app/r/utils.json"
+      ],
+      "peerDependencies": [
+        "react",
+        "react-dom"
+      ]
     }
   ]
 }

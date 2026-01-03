@@ -36,9 +36,10 @@ interface RegistryFile {
 const transformImports = (content: string): string => {
   let transformed = content;
 
-  // `"use client";` ディレクティブを削除（Viteプロジェクト対応）
-  // ファイル先頭のもののみを対象とする
-  transformed = transformed.replace(/^"use client";\s*\n?/gm, "");
+  // NOTE: "use client" ディレクティブは削除しない
+  // - Next.js App Router: 必須（Reactフックを使用するClient Componentに必要）
+  // - Vite/その他: 無視されるだけで害はない
+  // 参考: https://github.com/53able/sf-ui-library/issues/2
 
   // `@/registry/sf-ui/[name]/[name]` → `@/components/[name]` に変換
   // 公式推奨: レジストリ内のインポートは @/registry パスを使用
