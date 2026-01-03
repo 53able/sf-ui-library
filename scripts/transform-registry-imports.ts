@@ -40,21 +40,25 @@ const transformImports = (content: string): string => {
   // ファイル先頭のもののみを対象とする
   transformed = transformed.replace(/^"use client";\s*\n?/gm, "");
 
-  // `from "../lcars-panel/lcars-panel"` → `from "@/components/lcars-panel"`
+  // `@/registry/sf-ui/[name]/[name]` → `@/components/[name]` に変換
+  // 公式推奨: レジストリ内のインポートは @/registry パスを使用
+  // shadcn/ui CLIでインストールすると `@/components/` に配置されるため変換が必要
   transformed = transformed.replace(
-    /from\s+["']\.\.\/lcars-panel\/lcars-panel["']/g,
-    'from "@/components/lcars-panel"'
+    /from\s+["']@\/registry\/sf-ui\/([^/"']+)\/[^"']+["']/g,
+    'from "@/components/$1"'
   );
 
-  // `@/components/ui/` → `@/components/` に変換
-  // shadcn/ui CLIでインストールすると`@/components/`に配置されるため
+  // 後方互換性: `@/components/ui/` → `@/components/` に変換
   transformed = transformed.replace(
     /from\s+["']@\/components\/ui\/([^"']+)["']/g,
     'from "@/components/$1"'
   );
 
-  // その他の相対パスパターンも変換（将来の拡張用）
-  // `from "../utils/utils"` → `from "@/lib/utils"` は既に `@/lib/utils` を使用しているため不要
+  // 後方互換性: `from "../lcars-panel/lcars-panel"` → `from "@/components/lcars-panel"`
+  transformed = transformed.replace(
+    /from\s+["']\.\.\/lcars-panel\/lcars-panel["']/g,
+    'from "@/components/lcars-panel"'
+  );
 
   return transformed;
 };

@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { LCARSPanel, type LCARSPanelProps } from "@/components/ui/lcars-panel";
+import { LCARSPanel, type LCARSPanelProps } from "@/registry/sf-ui/lcars-panel/lcars-panel";
 import { cn } from "@/lib/utils";
 
 /**

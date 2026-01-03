@@ -2,7 +2,7 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { LCARSPanel } from "@/components/ui/lcars-panel";
+import { LCARSPanel } from "@/registry/sf-ui/lcars-panel/lcars-panel";
 import { cn } from "@/lib/utils";
 
 /**
