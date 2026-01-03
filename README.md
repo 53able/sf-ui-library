@@ -584,9 +584,15 @@ Registryに登録された各コンポーネントには、StorybookのURLが自
 ```
 .
 ├── app/              # Next.js App Router
-├── components/       # Reactコンポーネント
-│   └── ui/          # shadcn/uiコンポーネント
+├── components/       # Storybookストーリー
+│   └── ui/          # *.stories.tsxファイル
 ├── lib/             # ユーティリティ関数
-└── docs/            # ドキュメント
+├── public/          # 静的ファイル
+│   └── r/           # Registry JSONファイル
+├── registry/        # コンポーネントソースコード
+│   └── sf-ui/       # SF UIコンポーネント群
+├── scripts/         # ビルドスクリプト
+├── stories/         # Storybookアセット
+└── .storybook/      # Storybook設定
 ```
 
