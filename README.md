@@ -10,16 +10,20 @@ LCARS（スタートレック風）デザインのUIコンポーネントライ�
 
 3ステップでSF UIコンポーネントを使い始められます：
 
-```bash
 # 1. 必須の基盤をインストール
+
+```bash
 npx shadcn@latest add https://sf-ui-library.vercel.app/r/utils.json
 npx shadcn@latest add https://sf-ui-library.vercel.app/r/sf-ui-theme.json
+```
 
 # 2. 好きなコンポーネントをインストール
+
+```bash
 npx shadcn@latest add https://sf-ui-library.vercel.app/r/button.json
+```
 
 # 3. グローバルCSSにテーマをインポート（手動）
-```
 
 ```css
 /* app/globals.css に追加 */
